@@ -188,12 +188,10 @@ body.role-viewer .canedit{display:none!important}
 @media print{.notif-btn,.help-btn{display:none!important}}
 .help-btn{position:fixed;bottom:20px;right:76px;z-index:40;background:#fff;border:1px solid var(--line);border-radius:50%;width:48px;height:48px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 6px 18px rgba(120,30,70,.14);font:800 22px 'Sarabun',sans-serif;color:var(--pink-d)}
 .help-btn:hover{background:var(--pink-xl)}
-.pnav{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center;margin:22px 0 6px;padding-top:16px;border-top:1.5px solid var(--line)}
-.pnav-b{display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid #e6c9d6;border-radius:12px;padding:10px 14px;font:inherit;color:var(--ink);cursor:pointer;text-align:left;min-width:0}
-.pnav-b:hover{border-color:var(--pink-d);background:#fff6fa}.pnav-b.next{justify-self:end;flex-direction:row-reverse;text-align:right}
-.pnav-a{font-size:22px;font-weight:800;color:var(--pink-d);flex:none}.pnav-t{display:flex;flex-direction:column;min-width:0}.pnav-t b{font-size:14px;color:var(--pink-d)}
-.pnav-t span{font-size:13px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:280px}.pnav-c{font-size:13px;color:var(--ink);font-weight:600;white-space:nowrap}
-@media(max-width:700px){.pnav{grid-template-columns:1fr 1fr}.pnav-c{display:none}.pnav-t span{max-width:130px}}
+.pnav{display:flex;justify-content:flex-end;margin:20px 0 70px;padding-top:14px;border-top:1.5px solid var(--line)}
+.pact{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px;padding:12px 14px;background:#fff;border:1.5px solid var(--line);border-radius:12px}
+.pact-l,.pact-r{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.pact-r{margin-left:auto;justify-content:flex-end}
+.pact-st{font-size:13px;font-weight:600}.pact-st.warn{color:#b26a1a}.pact-st.ok{color:#2f7d54}
 .home-h{margin:2px 0 14px}.home-h h1{font-size:26px;color:var(--ink);margin:0}.home-h .desc{font-size:14px;color:var(--ink);margin-top:2px}
 .home-sec{margin-bottom:18px}.home-sec h2{font-size:17px;color:var(--pink-d);margin:0 0 8px;display:flex;align-items:center;gap:8px}
 .home-sec .cnt{background:var(--pink-d);color:#fff;border-radius:999px;font-size:13px;padding:1px 10px}
@@ -525,7 +523,7 @@ input.money{text-align:right;font-family:'Sarabun';font-weight:500}
 <div class="nav-group">จัดการระบบ</div>
 <button data-v="settings"><svg class="ni" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>ตั้งค่า / สำรองข้อมูล</button>
 </nav>
-<div class="foot"><div id="clockBox" class="clock"></div><div id="roleBadge" style="margin-bottom:8px"></div><div id="syncBadge" style="margin-bottom:8px;font-size:12.5px"></div><span class="ver">v38.5</span></div>
+<div class="foot"><div id="clockBox" class="clock"></div><div id="roleBadge" style="margin-bottom:8px"></div><div id="syncBadge" style="margin-bottom:8px;font-size:12.5px"></div><span class="ver">v38.7</span></div>
 </aside>
 <button class="menu-toggle" onclick="toggleMenu()" aria-label="เปิดเมนู" aria-controls="side"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
 <button class="help-btn" onclick="openHelp()" title="วิธีใช้หน้านี้ (กด ?)" aria-label="วิธีใช้หน้านี้">?</button>
@@ -1482,7 +1480,7 @@ function regList(){
   }
   if(REGFILTER!=='pending'){
     projs.filter(p=>!REGFILTER||regStatusKey(p)===REGFILTER)
-      .filter(p=>hit(p.projNo)||hit(p.fullName)||hit(p.shortName)||hit(p.head)||hit(p.coordinator))
+      .filter(p=>hit(p.projNo)||hit(p.fullName)||hit(p.shortName)||hit(p.head)||hit(p.coordinator)||hit(personName(p.coordinator)))
       .sort((a,b)=>String(b.projNo||'').localeCompare(String(a.projNo||'')))
       .forEach(p=>{
         const k=regStatusKey(p);let c;try{c=calc(p);}catch(e){c={received:0};}
@@ -1497,7 +1495,7 @@ function regList(){
   }
   return `<div class="panel">
     <div class="panel-h"><h2>ค้นหาโครงการตามสถานะ</h2>
-      <div class="searchbox no-print"><span class="si"></span><input id="rq" placeholder="ค้นหา: เลขที่ · ชื่อ · หัวหน้าโครงการ" value="${esc(REGQ)}" oninput="REGQ=this.value;redrawReg(this)" style="min-width:250px"></div></div>
+      <div class="searchbox no-print"><span class="si"></span><input id="rq" placeholder="ค้นหา: เลขที่ · ชื่อ · หัวหน้าโครงการ · ผู้ประสานงาน" value="${esc(REGQ)}" oninput="REGQ=this.value;redrawReg(this)" style="min-width:250px"></div></div>
     <div class="rf-tabs no-print">${tabs}</div>
     <div class="tbl-wrap"><table><thead><tr><th style="width:9%">เลขที่</th><th style="width:48%">ชื่อโครงการ</th><th style="width:17%">หัวหน้าโครงการ</th><th class="r" style="width:11%">รับแล้ว (บาท)</th><th class="c" style="width:15%">สถานะ</th></tr></thead>
     <tbody>${rows||'<tr><td colspan="5" class="empty">ไม่พบโครงการตามเงื่อนไข</td></tr>'}</tbody></table></div>
@@ -1513,8 +1511,8 @@ function redrawReg(el){
 function vReg(arg){
   if(arg)REGSEL=arg;
   const p=DB.projects.find(x=>x.projNo===REGSEL);
-  const sel=`<div class="head"><div><h1>ทะเบียนโครงการ</h1><div class="desc">พิมพ์เลขที่โครงการเพื่อดูข้อมูลและสรุปการเงินแบบสด</div></div>
-<div class="no-print" style="min-width:300px;max-width:400px;width:100%">${acBox('regSel',REGSEL,'reg','ค้นหา: เลขที่ · ชื่อ · หัวหน้าโครงการ')}</div></div>`;
+  const sel=`<div class="head"><div><h1>ทะเบียนโครงการ</h1><div class="desc">${p?'ข้อมูลและสรุปการเงินแบบสด':'ค้นหาด้วยเลขที่ ชื่อโครงการ หัวหน้าโครงการ หรือผู้ประสานงาน'}</div></div>
+${p?`<div class="no-print" style="min-width:300px;max-width:400px;width:100%">${acBox('regSel',REGSEL,'reg','ค้นหา: เลขที่ · ชื่อ · หัวหน้าโครงการ · ผู้ประสานงาน')}</div>`:''}</div>`;   // v38.6: หน้ารวมเหลือช่องค้นหาช่องเดียว
   if(!p)return sel+regList();
   if(!canView(p.projNo))return sel+`<div class="panel"><div class="empty"><div class="big"></div>คุณไม่มีสิทธิ์เข้าถึงโครงการนี้<br><span style="font-size:13px">หัวหน้าโครงการ/ผู้ประสานงานเห็นได้เฉพาะโครงการของตน</span></div></div>`;
   const c=calc(p);
@@ -1550,6 +1548,7 @@ ${nextBanner(p)}
 <button class="btn ghost sm" onclick="openTimeline('${esc(p.projNo)}')">เส้นทางของงาน</button>
 <button class="btn ghost sm" onclick="doPrint(incExpReport('${esc(p.projNo)}'))">งบรายได้-รายจ่าย</button>
 <button class="btn ghost sm" onclick="window.print()">พิมพ์</button>
+${projNav(p)}
 </div>
 </div>
 <div class="rh2-prog">
@@ -1617,36 +1616,31 @@ ${changeReqPanel(p)}
 </div>
 </div>
   ${false&&p.fromProposal?`<div class="no-print" style="margin-top:12px;display:flex;justify-content:flex-end"><button class="btn ghost sm" onclick="PROPSEL='rev-${esc(p.fromProposal)}';go('proposal','rev-${esc(p.fromProposal)}')">ขอปรับปรุงงบ (เดิม↔ใหม่ · ตารางหมวด)</button></div>`:''}
-  ${(ROLE==='admin'||isHeadOf(p))?`<div class="no-print" style="margin-top:12px;display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;align-items:center">
-<button class="btn ghost sm" onclick="doPrint(resultReport('${esc(p.projNo)}'))">รายงานผลการดำเนินงาน</button>
-    ${p.status==='ยังไม่ปิดโครงการ'?`<button class="btn primary sm" onclick="askClose('${esc(p.projNo)}')">ขอปิดโครงการ (เขียนผล + ส่งหัวหน้างาน)</button>`:''}
-    ${p.status==='รอปิด (เสนอ คก.)'?`<span style="font-size:13px;color:#b26a1a;align-self:center">⏳ รอปิด — เสนอคณะกรรมการ</span><button class="btn ghost sm" onclick="askClose('${esc(p.projNo)}')">แก้ผลการดำเนินงาน</button>${ROLE==='admin'?`<button class="btn primary sm" onclick="closeProject('${esc(p.projNo)}')">ปิดโครงการ (หลัง คก.อนุมัติ)</button>`:''}`:''}
-    ${p.status==='ปิดแล้ว'?`<span style="font-size:13px;color:#2f7d54;align-self:center">ปิดแล้ว${p.closeInfo&&p.closeInfo.meetingNo?' (มติ '+esc(p.closeInfo.meetingNo)+')':''}</span><button class="btn ghost sm" onclick="doPrint(closeReport('${esc(p.projNo)}'))">รายงานปิดโครงการ</button>${ROLE==='admin'?`<button class="btn ghost sm" onclick="reopenProject('${esc(p.projNo)}')">เปิดโครงการอีกครั้ง</button>`:''}`:''}
-</div>`:''}
-  ${ROLE==='admin'?`<div class="no-print" style="margin-top:8px;display:flex;gap:10px;justify-content:flex-end">
-${(p.changeReqs||[]).some(r=>r.status==='รออนุมัติ')?'':`<button class="btn ghost sm" onclick="openRenew('${esc(p.projNo)}')" title="ใช้เฉพาะโครงการเดิมที่ไม่มีคำขอในระบบ">บันทึกมติโดยไม่มีคำขอ (โครงการเดิม)</button>`}
-<button class="btn ghost sm" style="color:var(--red)" onclick="delProject('${esc(p.projNo)}')">ลบโครงการนี้</button>
-</div>`:''}
-  ${(ROLE==='finance'&&p.status!=='ปิดแล้ว')?`<div class="no-print" style="margin-top:8px;display:flex;gap:10px;justify-content:flex-end">
-<button class="btn primary sm" onclick="openDisb('${esc(p.projNo)}')">บันทึกอนุมัติขยายเวลาเบิกจ่าย</button>
-</div>`:''}
-${projNav(p)}
+  ${(()=>{const no=esc(p.projNo);const L=[],R=[];const H=(ROLE==='admin'||isHeadOf(p));   /* v38.6: รวมปุ่มเป็นแถวเดียว เรียงเป็นระเบียบ */
+    if(ROLE==='admin'){if(!(p.changeReqs||[]).some(r=>r.status==='รออนุมัติ'))L.push(`<button class="btn ghost sm" onclick="openRenew('${no}')" title="ใช้เฉพาะโครงการเดิมที่ไม่มีคำขอในระบบ">บันทึกมติ (โครงการเดิม)</button>`);
+      L.push(`<button class="btn ghost sm" style="color:var(--red)" onclick="delProject('${no}')">ลบโครงการ</button>`);}
+    if(H){R.push(`<button class="btn ghost sm" onclick="doPrint(resultReport('${no}'))">รายงานผลการดำเนินงาน</button>`);
+      if(p.status==='ยังไม่ปิดโครงการ')R.push(`<button class="btn primary sm" onclick="askClose('${no}')">ขอปิดโครงการ</button>`);
+      if(p.status==='รอปิด (เสนอ คก.)'){R.unshift(`<span class="pact-st warn">⏳ รอปิด — เสนอคณะกรรมการ</span>`);R.push(`<button class="btn ghost sm" onclick="askClose('${no}')">แก้ผลการดำเนินงาน</button>`);if(ROLE==='admin')R.push(`<button class="btn primary sm" onclick="closeProject('${no}')">ปิดโครงการ (หลัง คก.อนุมัติ)</button>`);}
+      if(p.status==='ปิดแล้ว'){R.unshift(`<span class="pact-st ok">ปิดแล้ว${p.closeInfo&&p.closeInfo.meetingNo?' (มติ '+esc(p.closeInfo.meetingNo)+')':''}</span>`);R.push(`<button class="btn ghost sm" onclick="doPrint(closeReport('${no}'))">รายงานปิดโครงการ</button>`);if(ROLE==='admin')R.push(`<button class="btn ghost sm" onclick="reopenProject('${no}')">เปิดโครงการอีกครั้ง</button>`);}}
+    if(ROLE==='finance'&&p.status!=='ปิดแล้ว')R.push(`<button class="btn primary sm" onclick="openDisb('${no}')">บันทึกอนุมัติขยายเวลาเบิกจ่าย</button>`);
+    if(!L.length&&!R.length)return '';
+    return `<div class="pact no-print"><div class="pact-l">${L.join('')}</div><div class="pact-r">${R.join('')}</div></div>`;})()}
 <style>@media(max-width:1500px){.reg-cols{grid-template-columns:1fr!important}}</style>`;
 }
 /* v38.5: เลื่อนไปโครงการก่อนหน้า/ถัดไป ตามลำดับในหน้ารวม (ตัวกรองและคำค้นเดียวกัน) */
 function regOrder(){
   const q=(REGQ||'').trim().toLowerCase();const hit=v=>!q||String(v||'').toLowerCase().indexOf(q)>=0;
   return (scopeProjects(DB.projects||[])||[]).filter(Boolean).filter(p=>!REGFILTER||REGFILTER==='pending'||regStatusKey(p)===REGFILTER)
-    .filter(p=>hit(p.projNo)||hit(p.fullName)||hit(p.shortName)||hit(p.head)||hit(p.coordinator))
+    .filter(p=>hit(p.projNo)||hit(p.fullName)||hit(p.shortName)||hit(p.head)||hit(p.coordinator)||hit(personName(p.coordinator)))
     .sort((a,b)=>String(b.projNo||'').localeCompare(String(a.projNo||'')));
 }
-function projNav(p){
+function projNav(p){   /* v38.6: ปุ่มเล็ก "โครงการถัดไป →" v38.7: ย้ายไปหัวหน้า ต่อจากปุ่มพิมพ์ */
   let L=regOrder();let i=L.findIndex(x=>x.projNo===p.projNo);
   if(i<0){L=(scopeProjects(DB.projects||[])||[]).slice().sort((a,b)=>String(b.projNo||'').localeCompare(String(a.projNo||'')));i=L.findIndex(x=>x.projNo===p.projNo);}
   if(i<0||L.length<2)return '';
-  const pv=L[i-1],nx=L[i+1];
-  const b=(x,dir)=>x?`<button class="pnav-b ${dir}" onclick="go('reg','${esc(x.projNo)}')"><span class="pnav-a">${dir==='prev'?'←':'→'}</span><span class="pnav-t"><b>${dir==='prev'?'โครงการก่อนหน้า':'โครงการถัดไป'}</b><span>${esc(x.projNo)} · ${esc((x.shortName||x.fullName||'').slice(0,40))}</span></span></button>`:'<span></span>';
-  return `<div class="pnav no-print">${b(pv,'prev')}<div class="pnav-c">โครงการที่ ${i+1} จาก ${L.length}</div>${b(nx,'next')}</div>`;
+  const nx=L[(i+1)%L.length];
+  return `<button class="btn primary sm" onclick="go('reg','${esc(nx.projNo)}');window.scrollTo(0,0)" title="${esc(nx.projNo)} · ${esc(nx.shortName||nx.fullName||'')}">โครงการถัดไป →</button>`;
 }
 function delTx(id){const x=DB.ledger.find(z=>z.id===id);if(!x)return;const p=DB.projects.find(q=>q.projNo===x.projNo);
   if(p&&!canRecord(p)){toast('คุณไม่มีสิทธิ์ลบรายการของโครงการนี้','bad');return;}
