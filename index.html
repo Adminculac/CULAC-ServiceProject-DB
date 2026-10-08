@@ -187,6 +187,25 @@ body.role-viewer .canedit{display:none!important}
 @media print{.notif-btn,.help-btn{display:none!important}}
 .help-btn{position:fixed;bottom:20px;right:76px;z-index:40;background:#fff;border:1px solid var(--line);border-radius:50%;width:48px;height:48px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 6px 18px rgba(120,30,70,.14);font:800 22px 'Sarabun',sans-serif;color:var(--pink-d)}
 .help-btn:hover{background:var(--pink-xl)}
+.home-h{margin:2px 0 14px}.home-h h1{font-size:26px;color:var(--ink);margin:0}.home-h .desc{font-size:14px;color:var(--ink);margin-top:2px}
+.home-sec{margin-bottom:18px}.home-sec h2{font-size:17px;color:var(--pink-d);margin:0 0 8px;display:flex;align-items:center;gap:8px}
+.home-sec .cnt{background:var(--pink-d);color:#fff;border-radius:999px;font-size:13px;padding:1px 10px}
+.tk{display:grid;grid-template-columns:1fr auto auto;gap:14px;align-items:center;background:#fff;border:1.5px solid #e6c9d6;border-left:6px solid var(--pink-d);border-radius:12px;padding:13px 16px;margin-bottom:9px;box-shadow:var(--shadow)}
+.tk.warn{border-left-color:#d08a1c}.tk.bad{border-left-color:#c62828}
+.tk-w{font-size:16.5px;font-weight:700;color:var(--ink);line-height:1.35}.tk-s{font-size:13.5px;color:var(--ink);margin-top:3px}
+.tk-a{font-size:13px;font-weight:700;color:var(--ink);background:#f6eef2;border-radius:999px;padding:3px 11px;white-space:nowrap}.tk.bad .tk-a{background:#fdecee;color:#8a1020}.tk.warn .tk-a{background:#fff3df;color:#6e4405}
+.tk-go{font-size:15px;padding:10px 18px}
+.tk-empty{background:#f1f8f3;border:1.5px solid #bfe0c9;border-radius:12px;padding:16px;font-size:15px;color:#14532d;font-weight:600}
+.qas{display:flex;flex-wrap:wrap;gap:10px}.qa{display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid #e6c9d6;border-radius:12px;padding:12px 18px;font:inherit;font-size:15px;font-weight:600;color:var(--ink);cursor:pointer}
+.qa:hover{border-color:var(--pink-d);background:#fff6fa}.qa b{background:var(--pink-d);color:#fff;width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px}
+.dash-more{border:1.5px solid var(--line);border-radius:12px;background:#fff;margin-top:6px}.dash-more>summary{cursor:pointer;padding:12px 16px;font-weight:700;font-size:15px;color:var(--ink)}
+.dash-more[open]>summary{border-bottom:1.5px solid var(--line)}.dash-more-b{padding:14px 16px}
+.nb{display:flex;align-items:center;justify-content:space-between;gap:14px;background:#f7f4f6;border:1.5px solid var(--line);border-radius:12px;padding:11px 16px;margin-bottom:12px}
+.nb.mine{background:#fff1f6;border-color:var(--pink-d);border-width:2px}.nb.done{background:#f1f8f3;border-color:#bfe0c9}
+.nb-l{font-size:12.5px;font-weight:800;color:var(--pink-d)}.nb.done .nb-l{color:#14532d}.nb-t{font-size:15.5px;color:var(--ink);margin-top:1px}
+.flash{animation:flash 2.2s ease}@keyframes flash{0%,60%{box-shadow:0 0 0 4px rgba(194,24,91,.45)}100%{box-shadow:none}}
+@media (max-width:700px){.tk{grid-template-columns:1fr}.tk-go{width:100%}.nb{flex-direction:column;align-items:stretch}}
+@media print{.home-h,.home-sec{display:none}.dash-more{border:0}.dash-more>summary{display:none}}
 .todo{border:1.5px solid #e6c9d6;border-radius:14px;background:#fff;margin-bottom:16px;box-shadow:var(--shadow)}
 .todo-h{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 16px;border-bottom:1.5px solid var(--line);background:linear-gradient(100deg,#fff1f6,#fff8fb);border-radius:14px 14px 0 0}
 .todo-h h2{font-size:15.5px;color:var(--pink-d);margin:0;display:flex;align-items:center;gap:8px}
@@ -484,7 +503,7 @@ input.money{text-align:right;font-family:'Sarabun';font-weight:500}
 </div>
 <nav class="nav" id="nav" aria-label="เมนูหลัก">
 <div class="nav-group first">ภาพรวม</div>
-<button data-v="dash" class="on"><svg class="ni" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Dashboard</button>
+<button data-v="dash" class="on"><svg class="ni" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>หน้าแรก</button>
 <div class="nav-group">งานโครงการ</div>
 <button data-v="proposal"><svg class="ni" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>เขียนโครงการ (ขออนุมัติ)</button>
 <button data-v="open"><svg class="ni" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M12 12v6M9 15h6"/></svg>เปิดโครงการใหม่</button>
@@ -575,6 +594,7 @@ function load(){
   }  normUsers(d.meta.users);                                   // v35: หัวหน้าโครงการ/ผู้ประสานงาน/สัตวแพทย์ ไม่ใช่ตำแหน่งในระบบอีกต่อไป → เจ้าหน้าที่
 
   d.proposals=d.proposals||[];
+  try{(d.projects||[]).forEach(normProj);}catch(e){}
   return d;
 }
 function save(){try{localStorage.setItem(KEY,JSON.stringify(DB));}catch(e){toast('บันทึกไม่สำเร็จ: '+e.message,'bad');} schedulePush();}
@@ -616,7 +636,7 @@ async function loadCloudLog(){
   try{
     try{await cloudPush(false);}catch(e){}
     const a=authFields();
-    const r=await fetch(c.url,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'logs',key:a.key,email:a.email,pass:a.pass,limit:300})});
+    const r=await fetch(c.url,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(Object.assign({action:'logs',limit:300},a))});
     const j=await r.json();if(!j.ok)throw new Error(j.error||'load failed');
     const rows=(j.rows||[]).map(l=>`<tr><td class="nowrap">${esc(l.serverTime)}</td><td>${esc(l.user)}<div style="font-size:11px;color:var(--muted)">${esc(l.account)}</div></td><td>${esc(l.action)}</td></tr>`).join('');
     if(box)box.innerHTML=`<table><thead><tr><th>เวลา (เซิร์ฟเวอร์)</th><th>ผู้ใช้ / บัญชี</th><th>การกระทำ</th></tr></thead><tbody>${rows||'<tr><td colspan="3" class="empty">ยังไม่มีประวัติในชีต</td></tr>'}</tbody></table>`;
@@ -655,22 +675,31 @@ function loadSnap(){try{const v=JSON.parse(localStorage.getItem(SNAP_KEY)||'null
 function persistSnap(){try{localStorage.setItem(SNAP_KEY,JSON.stringify(SYNC_SNAP));}catch(e){}}
 let SYNC_SNAP=loadSnap();
 const SYNC_KEY={projects:'projNo',ledger:'id',proposals:'id',users:'email',notifs:'id'};
-function cloudCfg(){return (DB.meta&&DB.meta.gasUrl)?{url:DB.meta.gasUrl}:null;}
+const DEFAULT_GAS_URL='';   // ★ v38: ใส่ URL ของ Web App (ลงท้าย /exec) ตรงนี้ครั้งเดียวก่อนอัปโหลด — ผู้ใช้เปิดเว็บแล้วเข้าระบบได้เลย ไม่ต้องใช้ลิงก์พิเศษ
+function cloudCfg(){const u=(DB.meta&&DB.meta.gasUrl)||DEFAULT_GAS_URL;return u?{url:u}:null;}
+/* v38: เข้าระบบด้วย "บัตรผ่าน" จากระบบกลาง — รหัสผ่านอยู่ที่ Google Sheet ที่เดียว ไม่เก็บในเครื่อง */
+let SESS=null;try{SESS=JSON.parse(sessionStorage.getItem('culac_sess')||'null');}catch(e){SESS=null;}
+function setSess(x){SESS=x;try{if(x)sessionStorage.setItem('culac_sess',JSON.stringify(x));else sessionStorage.removeItem('culac_sess');}catch(e){}}
+let BOOT_PW=null;   // ใช้เฉพาะตอนตั้งระบบครั้งแรก (ชีตยังไม่มีผู้ใช้)
+async function api(body){const c=cloudCfg();if(!c)throw new Error('no cloud');const r=await fetch(c.url,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(body)});return r.json();}
+function isSessErr(m){return /unauthorized \((session|unknown user|bad password)\)/.test(String(m||''));}
+function sessExpired(){toast('หมดเวลาการใช้งาน หรือบัญชีถูกเปลี่ยน กรุณาเข้าสู่ระบบใหม่','bad');setTimeout(logout,1200);}
 let AUTH_OLD=null;   // รหัสเดิมใช้ยืนยันกับ Google Sheet จนกว่าการซิงค์รหัสใหม่สำเร็จ
-function authFields(){return {key:(DB.meta&&DB.meta.secret)||'',email:(CURRENT_USER&&CURRENT_USER.email)||'',pass:(AUTH_OLD!=null?AUTH_OLD:((CURRENT_USER&&CURRENT_USER.pass)||''))};}
+function authFields(){return {key:(DB.meta&&DB.meta.secret)||'',email:(CURRENT_USER&&CURRENT_USER.email)||'',token:(SESS&&SESS.tok)||''};}
 function syncHtml(){
   if(!cloudCfg())return 'เครื่องนี้ (ยังไม่เชื่อม Sheet)';
   const m={pull:'⏳ กำลังดึงข้อมูล…',push:'⏳ กำลังบันทึกขึ้นคลาวด์…',ok:'ซิงค์แล้ว',err:'ซิงค์ไม่สำเร็จ — แตะลองใหม่'};
   return '<span class="lo" style="cursor:pointer" onclick="cloudPull(true)">'+(m[SYNC_STATE]||'พร้อมซิงค์ (แตะเพื่อดึง)')+'</span>';
 }
 function setSync(s){SYNC_STATE=s;const b=document.getElementById('syncBadge');if(b)b.innerHTML=syncHtml();}
-function normProj(p){p.projNo=safeNo(p.projNo);['estRevenue','estExpense','openingBalance'].forEach(k=>p[k]=parseFloat(p[k])||0);if(typeof p.renewals==='string'){try{p.renewals=JSON.parse(p.renewals);}catch(e){p.renewals=[];}}if(!Array.isArray(p.renewals))p.renewals=p.renewals?[].concat(p.renewals):[];delete p.updatedBy;delete p.updatedAt;return p;}
+function normProj(p){p.projNo=safeNo(p.projNo);['estRevenue','estExpense','openingBalance'].forEach(k=>p[k]=parseFloat(p[k])||0);if(typeof p.renewals==='string'){try{p.renewals=JSON.parse(p.renewals);}catch(e){p.renewals=[];}}if(!Array.isArray(p.renewals))p.renewals=p.renewals?[].concat(p.renewals):[];['steps','closeInfo','pendingCuerp'].forEach(k=>{if(typeof p[k]==='string'){try{p[k]=p[k]?JSON.parse(p[k]):null;}catch(e){p[k]=null;}}if(Array.isArray(p[k]))p[k]=(k==='steps'&&p[k].length===0)?{}:(k==='steps'?Object.assign({},p[k]):null);});   // v38: ช่องว่างจากชีตกลับมาเป็น [] — ทำให้ขั้นตอนหาย/ขึ้นรอ CUERP ผิด
+  delete p.updatedBy;delete p.updatedAt;return p;}
 function normLed(x){x.projNo=''+(x.projNo==null?'':x.projNo);x.docNo=''+(x.docNo==null?'':x.docNo);x.in=parseFloat(x.in)||0;x.out=parseFloat(x.out)||0;x.id=x.id||('c'+Math.random().toString(36).slice(2));return x;}
 function recSan(table,rec){const q=Object.assign({},rec);if(table==='projects')delete q.pdfData;delete q.updatedBy;delete q.updatedAt;return q;}
 function snapVal(table,rec){return JSON.stringify(recSan(table,rec));}
 function curMap(table){const arr=table==='users'?(DB.meta.users||[]):table==='notifs'?(DB.meta.notifs||[]):(DB[table]||[]);const k=SYNC_KEY[table],m={};arr.forEach(r=>{const key=''+(r[k]==null?'':r[k]);if(key)m[key]=r;});return m;}
 function buildOps(){const ops=[];if(!SYNC_SNAP.__pulled)return ops;   // ยังไม่เคยดึงข้อมูลจากชีตสำเร็จ -> ไม่ส่ง กันข้อมูลเก่า/ตัวอย่างทับชีต
-  Object.keys(SYNC_KEY).forEach(table=>{const cur=curMap(table),snap=SYNC_SNAP[table]||{};
+  Object.keys(SYNC_KEY).forEach(table=>{if(table==='users'&&SESS&&ROLE!=='admin')return;const cur=curMap(table),snap=SYNC_SNAP[table]||{};
   Object.keys(cur).forEach(key=>{const v=snapVal(table,cur[key]);if(snap[key]!==v)ops.push({table,op:'upsert',key,record:recSan(table,cur[key])});});
   Object.keys(snap).forEach(key=>{if(!(key in cur))ops.push({table,op:'delete',key});});});return ops;}
 function commitSnap(){const s=blankSnap();s.__pulled=true;Object.keys(SYNC_KEY).forEach(table=>{const cur=curMap(table);Object.keys(cur).forEach(key=>s[table][key]=snapVal(table,cur[key]));});SYNC_SNAP=s;persistSnap();}
@@ -696,7 +725,7 @@ async function cloudPull(manual){
   setSync('pull');
   try{
     const a=authFields();
-    const r=await fetch(c.url,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'load',key:a.key,email:a.email,pass:a.pass})});
+    const r=await fetch(c.url,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(Object.assign({action:'load'},a))});
     const j=await r.json();if(!j.ok)throw new Error(j.error||'load failed');
     const d=j.data||{};PULLING=true;
     const first=!SYNC_SNAP.__pulled;const srvHasUsers=!!(d.meta&&Array.isArray(d.meta.users)&&d.meta.users.length);
@@ -711,7 +740,7 @@ async function cloudPull(manual){
       mergeTable('projects',Array.isArray(d.projects)?d.projects.map(normProj):null);
       mergeTable('ledger',Array.isArray(d.ledger)?d.ledger.map(normLed):null);
       mergeTable('proposals',Array.isArray(d.proposals)?d.proposals:null);
-      if(d.meta&&Array.isArray(d.meta.users))mergeTable('users',d.meta.users);
+      if(d.meta&&Array.isArray(d.meta.users))mergeTable('users',d.meta.users,!!SESS&&ROLE!=='admin');   // v38: ผู้ใช้ทั่วไปใช้รายชื่อจากชีตเท่านั้น
       if(d.meta&&Array.isArray(d.meta.notifs))mergeTable('notifs',d.meta.notifs);
     }
     if(d.meta&&d.meta.pins)DB.meta.pins=Object.assign({},DB.meta.pins,d.meta.pins);
@@ -727,7 +756,7 @@ async function cloudPull(manual){
     if(ROLE&&(manual||(changed&&!isBusyEditing())))render();
     if(changed)updNotifBell();
     if(buildOps().length)schedulePush();
-  }catch(e){PULLING=false;setSync('err');if(/unknown user|bad password/.test(String(e.message))&&ROLE){toast('บัญชีหรือรหัสผ่านถูกเปลี่ยนจากเครื่องอื่น กรุณาเข้าสู่ระบบใหม่','bad');setTimeout(logout,1200);return;}if(manual)toast('ดึงไม่สำเร็จ: '+e.message,'bad');}
+  }catch(e){PULLING=false;setSync('err');if(isSessErr(e.message)&&ROLE){sessExpired();return;}if(manual)toast('ดึงไม่สำเร็จ: '+e.message,'bad');}
 }
 function schedulePush(){if(!cloudCfg()||PULLING)return;clearTimeout(PUSH_T);PUSH_T=setTimeout(()=>cloudPush(),900);}
 async function cloudPush(manual){PUSH_T=null;
@@ -739,13 +768,14 @@ async function cloudPush(manual){PUSH_T=null;
   try{
     const a=authFields();
     const r=await fetch(c.url,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},
-      body:JSON.stringify({action:'sync',key:a.key,email:a.email,pass:a.pass,ops,pins:DB.meta.pins,logs})});
+      body:JSON.stringify(Object.assign({action:'sync',ops,pins:DB.meta.pins,logs},a))});
     const j=await r.json();if(!j.ok)throw new Error(j.error||'sync failed');
     if(logs.length&&DB.meta.logOutbox){DB.meta.logOutbox=DB.meta.logOutbox.slice(logs.length);try{localStorage.setItem(KEY,JSON.stringify(DB));}catch(e){}}
-    commitOps(ops);AUTH_OLD=null;setSync('ok');if(manual)toast('บันทึกขึ้น Google Sheet แล้ว ('+ops.length+' รายการ)','ok');
+    commitOps(ops);AUTH_OLD=null;setSync('ok');if(!SESS&&BOOT_PW&&CURRENT_USER)bootLogin();if(manual)toast('บันทึกขึ้น Google Sheet แล้ว ('+ops.length+' รายการ)','ok');
     if(buildOps().length)schedulePush();              // มีการแก้ไขระหว่างที่กำลังส่ง → ส่งรอบถัดไป
-  }catch(e){setSync('err');if(manual)toast('บันทึกขึ้นคลาวด์ไม่สำเร็จ: '+e.message,'bad');}
+  }catch(e){setSync('err');if(isSessErr(e.message)&&ROLE){sessExpired();return;}if(manual)toast('บันทึกขึ้นคลาวด์ไม่สำเร็จ: '+e.message,'bad');}
 }
+async function bootLogin(){try{const j=await api({action:'login',key:(DB.meta&&DB.meta.secret)||'',email:CURRENT_USER.email,pass:BOOT_PW});if(j&&j.ok){setSess({tok:j.token,email:CURRENT_USER.email});BOOT_PW=null;}}catch(e){}}
 function isBusyEditing(){try{const sc=document.getElementById('scrim'),md=document.getElementById('modal');
   if(VIEW==='open'||VIEW==='proposal'||VIEW==='fin'||VIEW==='settings')return true;
   if((sc&&sc.classList.contains('show'))||(md&&md.classList.contains('show')))return true;
@@ -908,7 +938,7 @@ function dashFiltered(){
   if(DASHCOORD)arr=arr.filter(p=>p.coordinator===DASHCOORD);
   return arr;
 }
-function vDash(){
+function vDashStats(withTasks){
   const P=scopeProjects(DB.projects);
   const total=P.length;
   const closed=P.filter(p=>p.status==='ปิดแล้ว').length;
@@ -939,10 +969,10 @@ function vDash(){
 <td class="c">${p.status==='ปิดแล้ว'?'<span class="pill closed">ปิดแล้ว</span>':'<span class="pill open">ดำเนินการ</span>'}</td>
 </tr>`;}).join('');
   const sh=(k,lbl,cls)=>`<th class="${cls||''}" style="cursor:pointer;user-select:none" onclick="dsort('${k}')">${lbl}${DSORT.k===k?(DSORT.d>0?' ▲':' ▼'):''}</th>`;
-  return `<div class="head"><div><h1>Dashboard</h1><div class="desc">ภาพรวมโครงการบริการวิชาการทั้งหมด · อัปเดตอัตโนมัติจากสมุดรับ-จ่าย</div></div>
+  return `<div class="head"><div><h1>${withTasks?'Dashboard':'ภาพรวม'}</h1><div class="desc">ภาพรวมโครงการบริการวิชาการทั้งหมด · อัปเดตอัตโนมัติจากสมุดรับ-จ่าย</div></div>
 <div class="no-print" style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn ghost sm" onclick="printSummary()">พิมพ์รายงานสรุป</button><button class="btn ghost sm" onclick="printAmend()">รายงานการขยายเวลา</button>${ROLE==='admin'?`<button class="btn primary sm" onclick="EDIT_NO=null;PENDING_PDF=undefined;go('open')">+ เปิดโครงการใหม่</button>`:''}</div></div>
   ${dups.length?`<div class="tag-warn"><div>พบเลขโครงการซ้ำ:<b>${dups.map(esc).join(', ')}</b>— ควรตรวจสอบว่าตั้งใจมีหลายรายการ หรือกรอกซ้ำ (แก้ได้ที่ทะเบียนโครงการ)</div></div>`:''}
-  ${myTasksCard()}
+  ${withTasks?myTasksCard():''}
 <div class="cards">
 <div class="card accent"><div class="lbl">โครงการทั้งหมด</div><div class="val">${total}</div><div class="unit">โครงการ</div></div>
 <div class="card ok"><div class="lbl">ปิดแล้ว</div><div class="val">${closed}</div><div class="unit">โครงการ</div></div>
@@ -952,6 +982,53 @@ function vDash(){
 <div class="card warn"><div class="lbl">ค้างค่าสาธารณูปโภค</div><div class="val">${unpaidUtil}</div><div class="unit">โครงการ</div></div>
 </div>
 ${dashWatch(P)}`;
+}
+/* ===== v38: หน้าแรก = งานที่ต้องทำตอนนี้ ===== */
+let DASH_MORE=null, TASKS=[];
+function vDash(){
+  if(ROLE==='exec')return vDashStats(true);
+  const open=(DASH_MORE==null)?(ROLE==='admin'):DASH_MORE;
+  return homeView()+`<details class="dash-more" ${open?'open':''} ontoggle="DASH_MORE=this.open"><summary>${ROLE==='staff'?'โครงการของฉัน และภาพรวม':'ภาพรวมและตารางโครงการทั้งหมด'}</summary><div class="dash-more-b">${vDashStats(false)}</div></details>`;
+}
+function homeView(){
+  const T=myTasks();TASKS=T;
+  const nm=(CURRENT_USER&&(CURRENT_USER.name||CURRENT_USER.email))||'';
+  const q=[];
+  if((ROLE==='staff'||ROLE==='admin')&&(NAV[ROLE]||[]).includes('proposal'))q.push(`<button class="qa" onclick="go('proposal','new')"><b>＋</b>เขียนข้อเสนอโครงการใหม่</button>`);
+  if(can('record')&&(ROLE!=='staff'||(DB.projects||[]).some(p=>canRecord(p)&&!isClosed(p))))q.push(`<button class="qa" onclick="go('fin')"><b>฿</b>บันทึกรับ-จ่าย</button>`);
+  q.push(`<button class="qa" onclick="go('reg')"><b>⌕</b>ค้นหา / ดูโครงการ</button>`);
+  const cards=T.map((t,i)=>{const cls=t.bad||(t.age>=14)?'bad':(t.age>=7?'warn':'');
+    const age=(t.age==null||t.age<0)?'':(t.age===0?'วันนี้':'ค้าง '+t.age+' วัน');
+    return `<div class="tk ${cls}"><div class="tk-m"><div class="tk-w">${esc(t.what)}</div><div class="tk-s"><b>${esc(t.no)}</b> · ${esc(t.name)}</div></div>${age?`<div class="tk-a">${age}</div>`:''}<button class="btn primary tk-go" onclick="runTask(${i})">ทำเลย →</button></div>`;}).join('');
+  return `<div class="home-h"><h1>สวัสดี ${esc(nm)}</h1><div class="desc">${esc(ROLE_TH[ROLE]||'')}</div></div>
+<div class="home-sec"><h2>งานที่ต้องทำตอนนี้ ${T.length?`<span class="cnt">${T.length}</span>`:''}</h2>
+${T.length?cards:'<div class="tk-empty">✓ ตอนนี้ไม่มีงานที่ต้องทำ — เมื่อถึงคิวคุณ งานจะขึ้นที่นี่ และแจ้งที่กระดิ่ง</div>'}</div>
+<div class="home-sec"><h2>เริ่มงานใหม่</h2><div class="qas">${q.join('')}</div></div>`;
+}
+function projAction(p,what){
+  const no=p.projNo;what=String(what||'');
+  if(/CUERP แล้วกดยืนยัน/.test(what))return ()=>{go('reg',no);focusPanel(/รอดำเนินการในระบบ CUERP/);};   // ให้อ่านรายการที่ต้องทำใน CUERP ก่อน แล้วค่อยกดยืนยันเอง
+  if(/คำขอเปลี่ยนแปลงเข้าคณะกรรมการ/.test(what)){const i=(p.changeReqs||[]).findIndex(r=>r.status==='รออนุมัติ');return ()=>{go('reg',no);openRenew(no,i<0?0:i);};}
+  if(/กดปิดโครงการ/.test(what))return ()=>{go('reg',no);closeProject(no);};
+  if(/ขึ้นงบใน CUERP/.test(what))return ()=>{go('reg',no);openCuerp(no);};
+  if(/Vendor|บัญชีธนาคาร|ใบแจ้งหนี้/.test(what))return ()=>{go('reg',no);focusPanel(/สถานะการดำเนินการ/,true);};
+  if(/แต่งตั้งผู้ประสานงาน/.test(what))return ()=>{go('reg',no);assignCoord(no);};
+  if(/บันทึกรับ-จ่าย/.test(what))return ()=>{FIN_PROJ=no;go('fin');};
+  if(/ขอปิดโครงการ/.test(what)&&isHeadOf(p))return ()=>{go('reg',no);askClose(no);};
+  return ()=>go('reg',no);
+}
+function runTask(i){const t=TASKS[i];if(!t)return;
+  if(t.view==='proposal'){go('proposal',t.arg);if(ROLE==='admin'&&/บันทึกมติ/.test(t.what))approveProp(t.arg);return;}
+  const p=(DB.projects||[]).find(x=>x.projNo===t.arg);if(!p){go(t.view,t.arg);return;}
+  projAction(p,t.what)();}
+function runProj(no){const p=(DB.projects||[]).find(x=>x.projNo===no);if(!p)return;const ns=nextStepHint(p);if(ns)projAction(p,ns.what)();}
+function focusPanel(re,inp1){setTimeout(()=>{const h=[...document.querySelectorAll('#main .panel-h,#main h3,#main h2,#main .panel')].find(e=>re.test(e.textContent)&&(e.classList.contains('panel')?e.textContent.length<4000:true));if(!h)return;const box=h.closest('.panel')||h;box.scrollIntoView({block:'start'});window.scrollBy(0,-70);box.classList.add('flash');setTimeout(()=>box.classList.remove('flash'),2200);if(inp1){const inp=box.querySelector('input:not([disabled]):not([type=hidden])');if(inp)inp.focus({preventScroll:true});}},60);}
+function myTurn(p,ns){if(!ns)return false;const wr=WHO_ROLE[ns.who];return wr===ROLE||(wr==='head'&&isHeadOf(p))||(wr==='coord'&&(isCoordOf(p)||(isHeadOf(p)&&!p.coordinator)));}
+function nextBanner(p){
+  const ns=nextStepHint(p);
+  if(!ns)return `<div class="nb done no-print"><div><div class="nb-l">สถานะ</div><div class="nb-t">โครงการปิดเรียบร้อยแล้ว</div></div></div>`;
+  const mine=myTurn(p,ns);
+  return `<div class="nb ${mine?'mine':''} no-print"><div><div class="nb-l">${mine?'ถึงคิวคุณ':'ขั้นต่อไป'}</div><div class="nb-t">${mine?'':'<b>'+esc(ns.who)+'</b> — '}${esc(ns.what)}</div></div>${mine?`<button class="btn primary" onclick="runProj('${esc(p.projNo)}')">ทำเลย →</button>`:''}</div>`;
 }
 /* โครงการที่ต้องติดตาม: เกินกำหนดสิ้นสุด / ไม่มีความเคลื่อนไหวเกิน 30 วัน */
 function dashWatch(P){
@@ -1449,6 +1526,7 @@ function vReg(arg){
 <div><div class="pt">ทะเบียนโครงการบริการวิชาการ</div><div class="ps">ศูนย์สัตว์ทดลอง จุฬาลงกรณ์มหาวิทยาลัย (CULAC)</div></div>
 <div class="pd">เลขที่โครงการ ${esc(p.projNo)}<br>พิมพ์เมื่อ ${new Date().toLocaleDateString('th-TH')}</div>
 </div>
+${nextBanner(p)}
 <div class="reg-head2">
 <div class="rh2-top">
 <div style="min-width:0">
@@ -2270,16 +2348,16 @@ function mailLink(email,subj,body,cc){return 'mailto:'+encodeURIComponent(email|
 
 /* ===== v26: คำอธิบายการใช้งานในระบบ ===== */
 const ROLE_DUTY={
- admin:{duty:'บันทึกมติอนุมัติและมติปิดโครงการ · ออกใบแจ้งหนี้ · อนุมัติคำขอเปลี่ยนแปลง · จัดการผู้ใช้และสำรองข้อมูล',start:'เริ่มที่ Dashboard → กล่อง "งานที่รอคุณ" จะบอกว่ามีข้อเสนอรออนุมัติ หรือโครงการรอปิดกี่รายการ'},
- finance:{duty:'ขอเลข Vendor และเปิดบัญชีโครงการ แล้วบันทึกในทะเบียน · บันทึกการขยายเวลาเบิกจ่าย · ตรวจสมุดรับ-จ่าย',start:'เริ่มที่ Dashboard → "งานที่รอคุณ" → กด "ไปทำ" ที่โครงการที่รอเลข Vendor/บัญชี'},
- policy:{duty:'ขึ้นงบประมาณใน CUERP แล้วบันทึกเลขชุดงบ/ศูนย์ต้นทุนในทะเบียน · กดยืนยันเมื่อดำเนินการเปลี่ยนแปลงใน CUERP แล้ว',start:'เริ่มที่ Dashboard → "งานที่รอคุณ" → โครงการที่ได้เลข Vendor แล้วและรอขึ้นงบ'},
- staff:{duty:'เขียนข้อเสนอโครงการและยื่นขออนุมัติ · เมื่อเป็น "หัวหน้าโครงการ": แต่งตั้งผู้ประสานงาน/สัตวแพทย์ ยื่นขอขยายเวลา/ปรับงบ ขอปิดโครงการ · เมื่อเป็น "ผู้ประสานงาน": บันทึกรับ-จ่ายทุกรายการทันทีที่เกิด · เมื่อเป็น "สัตวแพทย์": ดูโครงการที่ตนประจำ',start:'เริ่มที่ Dashboard — กล่อง "งานที่รอคุณ" จะแสดงเฉพาะงานของโครงการที่คุณมีบทบาท · เขียนโครงการใหม่ที่เมนู "เขียนโครงการ (ขออนุมัติ)"'},
- exec:{duty:'ดูภาพรวมทุกโครงการ รายงานสรุป และประวัติการใช้งานของระบบ',start:'เริ่มที่ Dashboard → ปุ่ม "พิมพ์รายงานสรุป" · ประวัติการใช้งานอยู่ที่แถบซ้ายล่างใต้ชื่อผู้ใช้'}
+ admin:{duty:'บันทึกมติอนุมัติและมติปิดโครงการ · ออกใบแจ้งหนี้ · อนุมัติคำขอเปลี่ยนแปลง · จัดการผู้ใช้และสำรองข้อมูล',start:'เริ่มที่ หน้าแรก → กล่อง "งานที่ต้องทำตอนนี้" จะบอกว่ามีข้อเสนอรออนุมัติ หรือโครงการรอปิดกี่รายการ'},
+ finance:{duty:'ขอเลข Vendor และเปิดบัญชีโครงการ แล้วบันทึกในทะเบียน · บันทึกการขยายเวลาเบิกจ่าย · ตรวจสมุดรับ-จ่าย',start:'เริ่มที่ หน้าแรก → "งานที่ต้องทำตอนนี้" → กด "ไปทำ" ที่โครงการที่รอเลข Vendor/บัญชี'},
+ policy:{duty:'ขึ้นงบประมาณใน CUERP แล้วบันทึกเลขชุดงบ/ศูนย์ต้นทุนในทะเบียน · กดยืนยันเมื่อดำเนินการเปลี่ยนแปลงใน CUERP แล้ว',start:'เริ่มที่ หน้าแรก → "งานที่ต้องทำตอนนี้" → โครงการที่ได้เลข Vendor แล้วและรอขึ้นงบ'},
+ staff:{duty:'เขียนข้อเสนอโครงการและยื่นขออนุมัติ · เมื่อเป็น "หัวหน้าโครงการ": แต่งตั้งผู้ประสานงาน/สัตวแพทย์ ยื่นขอขยายเวลา/ปรับงบ ขอปิดโครงการ · เมื่อเป็น "ผู้ประสานงาน": บันทึกรับ-จ่ายทุกรายการทันทีที่เกิด · เมื่อเป็น "สัตวแพทย์": ดูโครงการที่ตนประจำ',start:'เริ่มที่ หน้าแรก — กล่อง "งานที่ต้องทำตอนนี้" จะแสดงเฉพาะงานของโครงการที่คุณมีบทบาท · เขียนโครงการใหม่ที่เมนู "เขียนโครงการ (ขออนุมัติ)"'},
+ exec:{duty:'ดูภาพรวมทุกโครงการ รายงานสรุป และประวัติการใช้งานของระบบ',start:'เริ่มที่ หน้าแรก → ปุ่ม "พิมพ์รายงานสรุป" · ประวัติการใช้งานอยู่ที่แถบซ้ายล่างใต้ชื่อผู้ใช้'}
 };
 const HELP={
- dash:{t:'Dashboard — ภาพรวมและงานที่รอคุณ',p:'หน้าแรกหลังเข้าระบบ รวมทุกโครงการที่คุณมีสิทธิ์เห็น ตัวเลขทุกช่องคำนวณจากสมุดรับ-จ่ายอัตโนมัติ',
-  steps:['ดูกล่อง <b>งานที่รอคุณ</b> ด้านบน — ระบบคัดเฉพาะงานที่เป็นคิวของบทบาทคุณ กด "ไปทำ" เพื่อไปหน้านั้นทันที','ตัวเลขสี "ค้าง X วัน" บอกว่าขั้นตอนนั้นไม่มีความเคลื่อนไหวมานานเท่าใด (เหลือง ≥7 วัน แดง ≥14 วัน)','ตาราง <b>โครงการที่ต้องติดตาม</b> คือโครงการเกินกำหนดหรือไม่มีความเคลื่อนไหว >30 วัน พร้อมบอกว่าใครต้องทำอะไรต่อ','คลิกแถวโครงการใดก็ได้เพื่อเปิดทะเบียนโครงการนั้น · ค้นหาด้วยเลขที่ ชื่อ หรือผู้ประสานงาน'],
-  faq:[['ทำไมโครงการของฉันไม่ขึ้นใน "งานที่รอคุณ"','เพราะขั้นถัดไปของโครงการนั้นเป็นคิวของบทบาทอื่น เช่น รอการเงินขอเลข Vendor ดูได้ที่ทะเบียนโครงการ → กล่องสถานะการดำเนินการ'],['กระดิ่งแจ้งเตือนต่างจากกล่องงานอย่างไร','กระดิ่ง = เหตุการณ์ที่เกิดขึ้นแล้ว (มีคนทำขั้นก่อนหน้าเสร็จ, มีคำขอใหม่) · กล่องงาน = สิ่งที่ยังค้างอยู่ ณ ตอนนี้ ไม่ว่าจะเคยแจ้งหรือไม่']]},
+ dash:{t:'หน้าแรก — งานที่ต้องทำตอนนี้',p:'หน้าแรกหลังเข้าระบบ รวมทุกโครงการที่คุณมีสิทธิ์เห็น ตัวเลขทุกช่องคำนวณจากสมุดรับ-จ่ายอัตโนมัติ',
+  steps:['ดูกล่อง <b>งานที่ต้องทำตอนนี้</b> ด้านบน — ระบบคัดเฉพาะงานที่เป็นคิวของบทบาทคุณ กด "ไปทำ" เพื่อไปหน้านั้นทันที','ตัวเลขสี "ค้าง X วัน" บอกว่าขั้นตอนนั้นไม่มีความเคลื่อนไหวมานานเท่าใด (เหลือง ≥7 วัน แดง ≥14 วัน)','ตาราง <b>โครงการที่ต้องติดตาม</b> คือโครงการเกินกำหนดหรือไม่มีความเคลื่อนไหว >30 วัน พร้อมบอกว่าใครต้องทำอะไรต่อ','คลิกแถวโครงการใดก็ได้เพื่อเปิดทะเบียนโครงการนั้น · ค้นหาด้วยเลขที่ ชื่อ หรือผู้ประสานงาน'],
+  faq:[['ทำไมโครงการของฉันไม่ขึ้นใน "งานที่ต้องทำตอนนี้"','เพราะขั้นถัดไปของโครงการนั้นเป็นคิวของบทบาทอื่น เช่น รอการเงินขอเลข Vendor ดูได้ที่ทะเบียนโครงการ → กล่องสถานะการดำเนินการ'],['กระดิ่งแจ้งเตือนต่างจากกล่องงานอย่างไร','กระดิ่ง = เหตุการณ์ที่เกิดขึ้นแล้ว (มีคนทำขั้นก่อนหน้าเสร็จ, มีคำขอใหม่) · กล่องงาน = สิ่งที่ยังค้างอยู่ ณ ตอนนี้ ไม่ว่าจะเคยแจ้งหรือไม่']]},
  proposal:{t:'เขียนโครงการ (ขออนุมัติ)',p:'หัวหน้าโครงการเขียนแบบเสนอโครงการบริการวิชาการในระบบครั้งเดียว ข้อมูลและตารางงบจะถูกใช้ต่อตลอดทั้งโครงการ',
   steps:['กด <b>+ เขียนข้อเสนอใหม่</b> กรอกชื่อโครงการ หลักการ วัตถุประสงค์ ช่วงเวลา และตารางงบประมาณรายหมวด (ระบบรวมยอดและคำนวณค่าสาธารณูปโภค 5% / เงินอุดหนุน 10% ให้)','กด <b>บันทึกร่าง</b> ได้เรื่อย ๆ · เมื่อครบถ้วนกด <b>ยื่นขออนุมัติ</b> ระบบจะแจ้งหัวหน้างาน','พิมพ์แบบเสนอเป็น A4 เพื่อเข้าที่ประชุมได้จากปุ่ม "พิมพ์"','เมื่อคณะกรรมการมีมติ หัวหน้างานกด <b>อนุมัติ</b> กรอกครั้งที่ประชุม ระบบจะสร้างโครงการในทะเบียนและแจ้งการเงิน/แผนให้เอง'],
   faq:[['แก้ไขข้อเสนอหลังยื่นได้ไหม','หัวหน้างานยังไม่อนุมัติ: ติดต่อหัวหน้างานให้ตีกลับเป็นร่าง · อนุมัติแล้ว: ใช้ "ขอปรับปรุงโครงการ" จากทะเบียนแทน เพื่อให้มีมติประกอบ'],['เลขโครงการมาจากไหน','ยังไม่ต้องกรอกตอนเขียนข้อเสนอ นโยบายและแผนจะใส่ให้หลังอนุมัติ']]},
@@ -2290,7 +2368,7 @@ const HELP={
   steps:['<span class="who">การเงิน</span> ขั้น ① เลข Vendor และ ② บัญชีธนาคาร — กรอกแล้วกดบันทึก ระบบประทับชื่อและเวลาให้','<span class="who">นโยบายและแผน</span> ขั้น ③ ขึ้นงบ CUERP — เปิดให้ทำเมื่อมีเลข Vendor แล้ว','<span class="who">หัวหน้างาน</span> ขั้น ④ ใบแจ้งหนี้ — เปิดเมื่อ ② และ ③ ครบ ระบบไม่ให้ข้ามขั้น','<span class="who">หัวหน้าโครงการ</span> ปุ่ม "กำหนดผู้เกี่ยวข้อง" (ผู้ประสานงาน/สัตวแพทย์) · "+ ขอขยายเวลาโครงการ" ที่กล่องระยะเวลา · "+ ขอปรับงบประมาณ" ที่กล่องสรุปการเงิน · "ขอปิดโครงการ" ด้านล่าง','ปุ่ม <b>เส้นทางของงาน</b> แสดงลำดับเหตุการณ์ทั้งหมดพร้อมผู้ทำและเวลา · ปุ่ม <b>พิมพ์</b> ออกรายงานโครงการ/การเงินเป็น A4'],
   faq:[['ทำไมช่อง CUERP กดไม่ได้','ต้องมีเลข Vendor ก่อน (ขั้น ①) — ดูกล่องสถานะว่าขั้นไหนยังว่าง'],['ค่าใหม่หลังขยายเวลาไม่เปลี่ยน','ระบบรอให้นโยบายและแผนกด "ดำเนินการใน CUERP แล้ว" ก่อน ค่าใหม่จึงมีผล เพื่อให้สองระบบตรงกัน']]},
  fin:{t:'บันทึกการเงิน (รับ-จ่าย)',p:'ผู้ประสานงานเป็นผู้บันทึกหลัก การเงินและหัวหน้าโครงการบันทึกแทนได้ ทุกรายการลงสมุดรับ-จ่ายของโครงการและสรุปยอดทันที',
-  steps:['เลือกโครงการ (พิมพ์เลขหรือชื่อ) → เลือกประเภท: รับโอนจาก Sponsor / ค่าใช้จ่ายดำเนินงาน (เลือกหมวดงบ) / ยืม-คืนเงินรองจ่าย / ชำระค่าสาธารณูปโภค / เงินอุดหนุน','กรอกวันที่ จำนวนเงิน รายละเอียด และเลขที่เอกสารอ้างอิง (ใบเสร็จ/ใบสำคัญ) แล้วกด <b>บันทึกรายการ</b>','ระบบจะถามยืนยันถ้าวันที่อยู่นอกช่วงโครงการ เป็นวันในอนาคต หรือค่าใช้จ่ายสะสมเกินประมาณการ','บันทึกทันทีที่เกิดรายการ ไม่รอสิ้นเดือน เพื่อให้ Dashboard และรายงานเป็นปัจจุบัน'],
+  steps:['เลือกโครงการ (พิมพ์เลขหรือชื่อ) → เลือกประเภท: รับโอนจาก Sponsor / ค่าใช้จ่ายดำเนินงาน (เลือกหมวดงบ) / ยืม-คืนเงินรองจ่าย / ชำระค่าสาธารณูปโภค / เงินอุดหนุน','กรอกวันที่ จำนวนเงิน รายละเอียด และเลขที่เอกสารอ้างอิง (ใบเสร็จ/ใบสำคัญ) แล้วกด <b>บันทึกรายการ</b>','ระบบจะถามยืนยันถ้าวันที่อยู่นอกช่วงโครงการ เป็นวันในอนาคต หรือค่าใช้จ่ายสะสมเกินประมาณการ','บันทึกทันทีที่เกิดรายการ ไม่รอสิ้นเดือน เพื่อให้ หน้าแรก และรายงานเป็นปัจจุบัน'],
   faq:[['บันทึกผิดแก้ได้ไหม','แก้/ลบได้จากสมุดรับ-จ่าย (ปุ่มแก้ไขท้ายแถว) ระบบเก็บประวัติว่าใครแก้เมื่อไร'],['ปุ่ม "+ เพิ่มรายการ" ในทะเบียนเป็นสีเทา','โครงการยังไม่ขึ้นงบ CUERP (ขั้น ③) จึงยังรับ-จ่ายไม่ได้']]},
  ledger:{t:'สมุดรับ-จ่าย',p:'รายการการเงินทุกโครงการเรียงตามวันที่ กรองตามโครงการ/ประเภท/ช่วงเวลา ส่งออก Excel และพิมพ์สมุดรายโครงการได้',
   steps:['ใช้ตัวกรองด้านบนเพื่อดูเฉพาะโครงการหรือช่วงเวลา','ปุ่มแก้ไขท้ายแถว (เฉพาะผู้มีสิทธิ์บันทึก) เปิดฟอร์มแก้รายการ','ปุ่ม <b>ส่งออก Excel</b> / <b>พิมพ์</b> สำหรับส่งผู้ตรวจสอบ'],faq:[]},
@@ -2323,7 +2401,7 @@ function showGuide(manual){const d=ROLE_DUTY[ROLE]||{};const T=myTasks();
   <div class="hp"><p><b>หน้าที่ของคุณในระบบ:</b> ${esc(d.duty||'')}</p>
   <div class="guide-steps"><div class="guide-step"><b>1 · เริ่มตรงไหน</b>${esc(d.start||'')}</div><div class="guide-step"><b>2 · รู้ได้อย่างไรว่าถึงคิว</b>กระดิ่งมุมขวาล่างจะเด้งตัวเลขเมื่อมีงานถึงคุณ และกล่อง "งานที่รอคุณ" บน Dashboard แสดงงานค้างทั้งหมด${T.length?' — ตอนนี้มี <b>'+T.length+'</b> รายการ':''}</div><div class="guide-step"><b>3 · ติดขัดทำอย่างไร</b>กดปุ่ม <b>?</b> มุมขวาล่างในหน้าใดก็ได้ จะอธิบายขั้นตอนของหน้านั้น หรือพิมพ์คู่มือฉบับย่อเก็บไว้</div></div>
   <p style="margin-top:4px"><b>เมนูที่คุณใช้:</b> ${allow.map(v=>'<span class="who">'+esc(HELP[v].t.split(' — ')[0].split(' (')[0])+'</span>').join(' ')}</p></div>
-  <div class="mf" style="align-items:center">${manual?'':'<label style="font-size:13px;margin-right:auto;display:flex;gap:6px;align-items:center;white-space:nowrap;flex:1"><input type="checkbox" id="gd_hide" checked> ไม่ต้องแสดงอีกในเครื่องนี้</label>'}<button class="btn ghost" onclick="closeModal();openHelp()">ดูวิธีใช้หน้านี้</button><button class="btn primary" onclick="closeGuide()">เริ่มใช้งาน</button></div>`);}
+  <div class="mf" style="align-items:center;flex-wrap:wrap">${manual?'':'<label style="font-size:13px;margin-right:auto;display:flex;gap:6px;align-items:center;white-space:nowrap;flex:1 1 100%"><input type="checkbox" id="gd_hide" checked> ไม่ต้องแสดงอีกในเครื่องนี้</label>'}<button class="btn ghost" onclick="closeModal();openHelp()">ดูวิธีใช้หน้านี้</button><button class="btn primary" onclick="closeGuide()">เริ่มใช้งาน</button></div>`);}
 function closeGuide(){try{const c=document.getElementById('gd_hide');if(!c||c.checked)localStorage.setItem(guideKey(),'1');}catch(e){}closeModal();}
 document.addEventListener('keydown',function(e){if(e.key==='?'&&ROLE&&!/INPUT|TEXTAREA|SELECT/.test((document.activeElement||{}).tagName||'')&&!document.getElementById('modal').classList.contains('show')){openHelp();}});
 
@@ -2449,6 +2527,7 @@ function myTasks(){
     const wr=ns?WHO_ROLE[ns.who]:'';
     const mine=!legacy&&ns&&(wr===ROLE||(wr==='head'&&isHeadOf(p))||(wr==='coord'&&(isCoordOf(p)||(isHeadOf(p)&&!p.coordinator))));
     if(mine)out.push({no:p.projNo,name:p.shortName||p.fullName||'',what:ns.what,sub:'ขั้นถัดไปของโครงการ',age:age,view:'reg',arg:p.projNo});
+    if(!legacy&&isHeadOf(p)&&!p.coordinator&&String(p.status||'').indexOf('รอปิด')!==0)out.push({no:p.projNo,name:p.shortName||p.fullName||'',what:'แต่งตั้งผู้ประสานงานและสัตวแพทย์',sub:'ทำได้ทันทีหลังได้รับอนุมัติ',age:age,view:'reg',arg:p.projNo});   // v38
     const end=p.endDate||'';
     if(end&&end<todayISO&&(isHeadOf(p)||ROLE==='admin')&&String(p.status||'').indexOf('รอปิด')!==0&&!(ns&&WHO_ROLE[ns.who]===ROLE&&/ปิด/.test(ns.what)))
       out.push({no:p.projNo,name:p.shortName||p.fullName||'',what:isHeadOf(p)?'โครงการเกินกำหนดสิ้นสุด — ขอปิดโครงการ หรือยื่นขอขยายเวลา':'โครงการเกินกำหนดสิ้นสุดและยังไม่ปิด — ติดตามหัวหน้าโครงการ',sub:'สิ้นสุด '+fmtDate(end),age:daysSince(tlDate(end)),view:'reg',arg:p.projNo,bad:true});
@@ -2457,9 +2536,9 @@ function myTasks(){
   const seen=new Set();return out.filter(t=>{const k=t.no+'|'+t.what;if(seen.has(k))return false;seen.add(k);return true;}).sort((a,b)=>(b.bad?1:0)-(a.bad?1:0)||(b.age||0)-(a.age||0));
 }
 function myTasksCard(){
-  const T=myTasks();
-  const rows=T.slice(0,15).map(t=>{const a=t.age==null?'':t.age;const cls=t.bad||(t.age>=14)?'bad':(t.age>=7?'warn':'');
-    return `<div class="todo-row"><div class="no">${esc(t.no)}</div><div><div class="what">${esc(t.what)}</div><div class="sub">${esc(t.name)}${t.sub?' · '+esc(t.sub):''}</div></div><div class="age ${cls}">${a===''?'—':(a===0?'วันนี้':'ค้าง '+a+' วัน')}</div><button class="btn primary sm no-print" onclick="go('${esc(t.view)}','${esc(t.arg)}')">ไปทำ</button></div>`;}).join('');
+  const T=myTasks();TASKS=T;
+  const rows=T.slice(0,15).map(t=>{const a=(t.age==null||t.age<0)?'':t.age;const cls=t.bad||(t.age>=14)?'bad':(t.age>=7?'warn':'');
+    return `<div class="todo-row"><div class="no">${esc(t.no)}</div><div><div class="what">${esc(t.what)}</div><div class="sub">${esc(t.name)}${t.sub?' · '+esc(t.sub):''}</div></div><div class="age ${cls}">${a===''?'—':(a===0?'วันนี้':'ค้าง '+a+' วัน')}</div><button class="btn primary sm no-print" onclick="runTask(${T.indexOf(t)})">ไปทำ</button></div>`;}).join('');
   return `<div class="todo"><div class="todo-h"><h2>งานที่รอคุณ <span class="cnt">${T.length}</span></h2><span style="font-size:12.5px;color:var(--muted)">${ROLE_TH[ROLE]||''} · อัปเดตอัตโนมัติจากสถานะโครงการ</span></div>${T.length?rows:'<div class="todo-empty">ไม่มีงานค้างในส่วนของคุณ</div>'}${T.length>15?`<div class="todo-empty">และอีก ${T.length-15} รายการ — ดูที่ตารางด้านล่าง</div>`:''}</div>`;
 }
 /* ================= PROPOSAL (เขียนโครงการ / ขออนุมัติ) ================= */
@@ -2504,7 +2583,7 @@ function vPropForm(id){
   const linkedProj=DB.projects.find(p=>p.fromProposal===pr.id);
   const footer=approved?`<div class="prop-approve">
 <div>อนุมัติตามมติคณะกรรมการบริหารครั้งที่<b>${esc(pr.approveMeetingNo)||'—'}</b>วันที่<b>${esc(fmtDate(pr.approveDate))||'—'}</b></div>
-      ${pr.projNo?`<div style="margin-top:6px">ศูนย์ต้นทุน<b>${esc(pr.costCenter)||'—'}</b>· เงินทุน<b>${esc(pr.fund)||'—'}</b>· เขตตามหน้าที่<b>${esc(pr.dutyZone)||'—'}</b>·<b>รหัสโครงการ ${esc(pr.projNo)}</b></div>`:'<div style="margin-top:6px;color:var(--amber)">⏳ ยังไม่ออกรหัสโครงการ (โครงการถูกสร้างแล้ว รอออกรหัสจริง)</div>'}
+      ${pr.projNo?`<div style="margin-top:6px">ศูนย์ต้นทุน<b>${esc(pr.costCenter||(linkedProj&&linkedProj.costCenter))||'—'}</b>· เงินทุน<b>${esc(pr.fund||(linkedProj&&linkedProj.fund))||'—'}</b>· เขตตามหน้าที่<b>${esc(pr.dutyZone||(linkedProj&&linkedProj.dutyZone))||'—'}</b>·<b>รหัสโครงการ ${esc(pr.projNo)}</b></div>`:'<div style="margin-top:6px;color:var(--amber)">⏳ ยังไม่ออกรหัสโครงการ (โครงการถูกสร้างแล้ว รอออกรหัสจริง)</div>'}
       ${linkedProj?`<div style="margin-top:8px" class="no-print">สร้างเป็นโครงการในทะเบียนแล้ว:<b>${esc(linkedProj.projNo)}</b>· สถานะ<b>${esc(linkedProj.status)}</b><button class="btn ghost sm" style="margin-left:8px" onclick="PROPSEL=null;go('reg','${esc(linkedProj.projNo)}')">ดูในทะเบียนโครงการ →</button></div>`:''}
 </div>`:'';
   let actions='';
@@ -2857,6 +2936,7 @@ function propParas(v,indentFirst){
 }
 function propReport(id){
   const pr=(DB.proposals||[]).find(x=>x.id===id);if(!pr)return '';
+  const LP=(DB.projects||[]).find(p=>p.fromProposal===pr.id||(pr.projNo&&p.projNo===pr.projNo));   // v38: รหัสจาก CUERP ที่แผนบันทึกในโครงการ
   const approved=(pr.status==='อนุมัติแล้ว'||pr.status==='สมบูรณ์');
   const IF=pr.indentFirst!==false;
   const line=(v)=>{v=(esc(v)||'').trim();return v?v.replace(/\n/g,'<br>'):'<span style="color:#aaa">………………………………………………………………………………………………………</span>';};
@@ -2905,9 +2985,9 @@ ${pr.signNote?`<div class="pp-sec" style="margin-top:8px;font-size:14px"><b>ห�
 <div>(${esc(pr.headName)?'&nbsp;'+esc(pr.headName)+'&nbsp;':'...............................................'})<br>หัวหน้าโครงการ<br>${pr.signDate?fmtDate(pr.signDate):'........./............/.........'}</div>
 </div>
 ${approved?`<div style="text-align:center;margin-top:30px;font-size:14px">
-<b>อนุมัติตามมติคณะกรรมการบริหารครั้งที่ ${esc(pr.approveMeetingNo)||'............'} วันที่ ${esc(fmtDate(pr.approveDate))||'............'}</b><br>
+<b data-v38>อนุมัติตามมติคณะกรรมการบริหารครั้งที่ ${esc(pr.approveMeetingNo)||'............'} วันที่ ${esc(fmtDate(pr.approveDate))||'............'}</b><br>
 <span style="font-size:13px">(เจ้าหน้าที่แผนขอรหัสโครงการและชุดงบประมาณ)</span><br>
-ศูนย์ต้นทุน ${esc(pr.costCenter)||'............'} &nbsp; เงินทุน ${esc(pr.fund)||'............'} &nbsp; เขตตามหน้าที่ ${esc(pr.dutyZone)||'............'}<br>
+ศูนย์ต้นทุน ${esc(pr.costCenter||(LP&&LP.costCenter))||'............'} &nbsp; เงินทุน ${esc(pr.fund||(LP&&LP.fund))||'............'} &nbsp; เขตตามหน้าที่ ${esc(pr.dutyZone||(LP&&LP.dutyZone))||'............'}<br>
 <b>รหัสโครงการ ${esc(pr.projNo)||'300xxxx'}</b></div>`:''}</div>
 </div>`;
 }
@@ -3075,13 +3155,15 @@ function saveUser(i){
   const pass=(document.getElementById('u_pass').value||'').trim();
   const _prevPass=(i>=0&&DB.meta.users[i])?String(DB.meta.users[i].pass):null;
   const role=document.getElementById('u_role').value;
-  if(!email||(i<0&&!pass)){toast('กรอกอีเมลและรหัสผ่าน','bad');return;}
+  if(!email||(i<0&&!pass&&!SESS)){toast('กรอกอีเมลและรหัสผ่าน','bad');return;}
   if(!/^[^\s@]+@[^\s@]+$/.test(email)){toast('รูปแบบอีเมลไม่ถูกต้อง','bad');return;}
   const dup=DB.meta.users.findIndex(x=>(x.email||'').toLowerCase()===email);
   if(dup>=0&&dup!==i){toast('อีเมลนี้มีอยู่แล้ว','bad');return;}
   if(i>=0&&CURRENT_USER&&(DB.meta.users[i].email||'').toLowerCase()===(CURRENT_USER.email||'').toLowerCase()&&email!==(CURRENT_USER.email||'').toLowerCase()){toast('เปลี่ยนอีเมลของบัญชีที่กำลังใช้งานอยู่ไม่ได้ — ให้หัวหน้างานอีกคนแก้ให้','bad');return;}
   const _old=(i>=0&&DB.meta.users[i])||{};
-  const u={email,name:(document.getElementById('u_name').value||'').trim(),role,pass:(pass?pwHash(pass):(_prevPass==null?'':_prevPass)),headName:_old.headName||'',coordName:_old.coordName||'',vetName:_old.vetName||'',aliases:((document.getElementById('u_alias')||{}).value||'').trim()};
+  const _selfX=CURRENT_USER&&(CURRENT_USER.email||'').toLowerCase()===email;
+  if(SESS&&_selfX&&pass){toast('เปลี่ยนรหัสของตัวเองที่ปุ่ม "เปลี่ยนรหัสผ่าน" มุมซ้ายล่าง','bad');return;}
+  const u={email,name:(document.getElementById('u_name').value||'').trim(),role,pass:(SESS?(i<0?(pass||'1234'):undefined):(pass?pwHash(pass):(_prevPass==null?'':_prevPass))),headName:_old.headName||'',coordName:_old.coordName||'',vetName:_old.vetName||'',aliases:((document.getElementById('u_alias')||{}).value||'').trim()};
   if(_old.legacyRole)u.legacyRole=_old.legacyRole;
   if(i>=0&&_old.role==='admin'&&role!=='admin'&&DB.meta.users.filter(x=>x.role==='admin').length<=1){toast('ต้องมีหัวหน้างาน (ผู้ดูแลระบบ) อย่างน้อย 1 คน','bad');return;}   // ชื่อที่เคยผูกไว้ (ระบบเดิม) เก็บเป็นชื่อสำรองสำหรับจับคู่โครงการเก่า
   const _self=CURRENT_USER&&(CURRENT_USER.email||'').toLowerCase()===email;
@@ -3090,8 +3172,11 @@ function saveUser(i){
 
   else if(_passChanged){ u.mustChange=true; }          // ผู้ดูแลตั้ง/รีเซ็ตรหัสให้ -> เจ้าของบัญชีต้องเปลี่ยนเองเมื่อเข้าใช้
   else if(i>=0&&DB.meta.users[i]&&DB.meta.users[i].mustChange){ u.mustChange=true; }
+  if(u.pass===undefined)delete u.pass;
+  if(SESS&&i<0)u.mustChange=true;
   if(i>=0)DB.meta.users[i]=u;else DB.meta.users.push(u);
   if(_self)CURRENT_USER=u;
+  if(SESS&&i>=0&&pass&&!_self){api(Object.assign({action:'resetpass',target:email,neu:pass},authFields())).then(j=>toast(j&&j.ok?'ตั้งรหัสผ่านใหม่ให้ '+email+' แล้ว (ผู้ใช้ต้องเปลี่ยนเองเมื่อเข้าครั้งถัดไป)':'ตั้งรหัสผ่านไม่สำเร็จ: '+((j&&j.error)||''),j&&j.ok?'ok':'bad')).catch(()=>toast('เชื่อมต่อระบบกลางไม่ได้ — รหัสผ่านของผู้ใช้ยังไม่เปลี่ยน','bad'));}
   logAct((i>=0?'แก้ไขผู้ใช้ ':'เพิ่มผู้ใช้ ')+u.email+' ('+(ROLE_TH[u.role]||u.role)+')'+((!_self&&_passChanged&&i>=0)?' · รีเซ็ตรหัสผ่าน':''));save();closeModal();render();toast('บันทึกผู้ใช้แล้ว','ok');
 }
 function delUser(i){
@@ -3579,8 +3664,11 @@ function incExpReport(no){
   const inf=(l,v)=>`<div style="display:flex;gap:6px"><div style="min-width:130px;color:#333">${l}</div><div>: ${esc(v)||'—'}</div></div>`;
   // expense rows (estimate from proposal budget; actual per-line not tracked)
   let expRows='',estExpSum=0;
+  const catAct={};let uncatAct=0;tx(no).filter(t=>t.type==='ค่าใช้จ่ายดำเนินงาน').forEach(t=>{if(t.cat)catAct[t.cat]=(catAct[t.cat]||0)+(+t.out||0);else uncatAct+=(+t.out||0);});   // v38: จ่ายจริงแยกหมวด
   if(bud){BUD_CATS.forEach(x=>{const items=(bud.cats&&bud.cats[x[0]])||[];const st=items.reduce((s,r)=>s+bnum(r.amount),0);if(!st)return;estExpSum+=st;
-    expRows+=`<tr><td style="padding-left:16px">${x[1].replace(/^[0-9]+\.\s*/,'')}</td><td></td><td class="r">${money(st)}</td><td class="r">0.00</td></tr>`;});}
+    const act=x[0]==='util'?c.utilPaid:x[0]==='sub10'?c.subPaid:(catAct[x[0]]||0);
+    expRows+=`<tr><td style="padding-left:16px">${x[1].replace(/^[0-9]+\.\s*/,'')}</td><td></td><td class="r">${money(st)}</td><td class="r">${money(act)}</td></tr>`;});
+    if(uncatAct>0)expRows+=`<tr><td style="padding-left:16px">ค่าใช้จ่ายที่ยังไม่ระบุหมวด</td><td></td><td class="r">—</td><td class="r">${money(uncatAct)}</td></tr>`;}
   if(!expRows){estExpSum=estExp;expRows=`<tr><td style="padding-left:16px">ค่าใช้จ่ายดำเนินงาน</td><td></td><td class="r">${money(estExp)}</td><td class="r">${money(c.spent+c.utilPaid+c.subPaid)}</td></tr>`;}
   const actIn=c.received, actOut=c.spent+c.utilPaid+c.subPaid;
   return `<div class="rpt" style="font-family:'Sarabun';color:#000;font-size:14px;line-height:1.5">
@@ -3682,7 +3770,8 @@ function amendReport(){
   });});
   return `<div class="rpt">
     ${rptHead('รายงานการขยายเวลา / แก้ไขโครงการ (โดยมติคณะกรรมการ)','รวม '+P.length+' โครงการ · '+n+' รายการ')}
-<table class="rpt-tbl" style="font-size:12.5px">
+<table class="rpt-tbl" style="font-size:11px;table-layout:fixed;width:100%;word-break:break-word">
+<colgroup><col style="width:4%"><col style="width:9%"><col style="width:17%"><col style="width:7%"><col style="width:9%"><col style="width:8%"><col style="width:10%"><col style="width:13%"><col style="width:13%"><col style="width:10%"></colgroup>
 <tr><th>#</th><th>เลขที่</th><th>ชื่อโครงการ</th><th>ครั้งที่</th><th>วันที่อนุมัติ</th><th>มติที่ประชุม</th><th>ประเภท</th><th>ระยะเวลา (เดิม → ใหม่)</th><th class="r">งบประมาณ (เดิม → ใหม่)</th><th>หมายเหตุ</th></tr>
       ${rows||'<tr><td colspan="10" style="text-align:center;padding:16px">ยังไม่มีโครงการที่ขอขยายเวลา/แก้ไข</td></tr>'}
 </table>
@@ -3700,10 +3789,11 @@ function tryLogin(_srv){
   const pw=(document.getElementById('pin').value||'').trim();
   const errEl=document.getElementById('lockErr');
   if(Date.now()<LOGIN_LOCK_UNTIL){errEl.textContent='พยายามเข้าสู่ระบบผิดหลายครั้ง กรุณารอ '+Math.ceil((LOGIN_LOCK_UNTIL-Date.now())/1000)+' วินาที';errEl.classList.add('show');return;}
+  if(cloudCfg()&&!_srv){if(em&&pw)serverLogin(em,pw);else{errEl.textContent='กรอกอีเมลและรหัสผ่าน';errEl.classList.add('show');}return;}   // v38: มีระบบกลาง → ตรวจที่ระบบกลางเสมอ
   const u=(DB.meta.users||[]).find(x=>(x.email||'').toLowerCase()===em && pwMatch(x,pw));
-  if(!u&&!_srv&&cloudCfg()&&em&&pw){serverLogin(em,pw);return;}   // v36: เครื่องใหม่/รหัสเพิ่งเปลี่ยนจากเครื่องอื่น → ตรวจกับ Google Sheet
   if(!u){LOGIN_FAILS++;if(LOGIN_FAILS>=LOGIN_MAX_FAILS){LOGIN_LOCK_UNTIL=Date.now()+LOGIN_LOCK_SEC*1000;LOGIN_FAILS=0;errEl.textContent='พยายามเข้าสู่ระบบผิด '+LOGIN_MAX_FAILS+' ครั้ง ระบบพักการเข้าสู่ระบบ '+LOGIN_LOCK_SEC+' วินาที';}else{errEl.textContent='อีเมลหรือรหัสผ่านไม่ถูกต้อง';}errEl.classList.add('show');document.getElementById('pin').value='';return;}
   LOGIN_FAILS=0;errEl.classList.remove('show');
+  if(_srv&&cloudCfg())BOOT_PW=pw;   // ตั้งระบบครั้งแรก: หลังส่งรายชื่อขึ้นชีตแล้วจะขอบัตรผ่านให้อัตโนมัติ
   if(!isHashed(u.pass)){ if(cloudCfg()&&AUTH_OLD==null)AUTH_OLD=String(u.pass); u.pass=pwHash(pw); }   // v24: แปลงรหัสเดิมเป็นแฮชเมื่อเข้าระบบครั้งแรก
   normUsers(DB.meta.users);CURRENT_USER=u;ROLE=normRole(u.role);document.getElementById('lock').classList.add('hide');idleReset();
   VIEW='dash';document.querySelectorAll('#nav button').forEach(x=>x.classList.toggle('on',x.dataset.v==='dash'));
@@ -3715,27 +3805,58 @@ function tryLogin(_srv){
   // v22: ไม่แสดงกล่องสรุปงานตอนเข้าระบบ — ดูแจ้งเตือนที่กระดิ่ง
 }
 async function serverLogin(em,pw){
-  const errEl=document.getElementById('lockErr');const c=cloudCfg();
-  errEl.textContent='กำลังตรวจสอบกับระบบกลาง…';errEl.classList.add('show');
-  let data=null,lastErr='';
-  for(const pass of [pwHash(pw),pw]){                 // ชีตเก็บรหัสแบบแฮช (หรือรหัสเริ่มต้นที่ยังไม่เคยเข้าใช้)
-    try{const r=await fetch(c.url,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'load',key:(DB.meta&&DB.meta.secret)||'',email:em,pass})});
-      const j=await r.json();if(j.ok){data=j.data||{};break;}lastErr=j.error||'';}catch(e){lastErr='network';break;}
-  }
-  if(!data){if(lastErr==='network'){errEl.textContent='เชื่อมต่อระบบกลางไม่ได้ ตรวจอินเทอร์เน็ตแล้วลองใหม่';errEl.classList.add('show');return;}tryLogin(true);return;}
+  const errEl=document.getElementById('lockErr');
+  const msg=t=>{errEl.textContent=t;errEl.classList.add('show');};
+  msg('กำลังตรวจสอบกับระบบกลาง…');
+  let j=null;
+  try{j=await api({action:'login',key:(DB.meta&&DB.meta.secret)||'',email:em,pass:pw});}
+  catch(e){msg('เชื่อมต่อระบบกลางไม่ได้ ตรวจอินเทอร์เน็ตแล้วลองใหม่');return;}
+  if(!j||!j.ok){const er=String((j&&j.error)||'');
+    if(/bootstrap/.test(er)){tryLogin(true);return;}                       // ชีตยังไม่มีผู้ใช้ — ตั้งระบบครั้งแรกจากเครื่องหัวหน้างาน
+    if(/locked/.test(er)){msg('ใส่รหัสผิดหลายครั้ง ระบบพักบัญชีนี้ 10 นาที');return;}
+    if(/unknown action/.test(er)){msg('ระบบกลาง (Apps Script) ยังเป็นรุ่นเก่า — ต้องอัปเดตเป็น Code v6 และ Deploy ใหม่');return;}
+    LOGIN_FAILS++;if(LOGIN_FAILS>=LOGIN_MAX_FAILS){LOGIN_LOCK_UNTIL=Date.now()+LOGIN_LOCK_SEC*1000;LOGIN_FAILS=0;}
+    msg('อีเมลหรือรหัสผ่านไม่ถูกต้อง');document.getElementById('pin').value='';return;}
+  const me0=j.user||{};
+  applyServerData(j.data||{},normRole(me0.role));
+  setSess({tok:j.token,email:em});
+  const u=(DB.meta.users||[]).find(x=>(x.email||'').toLowerCase()===em)||me0;
+  finishLogin(u,!!j.mustChange);
+}
+function applyServerData(d,role){
   const first=!SYNC_SNAP.__pulled;PULLING=true;
   try{
-    if(data.meta&&Array.isArray(data.meta.users)&&data.meta.users.length){
-      mergeTable('users',data.meta.users,first);
-      mergeTable('projects',Array.isArray(data.projects)?data.projects.map(normProj):[],first);
-      mergeTable('ledger',Array.isArray(data.ledger)?data.ledger.map(normLed):[],first);
-      mergeTable('proposals',Array.isArray(data.proposals)?data.proposals:[],first);
-      mergeTable('notifs',Array.isArray(data.meta.notifs)?data.meta.notifs:[],first);
-      normUsers(DB.meta.users);SYNC_SNAP.__pulled=true;persistSnap();
-    }
+    mergeTable('projects',Array.isArray(d.projects)?d.projects.map(normProj):[],first);
+    mergeTable('ledger',Array.isArray(d.ledger)?d.ledger.map(normLed):[],first);
+    mergeTable('proposals',Array.isArray(d.proposals)?d.proposals:[],first);
+    const m=d.meta||{};
+    if(Array.isArray(m.users)&&m.users.length)mergeTable('users',m.users,first||role!=='admin');
+    mergeTable('notifs',Array.isArray(m.notifs)?m.notifs:[],first);
+    if(m.pins)DB.meta.pins=Object.assign({},DB.meta.pins,m.pins);
+    normUsers(DB.meta.users);SYNC_SNAP.__pulled=true;persistSnap();
   }finally{PULLING=false;}
   try{localStorage.setItem(KEY,JSON.stringify(DB));}catch(e){}
-  tryLogin(true);
+}
+function finishLogin(u,mustChange){
+  const errEl=document.getElementById('lockErr');
+  LOGIN_FAILS=0;errEl.classList.remove('show');
+  normUsers(DB.meta.users);CURRENT_USER=u;ROLE=normRole(u.role);document.getElementById('lock').classList.add('hide');idleReset();
+  VIEW='dash';document.querySelectorAll('#nav button').forEach(x=>x.classList.toggle('on',x.dataset.v==='dash'));
+  try{checkExpiry();checkReminders();checkStale();save();}catch(e){}
+  applyRole();render();
+  if(!mustChange){try{maybeShowGuide();}catch(e){}}
+  startPoll();
+  if(mustChange){CURRENT_USER.mustChange=true;openPassChange(true);}
+}
+async function resumeSession(){            // v38: รีเฟรชหน้าแล้วไม่ต้องเข้าระบบใหม่ (ภายในแท็บเดิม)
+  if(!SESS||!cloudCfg())return;
+  try{const j=await api({action:'load',key:(DB.meta&&DB.meta.secret)||'',email:SESS.email,token:SESS.tok});
+    if(!j||!j.ok){setSess(null);return;}
+    const list=(j.data&&j.data.meta&&j.data.meta.users)||[];const me=list.find(x=>(x.email||'').toLowerCase()===String(SESS.email).toLowerCase());
+    if(!me){setSess(null);return;}
+    applyServerData(j.data,normRole(me.role));
+    finishLogin((DB.meta.users||[]).find(x=>(x.email||'').toLowerCase()===String(SESS.email).toLowerCase())||me,!!me.mustChange);
+  }catch(e){}
 }
 function joinLink(){const c=cloudCfg();if(!c){toast('ตั้งค่า URL ของ Web App ก่อน','bad');return;}
   const base=location.href.split('#')[0];const link=base+'#gas='+encodeURIComponent(c.url)+'&k='+encodeURIComponent((DB.meta&&DB.meta.secret)||'');
@@ -3750,28 +3871,51 @@ function openPassChange(force){
    ${force?'':'<div class="fld"><label>รหัสผ่านปัจจุบัน</label><input id="pw_old" type="password" autocomplete="current-password"></div>'}
    <div class="fld" style="margin-top:8px"><label>รหัสผ่านใหม่ <span class="hint">อย่างน้อย 6 ตัวอักษร ห้ามใช้ 1234</span></label><input id="pw_new" type="password" autocomplete="new-password"></div>
    <div class="fld" style="margin-top:8px"><label>ยืนยันรหัสผ่านใหม่</label><input id="pw_new2" type="password" autocomplete="new-password"></div>
-   <div class="mf">${force?'<button class="btn ghost" onclick="PASS_LOCK=false;closeModal();logout()">ออกจากระบบ</button>':'<button class="btn ghost" onclick="closeModal()">ยกเลิก</button>'}<button class="btn primary" onclick="doPassChange(${force?'true':'false'})">บันทึกรหัสผ่าน</button></div>`);
+   <div id="pw_err" role="alert" style="display:none;margin-top:10px;background:#fdecee;border:1.5px solid #e9a3ad;border-radius:9px;padding:8px 12px;font-size:13.5px;color:#8a1020;font-weight:600"></div>
+   <div class="mf">${force?'<button class="btn ghost" onclick="PASS_LOCK=false;closeModal();logout()">ออกจากระบบ</button>':'<button class="btn ghost" onclick="closeModal()">ยกเลิก</button>'}<button class="btn primary" id="pw_btn" onclick="doPassChange(${force?'true':'false'})">บันทึกรหัสผ่าน</button></div>`);
   PASS_LOCK=!!force;
 }
+function pwErr(t){const e=document.getElementById('pw_err');if(!e){if(t)toast(t,'bad');return;}e.textContent=t||'';e.style.display=t?'block':'none';}
 function doPassChange(force){
   if(!CURRENT_USER)return;
   const o=((document.getElementById('pw_old')||{}).value||'');
   const a=((document.getElementById('pw_new')||{}).value||'').trim(),b=((document.getElementById('pw_new2')||{}).value||'').trim();
-  if(!force&&!pwMatch(CURRENT_USER,o)){toast('รหัสผ่านปัจจุบันไม่ถูกต้อง','bad');return;}
+  if(SESS&&cloudCfg()){                     // v38: เปลี่ยนที่ระบบกลางโดยตรง สำเร็จจึงแจ้ง
+    if(!force&&!o){pwErr('กรอกรหัสผ่านปัจจุบัน');return;}
+    if(a.length<6){pwErr('รหัสผ่านใหม่ต้องมีอย่างน้อย 6 ตัวอักษร');return;}
+    if(a==='1234'){pwErr('ห้ามใช้ 1234');return;}
+    if(!/[0-9]/.test(a)||!/[A-Za-zก-๙]/.test(a)){pwErr('รหัสผ่านใหม่ต้องมีทั้งตัวอักษรและตัวเลข');return;}
+    if(a!==b){pwErr('ช่องยืนยันไม่ตรงกับรหัสผ่านใหม่');return;}
+    const btn=document.getElementById('pw_btn');if(btn){btn.disabled=true;btn.textContent='กำลังบันทึก…';}
+    pwErr('');
+    api(Object.assign({action:'setpass',old:o,neu:a},authFields())).then(j=>{
+      if(j&&j.ok){delete CURRENT_USER.mustChange;PASS_LOCK=false;closeModal();logAct('เปลี่ยนรหัสผ่านของตนเอง');save();
+        toast('เปลี่ยนรหัสผ่านแล้ว — ใช้รหัสใหม่ได้ทุกเครื่องทันที','ok');if(force){try{maybeShowGuide();}catch(e){}}return;}
+      const er=String((j&&j.error)||'');
+      if(btn){btn.disabled=false;btn.textContent='บันทึกรหัสผ่าน';}
+      if(/old password/.test(er))pwErr('รหัสผ่านปัจจุบันไม่ถูกต้อง');
+      else if(/same password/.test(er))pwErr('รหัสใหม่ต้องไม่ซ้ำกับรหัสเดิม');
+      else if(/weak/.test(er))pwErr('รหัสผ่านใหม่สั้นเกินไป หรือเป็น 1234');
+      else if(isSessErr(er)){pwErr('หมดเวลาการใช้งาน กรุณาเข้าสู่ระบบใหม่');setTimeout(()=>{PASS_LOCK=false;closeModal();logout();},1500);}
+      else pwErr('บันทึกไม่สำเร็จ ('+er+') — รหัสผ่านยังเป็นรหัสเดิม');
+    }).catch(()=>{if(btn){btn.disabled=false;btn.textContent='บันทึกรหัสผ่าน';}pwErr('เชื่อมต่อระบบกลางไม่ได้ — รหัสผ่านยังเป็นรหัสเดิม กรุณาลองใหม่');});
+    return;
+  }
+  if(!force&&!pwMatch(CURRENT_USER,o)){pwErr('รหัสผ่านปัจจุบันไม่ถูกต้อง');return;}
   if(a.length<6){toast('รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร','bad');return;}
   if(a==='1234'||pwMatch(CURRENT_USER,a)){toast('ต้องไม่ใช่รหัสเดิมหรือรหัสเริ่มต้น','bad');return;}
   if(!/[0-9]/.test(a)||!/[A-Za-zก-๙]/.test(a)){toast('รหัสผ่านควรมีทั้งตัวอักษรและตัวเลข','bad');return;}
   if(a!==b){toast('ยืนยันรหัสผ่านไม่ตรงกัน','bad');return;}
   const u=(DB.meta.users||[]).find(x=>(x.email||'').toLowerCase()===(CURRENT_USER.email||'').toLowerCase())||CURRENT_USER;
   if(cloudCfg()&&AUTH_OLD==null)AUTH_OLD=String(u.pass);
-  u.pass=pwHash(a);delete u.mustChange;CURRENT_USER=u;
+  u.pass=pwHash(a);delete u.mustChange;CURRENT_USER=u;if(cloudCfg())BOOT_PW=a;
   PASS_LOCK=false;
   logAct('เปลี่ยนรหัสผ่านของตนเอง');
   save();closeModal();render();toast('เปลี่ยนรหัสผ่านแล้ว','ok');
   if(force){try{maybeShowGuide();}catch(e){}}
   // v22: ไม่แสดงกล่องสรุปงานหลังเปลี่ยนรหัส
 }
-function logout(){PASS_LOCK=false;stopPoll();try{LEDFILTER='';BANKSEL=null;PROPSEL=null;FIN_PROJ='';DASHQ='';AUTH_OLD=null;}catch(e){}ROLE=null;CURRENT_USER=null;EDIT_NO=null;FIN_EDIT=null;REGSEL=null;PENDING_PDF=undefined;document.getElementById('pin').value='';document.getElementById('lockErr').classList.remove('show');document.getElementById('lock').classList.remove('hide');document.getElementById('loginEmail').focus();}
+function logout(){DASH_MORE=null;try{if(SESS&&cloudCfg())api({action:'logout',token:SESS.tok}).catch(()=>{});}catch(e){}setSess(null);BOOT_PW=null;PASS_LOCK=false;stopPoll();try{LEDFILTER='';BANKSEL=null;PROPSEL=null;FIN_PROJ='';DASHQ='';AUTH_OLD=null;}catch(e){}ROLE=null;CURRENT_USER=null;EDIT_NO=null;FIN_EDIT=null;REGSEL=null;PENDING_PDF=undefined;document.getElementById('pin').value='';document.getElementById('lockErr').classList.remove('show');document.getElementById('lock').classList.remove('hide');document.getElementById('loginEmail').focus();}
 function applyRole(){
   const viewOnly=(ROLE==='staff'||ROLE==='exec');
   document.body.classList.toggle('role-viewer',viewOnly);
@@ -3812,7 +3956,7 @@ function tickClock(){
 }
 setInterval(tickClock,1000);
 window.addEventListener('beforeunload',function(e){try{if(ROLE&&cloudCfg()&&(PUSH_T||SYNC_STATE==='push'||SYNC_STATE==='err')){e.preventDefault();e.returnValue='';}}catch(x){}});
-function boot(){tickClock();var l=document.getElementById('brandLogo');if(l)l.src=LOGO;var k=document.getElementById('lockLogo');if(k)k.src=LOGO;var e=document.getElementById('loginEmail');if(e)e.focus();}
+function boot(){tickClock();var l=document.getElementById('brandLogo');if(l)l.src=LOGO;var k=document.getElementById('lockLogo');if(k)k.src=LOGO;var e=document.getElementById('loginEmail');if(e)e.focus();if(SESS&&cloudCfg())resumeSession();}
 </script>
 </body>
 </html>
