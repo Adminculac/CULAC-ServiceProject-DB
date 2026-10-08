@@ -250,6 +250,7 @@ body.role-viewer .canedit{display:none!important}
 .prop-form .fsec.collapsed>*:not(.fsec-t){display:none!important}
 .prop-form .fsec.collapsed{padding-bottom:6px}
 .prop-form textarea{text-indent:2.5em;line-height:1.6}
+.pf-howto{margin:6px 0 4px;padding:10px 14px;background:#fff6fa;border:1.5px solid #f0cfdd;border-radius:10px;font-size:14px;color:#2a1a22;line-height:1.7}.pf-howto b{color:#8a1f4f}.pf-howto kbd{font:600 12px/1 inherit;border:1.5px solid #c9a3b5;border-bottom-width:3px;border-radius:5px;padding:2px 6px;background:#fff}
 .prop-form .fsec-t{font-size:16px}
 .prop-form .bud-tbl,.prop-form .bud-tbl input{font-size:15px}
 /* report / print document */
@@ -523,7 +524,7 @@ input.money{text-align:right;font-family:'Sarabun';font-weight:500}
 <div class="nav-group">จัดการระบบ</div>
 <button data-v="settings"><svg class="ni" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>ตั้งค่า / สำรองข้อมูล</button>
 </nav>
-<div class="foot"><div id="clockBox" class="clock"></div><div id="roleBadge" style="margin-bottom:8px"></div><div id="syncBadge" style="margin-bottom:8px;font-size:12.5px"></div><span class="ver">v38.7</span></div>
+<div class="foot"><div id="clockBox" class="clock"></div><div id="roleBadge" style="margin-bottom:8px"></div><div id="syncBadge" style="margin-bottom:8px;font-size:12.5px"></div><span class="ver">v38.9</span></div>
 </aside>
 <button class="menu-toggle" onclick="toggleMenu()" aria-label="เปิดเมนู" aria-controls="side"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
 <button class="help-btn" onclick="openHelp()" title="วิธีใช้หน้านี้ (กด ?)" aria-label="วิธีใช้หน้านี้">?</button>
@@ -2637,7 +2638,13 @@ ${(ROLE==='admin'&&pr.status==='ยื่นขออนุมัติ')?`<butt
 </div>
 <div class="fsec"><div class="fsec-t">รายละเอียดโครงการ</div>
       <div class="fld full" style="margin-bottom:2px"><label style="display:flex;align-items:center;gap:8px;font-weight:600"><input type="checkbox" id="pf_indentFirst" ${pr.indentFirst!==false?'checked':''} ${dis} style="width:auto"> ให้ระบบจัดย่อหน้าให้ตอนพิมพ์ (แนะนำ)</label>
-<div class="hint" style="display:block">พิมพ์ข้อความตามปกติ ไม่ต้องเคาะวรรคหรือจัดย่อหน้าเอง · หัวข้อใดไม่กรอก จะไม่ปรากฏในเอกสารที่พิมพ์</div></div>
+<div class="pf-howto">
+<div><b>ระบบย่อหน้าให้อัตโนมัติ</b> ไม่ต้องเคาะวรรคเอง พิมพ์ข้อความต่อกันไปได้เลย</div>
+<div><b>ขึ้นย่อหน้าใหม่</b> กด <kbd>Enter</kbd> 1 ครั้ง แล้วพิมพ์ต่อ ระบบจะย่อหน้าบรรทัดแรกให้</div>
+<div><b>อย่ากด Enter กลางประโยค</b> ข้อความยาวจะตัดบรรทัดเอง</div>
+<div><b>เขียนเป็นข้อ</b> กด <kbd>Enter</kbd> แล้วพิมพ์ <b>1.</b> <b>2.</b> <b>3.</b> หรือ <b>-</b> นำหน้าแต่ละข้อ ระบบจัดให้ตรงแนว (ข้อย่อย พิมพ์ <b>1.1</b> <b>1.2</b>)</div>
+<div><b>หัวข้อไหนไม่กรอก</b> จะไม่แสดงในเอกสารที่พิมพ์ และเลขหัวข้อจะเรียงใหม่ให้</div>
+</div></div>
 ${ta('principle','1. หลักการและเหตุผล',3)}
       ${ta('objective','2. วัตถุประสงค์',3)}
       ${ta('strategy','3. โครงการสอดคล้องกับยุทธศาสตร์/พันธกิจ (ถ้ามี)',2)}
@@ -2938,7 +2945,8 @@ function propParas(v,indentFirst){
     const lvl=levelOf(line),txt=line.trim(),m=txt.match(LIST);
     const gap=blank?'margin-top:.5em;':'';
     if(m){                                                   // ข้อ: เลข + เนื้อหา บรรทัดที่ตัดขึ้นใหม่ตรงกับเนื้อหา
-      const pl=base+lvl*0.55,pad=pl?`padding-left:${pl.toFixed(2)}em;`:'';
+      const sub=/^\d/.test(m[1])?m[1].replace(/[.)]$/,'').split('.').length-1:0;   // v38.9: 1.1 / 1.1.1 ย่อเข้าตามชั้นอัตโนมัติ
+      const pl=base+lvl*0.55+sub*2.35,pad=pl?`padding-left:${pl.toFixed(2)}em;`:'';
       lastItem={pad,mk:m[1],lvl};
       out.push(`<div class="pp-li" style="${pad}${gap}"><span class="pp-mk">${esc(m[1])}</span><span class="pp-tx">${esc(txt.slice(m[0].length))}</span></div>`);
     }else if(lastItem&&lvl>0){                               // บรรทัดเคาะวรรคต่อจากข้อ = ย่อหน้าต่อของข้อนั้น ตรงแนวเนื้อหาข้อ
