@@ -29,7 +29,8 @@ a{color:var(--pink-d);text-decoration:none}
 .app{display:flex;min-height:100vh}
 
 /* Sidebar */
-.side{width:248px;background:linear-gradient(180deg,#b8386c 0%,#8a2450 100%);color:#fff;padding:22px 14px;position:sticky;top:0;height:100vh;flex-shrink:0;display:flex;flex-direction:column;gap:4px}
+.side{width:248px;background:linear-gradient(180deg,#b8386c 0%,#8a2450 100%);color:#fff;padding:22px 14px;position:sticky;top:0;height:100vh;flex-shrink:0;display:flex;flex-direction:column;gap:4px;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.45) transparent}
+.side::-webkit-scrollbar{width:6px}.side::-webkit-scrollbar-thumb{background:rgba(255,255,255,.45);border-radius:6px}
 .brand{padding:6px 10px 16px;border-bottom:1px solid rgba(255,255,255,.18);margin-bottom:10px}
 .brand .logo{font-family:'Sarabun';font-weight:700;font-size:19px;letter-spacing:.3px;display:flex;align-items:center;gap:8px}
 .brand .sub{font-size:12px;opacity:.85;margin-top:3px;font-weight:300}
@@ -451,7 +452,7 @@ input.money{text-align:right;font-family:'Sarabun';font-weight:500}
 .menu-toggle{display:none}
 @media(max-width:860px){
   .app{flex-direction:column}
-  .side{position:fixed;left:0;top:0;width:230px;transform:translateX(-100%);transition:.25s;z-index:50;height:100vh}
+  .side{position:fixed;left:0;top:0;width:230px;transform:translateX(-100%);transition:.25s;z-index:50;height:100vh;overflow-y:auto}
   .side.open{transform:translateX(0)}
   .main{padding:18px 16px 60px}
   .menu-toggle{display:inline-flex;position:fixed;top:14px;right:14px;z-index:40;background:var(--pink);color:#fff;border:0;width:44px;height:44px;border-radius:12px;font-size:20px;cursor:pointer;box-shadow:var(--shadow)}
@@ -518,7 +519,7 @@ input.money{text-align:right;font-family:'Sarabun';font-weight:500}
 <div class="nav-group">จัดการระบบ</div>
 <button data-v="settings"><svg class="ni" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>ตั้งค่า / สำรองข้อมูล</button>
 </nav>
-<div class="foot"><div id="clockBox" class="clock"></div><div id="roleBadge" style="margin-bottom:8px"></div><div id="syncBadge" style="margin-bottom:8px;font-size:12.5px"></div><span class="ver">v37</span></div>
+<div class="foot"><div id="clockBox" class="clock"></div><div id="roleBadge" style="margin-bottom:8px"></div><div id="syncBadge" style="margin-bottom:8px;font-size:12.5px"></div><span class="ver">v38.2</span></div>
 </aside>
 <button class="menu-toggle" onclick="toggleMenu()" aria-label="เปิดเมนู" aria-controls="side"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
 <button class="help-btn" onclick="openHelp()" title="วิธีใช้หน้านี้ (กด ?)" aria-label="วิธีใช้หน้านี้">?</button>
