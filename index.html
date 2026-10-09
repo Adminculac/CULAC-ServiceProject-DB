@@ -538,7 +538,7 @@ input.money{text-align:right;font-family:'Sarabun';font-weight:500}
 <div class="nav-group">จัดการระบบ</div>
 <button data-v="settings"><svg class="ni" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>ตั้งค่า / สำรองข้อมูล</button>
 </nav>
-<div class="foot"><div id="clockBox" class="clock"></div><div id="roleBadge" style="margin-bottom:8px"></div><div id="syncBadge" style="margin-bottom:8px;font-size:12.5px"></div><span class="ver">v39</span></div>
+<div class="foot"><div id="clockBox" class="clock"></div><div id="roleBadge" style="margin-bottom:8px"></div><div id="syncBadge" style="margin-bottom:8px;font-size:12.5px"></div><span class="ver">v39.1</span></div>
 </aside>
 <button class="menu-toggle" onclick="toggleMenu()" aria-label="เปิดเมนู" aria-controls="side"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
 <button class="help-btn" onclick="openHelp()" title="วิธีใช้หน้านี้ (กด ?)" aria-label="วิธีใช้หน้านี้">?</button>
@@ -3481,7 +3481,7 @@ function doPrint(html,title){
 <div class="fld"><label>ขอบซ้าย-ขวา (มม.)</label><input id="pj_mh" type="number" min="5" max="40" value="${P.mh}"></div>
 <div class="fld"><label>เลขหน้า</label>${opt('pj_pnum',[['center','ท้ายกระดาษ กึ่งกลาง'],['right','ท้ายกระดาษ ชิดขวา'],['none','ไม่แสดง']],P.pnum)}</div>
 </div></div>
-<div class="hint" style="display:block;color:#2a1a22;margin:2px 0 10px">ในหน้าต่างพิมพ์ เลือก "บันทึกเป็น PDF" ได้ ระบบตั้งชื่อไฟล์ให้ตามช่องด้านบน</div>
+<div class="hint" style="display:block;color:#2a1a22;margin:2px 0 10px">ในหน้าต่างพิมพ์ เลือก "บันทึกเป็น PDF" ได้ ระบบตั้งชื่อไฟล์ให้ตามช่องด้านบน · ระยะขอบเลือก "ค่าเริ่มต้น" และขนาด 100%</div>
 </div><div class="mf"><button class="btn ghost" onclick="closeModal()">ยกเลิก</button><button class="btn ghost" onclick="printPrefReset()">ค่าเริ่มต้น</button><button class="btn primary" onclick="printGo()">พิมพ์</button></div>`);
   const md=document.getElementById('pj_mode');if(md)md.onchange=()=>{document.getElementById('pj_auto').style.display=md.value==='auto'?'':'none';};
 }
@@ -3513,7 +3513,7 @@ function paginatePrint(pa,P){P=P||printPref();
   const sz=PAGE_MM[P.size||'A4']||PAGE_MM.A4;
   const land=(P.orient&&P.orient!=='auto'?P.orient:(root.dataset.orient||'portrait'))==='landscape';const W=land?sz[1]:sz[0],H=land?sz[0]:sz[1];
   const mv=P.mv,mh=P.mh;
-  const PX=96/25.4;const FOOTH=P.pnum==='none'?0:18;const contentH=(H-mv*2-2)*PX-FOOTH,contentW=(W-mh*2);
+  const PX=96/25.4;const FOOTH=P.pnum==='none'?0:18;const contentH=(H-3-mv*2-2)*PX-FOOTH,contentW=(W-mh*2);
   // วัดความสูงจริงของแต่ละบล็อกในความกว้างเท่าหน้ากระดาษ
   const meas=document.createElement('div');
   meas.style.cssText=`position:absolute;left:0;top:0;width:${contentW}mm;visibility:hidden;pointer-events:none`;
@@ -3598,7 +3598,7 @@ function paginatePrint(pa,P){P=P||printPref();
   const total=pages.length;
   pages.forEach((pg,pi)=>{
     const page=document.createElement('div');page.className='pp-page';
-    page.style.cssText=`width:${W}mm;height:${H}mm;padding:${mv}mm ${mh}mm;box-sizing:border-box;position:relative;overflow:hidden;background:#fff;page-break-after:${pi<total-1?'always':'auto'};break-after:${pi<total-1?'page':'auto'}`;
+    page.style.cssText=`width:${W}mm;height:${H-3}mm;padding:${mv}mm ${mh}mm;box-sizing:border-box;position:relative;overflow:hidden;background:#fff;page-break-after:${pi<total-1?'always':'auto'};break-after:${pi<total-1?'page':'auto'}`;
     const body=document.createElement('div');body.className='rpt pp-doc';
     body.style.cssText=`font-family:${cs.fontFamily};font-size:${cs.fontSize};line-height:${cs.lineHeight};color:#000;max-width:none;padding:0;margin:0`;
     /* v39: ไม่มีหัวกระดาษต่อเนื่อง */
@@ -3611,7 +3611,7 @@ function paginatePrint(pa,P){P=P||printPref();
   });
   let ps=document.getElementById('printStylePaged');
   if(!ps){ps=document.createElement('style');ps.id='printStylePaged';document.head.appendChild(ps);}
-  ps.textContent='@media print{@page{size:'+W+'mm '+H+'mm;margin:0}html,body{margin:0;padding:0}#printArea .pp-page{margin:0}}';
+  ps.textContent='@media print{@page{size:'+W+'mm '+H+'mm;margin:0}html,body{margin:0!important;padding:0!important;height:auto!important}#printArea{margin:0!important;padding:0!important}#printArea .pp-page{margin:0;page-break-inside:avoid;break-inside:avoid}#printArea .pp-page:last-child{page-break-after:auto!important;break-after:auto!important}}';
   restore();
 }
 function applyPrintCfg(){
