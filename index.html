@@ -302,6 +302,20 @@ body.role-viewer .canedit{display:none!important}
   .rpt-tbl td,.rpt-tbl th,.rpt-head,.rpt-tot td{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   @page{size:A4;margin:18mm 16mm}
 }
+
+/* v39 Gantt ในเอกสารพิมพ์ */
+.pjdlg .fld{margin-bottom:14px}.pjdlg .grid2{gap:0 18px}
+.gantt-cap{font-size:13px;color:#000;margin:2px 0 4px}
+.gantt-r{width:100%;border-collapse:collapse;table-layout:fixed;font-size:12.5px;line-height:1.35;margin-bottom:6px}
+.gantt-r th{background:#8A1538;color:#fff!important;font-weight:600;font-size:11.5px;line-height:1.2;padding:5px 1px;text-align:center;border:1px solid #8A1538}
+.gantt-r th.ga{text-align:left;padding-left:8px}
+.gantt-r td{border:1px solid #d9c3cd;padding:0;height:26px;vertical-align:middle}
+.gantt-r td.ga{padding:5px 8px;text-align:left;vertical-align:middle}
+.gantt-r tr.z td{background:#fbf3f6}
+.gantt-r td.on i{display:block;height:12px;margin:0 -1px;background:#C2477A}
+.gantt-r td.on i.s{margin-left:4px;border-radius:6px 0 0 6px}.gantt-r td.on i.e{margin-right:4px;border-radius:0 6px 6px 0}.gantt-r td.on i.s.e{border-radius:6px}
+.gantt-r th,.gantt-r td,.gantt-r i{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+#printArea .gantt-r th{color:#fff!important}
 /* registry header (clean) + polish */
 .reg-head2{background:#fff;border:1px solid var(--line);border-left:4px solid var(--pink);border-radius:14px;padding:18px 22px;margin-bottom:16px;box-shadow:var(--shadow)}
 .rh2-top{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:flex-start}
@@ -524,7 +538,7 @@ input.money{text-align:right;font-family:'Sarabun';font-weight:500}
 <div class="nav-group">จัดการระบบ</div>
 <button data-v="settings"><svg class="ni" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>ตั้งค่า / สำรองข้อมูล</button>
 </nav>
-<div class="foot"><div id="clockBox" class="clock"></div><div id="roleBadge" style="margin-bottom:8px"></div><div id="syncBadge" style="margin-bottom:8px;font-size:12.5px"></div><span class="ver">v38.9</span></div>
+<div class="foot"><div id="clockBox" class="clock"></div><div id="roleBadge" style="margin-bottom:8px"></div><div id="syncBadge" style="margin-bottom:8px;font-size:12.5px"></div><span class="ver">v39</span></div>
 </aside>
 <button class="menu-toggle" onclick="toggleMenu()" aria-label="เปิดเมนู" aria-controls="side"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
 <button class="help-btn" onclick="openHelp()" title="วิธีใช้หน้านี้ (กด ?)" aria-label="วิธีใช้หน้านี้">?</button>
@@ -1547,7 +1561,7 @@ ${nextBanner(p)}
         ${(p.pdfUrl||p.pdfData)?`<button class="btn ghost sm" onclick="viewPdf('${esc(p.projNo)}')">ไฟล์แนบ</button>`:''}
         ${safeUrl(p.quoteUrl)?`<a class="btn ghost sm" href="${esc(safeUrl(p.quoteUrl))}" target="_blank" rel="noopener">ใบเสนอราคา</a>`:''}
 <button class="btn ghost sm" onclick="openTimeline('${esc(p.projNo)}')">เส้นทางของงาน</button>
-<button class="btn ghost sm" onclick="doPrint(incExpReport('${esc(p.projNo)}'))">งบรายได้-รายจ่าย</button>
+<button class="btn ghost sm" onclick="doPrint(incExpReport('${esc(p.projNo)}'),ptitle('${esc(p.projNo)}','งบรายได้-รายจ่าย'))">งบรายได้-รายจ่าย</button>
 <button class="btn ghost sm" onclick="window.print()">พิมพ์</button>
 ${projNav(p)}
 </div>
@@ -1620,10 +1634,10 @@ ${changeReqPanel(p)}
   ${(()=>{const no=esc(p.projNo);const L=[],R=[];const H=(ROLE==='admin'||isHeadOf(p));   /* v38.6: รวมปุ่มเป็นแถวเดียว เรียงเป็นระเบียบ */
     if(ROLE==='admin'){if(!(p.changeReqs||[]).some(r=>r.status==='รออนุมัติ'))L.push(`<button class="btn ghost sm" onclick="openRenew('${no}')" title="ใช้เฉพาะโครงการเดิมที่ไม่มีคำขอในระบบ">บันทึกมติ (โครงการเดิม)</button>`);
       L.push(`<button class="btn ghost sm" style="color:var(--red)" onclick="delProject('${no}')">ลบโครงการ</button>`);}
-    if(H){R.push(`<button class="btn ghost sm" onclick="doPrint(resultReport('${no}'))">รายงานผลการดำเนินงาน</button>`);
+    if(H){R.push(`<button class="btn ghost sm" onclick="doPrint(resultReport('${no}'),ptitle('${no}','รายงานผลการดำเนินงาน'))">รายงานผลการดำเนินงาน</button>`);
       if(p.status==='ยังไม่ปิดโครงการ')R.push(`<button class="btn primary sm" onclick="askClose('${no}')">ขอปิดโครงการ</button>`);
       if(p.status==='รอปิด (เสนอ คก.)'){R.unshift(`<span class="pact-st warn">⏳ รอปิด — เสนอคณะกรรมการ</span>`);R.push(`<button class="btn ghost sm" onclick="askClose('${no}')">แก้ผลการดำเนินงาน</button>`);if(ROLE==='admin')R.push(`<button class="btn primary sm" onclick="closeProject('${no}')">ปิดโครงการ (หลัง คก.อนุมัติ)</button>`);}
-      if(p.status==='ปิดแล้ว'){R.unshift(`<span class="pact-st ok">ปิดแล้ว${p.closeInfo&&p.closeInfo.meetingNo?' (มติ '+esc(p.closeInfo.meetingNo)+')':''}</span>`);R.push(`<button class="btn ghost sm" onclick="doPrint(closeReport('${no}'))">รายงานปิดโครงการ</button>`);if(ROLE==='admin')R.push(`<button class="btn ghost sm" onclick="reopenProject('${no}')">เปิดโครงการอีกครั้ง</button>`);}}
+      if(p.status==='ปิดแล้ว'){R.unshift(`<span class="pact-st ok">ปิดแล้ว${p.closeInfo&&p.closeInfo.meetingNo?' (มติ '+esc(p.closeInfo.meetingNo)+')':''}</span>`);R.push(`<button class="btn ghost sm" onclick="doPrint(closeReport('${no}'),ptitle('${no}','รายงานปิดโครงการ'))">รายงานปิดโครงการ</button>`);if(ROLE==='admin')R.push(`<button class="btn ghost sm" onclick="reopenProject('${no}')">เปิดโครงการอีกครั้ง</button>`);}}
     if(ROLE==='finance'&&p.status!=='ปิดแล้ว')R.push(`<button class="btn primary sm" onclick="openDisb('${no}')">บันทึกอนุมัติขยายเวลาเบิกจ่าย</button>`);
     if(!L.length&&!R.length)return '';
     return `<div class="pact no-print"><div class="pact-l">${L.join('')}</div><div class="pact-r">${R.join('')}</div></div>`;})()}
@@ -2734,9 +2748,16 @@ function ganttTable(){
   return h+`</tbody></table>`;}
 function ganttReportTable(pr){const g=pr.gantt;if(!g||!g.rows||!g.rows.some(r=>r.act||(r.m||[]).some(Boolean)))return '';
   const mo=(Array.isArray(g.months)&&g.months.length===12)?g.months:Array.from({length:12},(_,j)=>String(j+1));
-  let h=`<table class="rpt-tbl" style="font-size:12px"><tr><th>กิจกรรม</th>`;for(let j=0;j<12;j++)h+=`<th class="c" style="width:5%">${esc(mo[j])}</th>`;h+=`</tr>`;
-  g.rows.forEach(r=>{if(!(r.act||(r.m||[]).some(Boolean)))return;h+=`<tr><td>${esc(r.act)||'-'}</td>`;for(let j=0;j<12;j++)h+=`<td class="c">${(r.m||[])[j]?'■':''}</td>`;h+=`</tr>`;});
-  return `<div style="font-size:12px;color:#555;margin-bottom:2px">ระยะเวลาดำเนินงาน (เดือนที่ 1–12)</div>`+h+`</table>`;}
+  const used=Array.from({length:12},(_,j)=>g.rows.some(r=>(r.m||[])[j]));let last=11;while(last>0&&!used[last]&&!String(mo[last]||'').trim())last--;   // ตัดเดือนว่างท้ายที่ไม่มีชื่อ
+  const N=last+1;const mw=(62/N).toFixed(2);
+  const mh=t=>{const m=/^(.*?)\s*(\d{2,4})$/.exec(String(t||'').trim());return m&&m[1]?`${esc(m[1])}<br>${esc(m[2])}`:esc(t);};
+  let h=`<table class="gantt-r"><colgroup><col style="width:38%">${('<col style="width:'+mw+'%">').repeat(N)}</colgroup><thead><tr><th class="ga">กิจกรรม</th>`;
+  for(let j=0;j<N;j++)h+=`<th>${mh(mo[j])}</th>`;h+=`</tr></thead><tbody>`;
+  let k=0;g.rows.forEach(r=>{if(!(r.act||(r.m||[]).some(Boolean)))return;k++;const m=r.m||[];
+    h+=`<tr class="${k%2?'':'z'}"><td class="ga">${esc(r.act)||'-'}</td>`;
+    for(let j=0;j<N;j++){if(m[j]){const s0=!m[j-1],e0=!m[j+1];h+=`<td class="on"><i class="${s0?'s':''} ${e0?'e':''}"></i></td>`;}else h+=`<td></td>`;}
+    h+=`</tr>`;});
+  return `<div class="pp-keep"><div class="gantt-cap">ระยะเวลาดำเนินงาน (เดือนที่ 1–${N}) · แถบสี = ช่วงเดือนที่ดำเนินกิจกรรม</div>${h}</tbody></table></div>`;}
 /* ---- ไทม์ไลน์ระยะเวลา: ป้อนแบบ วัน/เดือน/ปี(พ.ศ.) ต่อช่วง ---- */
 let TL=null;
 const THMON_S=['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];
@@ -2927,7 +2948,8 @@ function budReportTable(pr){
   h+=`<tr><td style="font-weight:700;background:#eef6f0">ประมาณการรายรับเหนือรายจ่าย</td><td class="r" style="font-weight:700;background:#eef6f0">${money(rev-exp)}</td><td></td></tr>`;
   return h+`</table>`;
 }
-function printProp(id){doPrint(propReport(id));}
+function printProp(id){const pr=(DB.proposals||[]).find(x=>x.id===id)||{};doPrint(propReport(id),pr.projName||'แบบข้อเสนอขอโครงการ');}
+function ptitle(no,kind){const p=(DB.projects||[]).find(x=>x.projNo===no)||{};const n=p.fullName||p.shortName||no;return kind?n+' - '+kind:n;}
 function propParas(v,indentFirst){
   const raw=String(v==null?'':v).replace(/\r/g,'').replace(/ |　/g,' ');
   if(!raw.trim())return '';
@@ -3439,24 +3461,59 @@ function a11yFix(root){root=root||document;
 (function(){const main=document.getElementById('main');if(!main||!window.MutationObserver)return;let t=null;new MutationObserver(()=>{clearTimeout(t);t=setTimeout(()=>{try{a11yFix(main);}catch(e){}},40);}).observe(main,{childList:true,subtree:true});})();
 
 /* ---- printing / reports ---- */
-function doPrint(html){
+/* v39: ก่อนพิมพ์ เปิดหน้าต่างตั้งค่า (ค่าเริ่มต้น = จัดหน้าอัตโนมัติ A4) · ชื่อไฟล์ PDF = ชื่อโครงการ */
+const PRINT_PREF_KEY='culac_print_pref_v1';
+function printPref(){let p={};try{p=JSON.parse(localStorage.getItem(PRINT_PREF_KEY)||'{}')||{};}catch(e){}
+  const c=(DB.meta&&DB.meta.print)||{};
+  return {mode:p.mode||'auto',size:p.size||c.size||'A4',orient:p.orient||'auto',mv:p.mv!=null?p.mv:(c.mv==null?18:c.mv),mh:p.mh!=null?p.mh:(c.mh==null?16:c.mh),pnum:p.pnum||'center'};}
+let PRINT_JOB=null;
+function doPrint(html,title){
+  if(!title){const m=/data-title="([^"]*)"/.exec(html)||/data-pfoot="([^"]*)"/.exec(html);title=m?m[1].replace(/&quot;/g,'"').replace(/&amp;/g,'&'):'';}
+  PRINT_JOB={html,title:title||'เอกสาร'};const P=printPref();
+  const opt=(id,arr,v)=>`<select id="${id}">${arr.map(o=>`<option value="${o[0]}" ${String(v)===String(o[0])?'selected':''}>${o[1]}</option>`).join('')}</select>`;
+  openModal(`<div class="mh">พิมพ์ / บันทึกเป็น PDF</div><div class="pjdlg">
+<div class="fld"><label>ชื่อไฟล์เมื่อบันทึก PDF</label><input id="pj_title" value="${esc(PRINT_JOB.title)}"></div>
+<div class="fld"><label>การจัดหน้า</label>${opt('pj_mode',[['auto','ให้ระบบจัดหน้าให้อัตโนมัติ (แนะนำ)'],['browser','ตั้งค่าเองในหน้าต่างพิมพ์ของเบราว์เซอร์']],P.mode)}</div>
+<div id="pj_auto" style="${P.mode==='auto'?'':'display:none'}"><div class="grid2">
+<div class="fld"><label>ขนาดกระดาษ</label>${opt('pj_size',[['A4','A4'],['Letter','Letter'],['A5','A5'],['Legal','Legal']],P.size)}</div>
+<div class="fld"><label>แนวกระดาษ</label>${opt('pj_orient',[['auto','ตามเอกสาร'],['portrait','แนวตั้ง'],['landscape','แนวนอน']],P.orient)}</div>
+<div class="fld"><label>ขอบบน-ล่าง (มม.)</label><input id="pj_mv" type="number" min="5" max="40" value="${P.mv}"></div>
+<div class="fld"><label>ขอบซ้าย-ขวา (มม.)</label><input id="pj_mh" type="number" min="5" max="40" value="${P.mh}"></div>
+<div class="fld"><label>เลขหน้า</label>${opt('pj_pnum',[['center','ท้ายกระดาษ กึ่งกลาง'],['right','ท้ายกระดาษ ชิดขวา'],['none','ไม่แสดง']],P.pnum)}</div>
+</div></div>
+<div class="hint" style="display:block;color:#2a1a22;margin:2px 0 10px">ในหน้าต่างพิมพ์ เลือก "บันทึกเป็น PDF" ได้ ระบบตั้งชื่อไฟล์ให้ตามช่องด้านบน</div>
+</div><div class="mf"><button class="btn ghost" onclick="closeModal()">ยกเลิก</button><button class="btn ghost" onclick="printPrefReset()">ค่าเริ่มต้น</button><button class="btn primary" onclick="printGo()">พิมพ์</button></div>`);
+  const md=document.getElementById('pj_mode');if(md)md.onchange=()=>{document.getElementById('pj_auto').style.display=md.value==='auto'?'':'none';};
+}
+function printPrefReset(){try{localStorage.removeItem(PRINT_PREF_KEY);}catch(e){}const j=PRINT_JOB;closeModal();if(j)doPrint(j.html,j.title);}
+function printGo(){
+  const g=id=>document.getElementById(id);const P={mode:g('pj_mode').value,size:g('pj_size').value,orient:g('pj_orient').value,
+    mv:Math.min(40,Math.max(5,parseFloat(g('pj_mv').value)||18)),mh:Math.min(40,Math.max(5,parseFloat(g('pj_mh').value)||16)),pnum:g('pj_pnum').value};
+  try{localStorage.setItem(PRINT_PREF_KEY,JSON.stringify(P));}catch(e){}
+  const title=(g('pj_title').value||PRINT_JOB.title||'เอกสาร').replace(/[\\/:*?"<>|]+/g,' ').replace(/\s+/g,' ').trim().slice(0,150);
+  const html=PRINT_JOB.html;closeModal();printRun(html,title,P);
+}
+function printRun(html,title,P){
   const pa=document.getElementById('printArea');pa.innerHTML=html;
   document.body.classList.add('printing');
-  const done=()=>{document.body.classList.remove('printing');pa.innerHTML='';const ps=document.getElementById('printStylePaged');if(ps)ps.remove();window.removeEventListener('afterprint',done);};
+  const oldTitle=document.title;document.title=title;
+  const st=document.getElementById('printStyle');
+  if(P.mode==='browser'&&st)st.textContent='';                         // ปล่อยให้ผู้ใช้ตั้งขนาด/ขอบเองในหน้าต่างพิมพ์
+  const done=()=>{document.body.classList.remove('printing');pa.innerHTML='';document.title=oldTitle;try{applyPrintCfg();}catch(e){}const ps=document.getElementById('printStylePaged');if(ps)ps.remove();window.removeEventListener('afterprint',done);};
   window.addEventListener('afterprint',done);
-  const run=()=>{try{paginatePrint(pa);}catch(e){}
+  const run=()=>{if(P.mode!=='browser'){try{paginatePrint(pa,P);}catch(e){}}
     setTimeout(()=>{window.print();setTimeout(()=>{if(document.body.classList.contains('printing'))done();},1500);},80);};
   if(document.fonts&&document.fonts.ready){document.fonts.ready.then(run,run);}else run();
 }
 /* ===== แบ่งหน้าเอกสารพิมพ์ + เลขหน้า: ตัดตามบล็อก ไม่ให้หัวข้อ/แถวตารางขาดตอน ===== */
 const PAGE_MM={A4:[210,297],Letter:[215.9,279.4],A5:[148,210],Legal:[215.9,355.6]};
-function paginatePrint(pa){
+function paginatePrint(pa,P){P=P||printPref();
   const roots=pa.querySelectorAll('.rpt');if(roots.length!==1)return;
   const root=roots[0];                                                   // v23: แบ่งหน้าสวยงามให้ทุกรายงาน
-  const c=(DB.meta&&DB.meta.print)||{};const sz=PAGE_MM[c.size||'A4']||PAGE_MM.A4;
-  const land=(root.dataset.orient||c.orient||'portrait')==='landscape';const W=land?sz[1]:sz[0],H=land?sz[0]:sz[1];
-  const mv=(c.mv==null?18:c.mv),mh=(c.mh==null?16:c.mh);
-  const PX=96/25.4;const RUNH=30;const contentH=(H-mv*2-4)*PX-RUNH,contentW=(W-mh*2);
+  const sz=PAGE_MM[P.size||'A4']||PAGE_MM.A4;
+  const land=(P.orient&&P.orient!=='auto'?P.orient:(root.dataset.orient||'portrait'))==='landscape';const W=land?sz[1]:sz[0],H=land?sz[0]:sz[1];
+  const mv=P.mv,mh=P.mh;
+  const PX=96/25.4;const FOOTH=P.pnum==='none'?0:18;const contentH=(H-mv*2-2)*PX-FOOTH,contentW=(W-mh*2);
   // วัดความสูงจริงของแต่ละบล็อกในความกว้างเท่าหน้ากระดาษ
   const meas=document.createElement('div');
   meas.style.cssText=`position:absolute;left:0;top:0;width:${contentW}mm;visibility:hidden;pointer-events:none`;
@@ -3485,7 +3542,9 @@ function paginatePrint(pa){
   const addUnits=(b,depth)=>{
     const h=hOf(b);
     if(b.tagName==='TABLE'&&h>contentH*0.5){const st=splitTable(b);st.body.forEach((r,ri)=>units.push({row:r,rowH:r.getBoundingClientRect().height,st,keepNext:false,first:ri===0}));return;}
-    if(h<=contentH*0.3||depth>2||!b.children||b.children.length<2||b.tagName==='TABLE'){units.push({el:b,h,atomic:true,keepNext:isHead(b),keepWithPrev:isSign(b)});return;}
+    const keepAll=b.classList&&(b.classList.contains('pp-keep')||(depth===0&&b.classList.contains('pp-sec')&&b.querySelector('.pp-keep')))&&h<=contentH;   // v39: Gantt ทั้งหัวข้ออยู่หน้าเดียวกัน
+    const smallSec=depth===0&&b.classList&&b.classList.contains('pp-sec')&&h<=contentH*0.45;   // หัวข้อสั้น ไม่ตัดกลางหัวข้อ
+    if(keepAll||smallSec||h<=contentH*0.3||depth>2||!b.children||b.children.length<2||b.tagName==='TABLE'){units.push({el:b,h,atomic:true,keepNext:isHead(b),keepWithPrev:isSign(b),splittable:(smallSec&&!keepAll&&b.children.length>1)?b:null});return;}
     // บล็อกยาว: แยกเป็นหน่วยย่อย (หัวข้อ + ย่อหน้า/ตาราง) หัวข้อต้องติดกับหน่วยถัดไป
     const kids=Array.from(b.children);
     kids.forEach((k,i)=>{
@@ -3517,6 +3576,11 @@ function paginatePrint(pa){
     let need=u.h;
     if(u.keepNext&&units[i+1]&&!units[i+1].row)need+=units[i+1].h;      // หัวข้อต้องมีเนื้อหาตามอย่างน้อย 1 หน่วยในหน้าเดียวกัน
     if(u.keepNext&&units[i+1]&&units[i+1].row)need+=units[i+1].st.hdrH+units[i+1].rowH;
+    if(curH+need>contentH&&cur.length&&u.splittable&&(contentH-curH)>contentH*0.1){   // v39: เหลือที่ว่างมาก → ตัดหัวข้อสั้นต่อได้ ให้หน้าเต็มสมดุล
+      const kids=Array.from(u.splittable.children);
+      const sub=kids.map((k,ki)=>({el:k,h:hOf(k),keepNext:isHead(k)||ki===0,keepWithPrev:isSign(k)}));
+      units.splice(i,1,...sub);i--;continue;
+    }
     if(curH+need>contentH&&cur.length){
       // ช่องลงนาม/บล็อกท้าย ต้องไม่ลอยไปอยู่หน้าใหม่เดี่ยว ๆ — ดึงหน่วยก่อนหน้าไปด้วย (ถ้าไม่ใหญ่เกิน)
       if(u.keepWithPrev&&cur.length>1&&!cur[cur.length-1].st&&(cur[cur.length-1].h+u.h)<=contentH*0.8){const pv=cur.pop();curH-=pv.h;flush();cur.push(pv);curH+=pv.h;}
@@ -3537,12 +3601,13 @@ function paginatePrint(pa){
     page.style.cssText=`width:${W}mm;height:${H}mm;padding:${mv}mm ${mh}mm;box-sizing:border-box;position:relative;overflow:hidden;background:#fff;page-break-after:${pi<total-1?'always':'auto'};break-after:${pi<total-1?'page':'auto'}`;
     const body=document.createElement('div');body.className='rpt pp-doc';
     body.style.cssText=`font-family:${cs.fontFamily};font-size:${cs.fontSize};line-height:${cs.lineHeight};color:#000;max-width:none;padding:0;margin:0`;
-    if(pi>0){const rh=document.createElement('div');rh.className='pp-runhead';rh.style.cssText=`display:flex;justify-content:space-between;align-items:center;font-family:'Sarabun';font-size:11.5px;color:#000;border-bottom:1px solid #8A1538;padding-bottom:4px;margin-bottom:10px;height:${RUNH-14}px`;rh.innerHTML=`<span>${esc(foot)} (ต่อ)</span><span>ศูนย์สัตว์ทดลอง จุฬาลงกรณ์มหาวิทยาลัย</span>`;body.appendChild(rh);}
+    /* v39: ไม่มีหัวกระดาษต่อเนื่อง */
     pg.forEach(u=>{ if(u.st){body.appendChild(u.st.mk(u.rows));} else body.appendChild(u.el); });
-    const f=document.createElement('div');f.className='pp-foot';
-    f.style.cssText=`position:absolute;left:${mh}mm;right:${mh}mm;bottom:${Math.max(4,mv/2-2)}mm;display:flex;justify-content:space-between;font-family:'Sarabun';font-size:11.5px;color:#000;border-top:1px solid #8A1538;padding-top:3px`;
-    f.innerHTML=`<span>${esc(foot)}</span><span>พิมพ์ ${new Date().toLocaleDateString('th-TH')} · หน้า ${pi+1} / ${total}</span>`;
-    page.appendChild(body);page.appendChild(f);pa.appendChild(page);
+    page.appendChild(body);
+    if(P.pnum!=='none'&&total>1){const f=document.createElement('div');f.className='pp-foot';   // v39: ท้ายกระดาษมีแค่เลขหน้า
+      f.style.cssText=`position:absolute;left:${mh}mm;right:${mh}mm;bottom:${Math.max(5,mv/2-1)}mm;text-align:${P.pnum==='right'?'right':'center'};font-family:'Sarabun';font-size:13px;color:#000`;
+      f.textContent=P.pnum==='right'?String(pi+1):'- '+(pi+1)+' -';page.appendChild(f);}
+    pa.appendChild(page);
   });
   let ps=document.getElementById('printStylePaged');
   if(!ps){ps=document.createElement('style');ps.id='printStylePaged';document.head.appendChild(ps);}
@@ -3783,8 +3848,8 @@ function ledgerReport(q){
 </table>
 </div>`;
 }
-function printProject(no){doPrint(projReport(DB.projects.find(x=>x.projNo===no)));}
-function printBank(no){doPrint(bankReport(DB.projects.find(x=>x.projNo===no)));}
+function printProject(no){doPrint(projReport(DB.projects.find(x=>x.projNo===no)),ptitle(no,'ข้อมูลโครงการ'));}
+function printBank(no){doPrint(bankReport(DB.projects.find(x=>x.projNo===no)),ptitle(no,'บัญชีธนาคาร'));}
 function printSummary(){doPrint(summaryReport(dashFiltered()));}
 function amendReport(){
   const P=DB.projects.filter(p=>p.renewals&&p.renewals.length);
