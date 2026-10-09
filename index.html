@@ -249,7 +249,19 @@ body.role-viewer .canedit{display:none!important}
 .prop-form .fsec.collapsed>.fsec-t::after{transform:rotate(-90deg)}
 .prop-form .fsec.collapsed>*:not(.fsec-t){display:none!important}
 .prop-form .fsec.collapsed{padding-bottom:6px}
-.prop-form textarea{text-indent:2.5em;line-height:1.6}
+.prop-form textarea{text-indent:0;line-height:1.7;font-size:17px;min-height:150px;padding:12px 14px;resize:vertical}
+.prop-form textarea#pf_projName{text-indent:0;min-height:70px}
+.prop-form .ta-lbl{display:flex;align-items:flex-end;justify-content:space-between;gap:10px}
+.ta-big{flex:none;font:600 13px/1 inherit;color:#8a1f4f;background:#fff6fa;border:1.5px solid #e6c9d6;border-radius:8px;padding:6px 10px;cursor:pointer}
+.ta-big:hover{border-color:#8a1f4f;background:#fde9f1}
+.ta-card{position:fixed;inset:0;z-index:9000;background:rgba(40,10,25,.45);display:flex;align-items:center;justify-content:center;padding:18px}
+.ta-card-in{background:#fff;border-radius:16px;width:min(1100px,100%);height:min(92vh,900px);display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.3);overflow:hidden}
+.ta-card-h{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 20px;border-bottom:1.5px solid #f0dbe4;background:#fff6fa}
+.ta-card-h b{font-size:18px;color:#8a1f4f}
+.ta-card-tip{padding:8px 20px;font-size:14px;color:#2a1a22;border-bottom:1px solid #f3e4ea;line-height:1.6}
+.ta-card textarea{flex:1;border:0;outline:0;resize:none;padding:20px 26px;font:inherit;font-size:19px;line-height:1.8;color:#111;text-indent:0;font-family:'Sarabun',inherit}
+.ta-card-f{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 20px;border-top:1.5px solid #f0dbe4}
+.ta-card-f .cnt{font-size:13px;color:#2a1a22}
 .pf-howto{margin:6px 0 4px;padding:10px 14px;background:#fff6fa;border:1.5px solid #f0cfdd;border-radius:10px;font-size:14px;color:#2a1a22;line-height:1.7}.pf-howto b{color:#8a1f4f}.pf-howto kbd{font:600 12px/1 inherit;border:1.5px solid #c9a3b5;border-bottom-width:3px;border-radius:5px;padding:2px 6px;background:#fff}
 .prop-form .fsec-t{font-size:16px}
 .prop-form .bud-tbl,.prop-form .bud-tbl input{font-size:15px}
@@ -538,7 +550,7 @@ input.money{text-align:right;font-family:'Sarabun';font-weight:500}
 <div class="nav-group">จัดการระบบ</div>
 <button data-v="settings"><svg class="ni" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>ตั้งค่า / สำรองข้อมูล</button>
 </nav>
-<div class="foot"><div id="clockBox" class="clock"></div><div id="roleBadge" style="margin-bottom:8px"></div><div id="syncBadge" style="margin-bottom:8px;font-size:12.5px"></div><span class="ver">v39.1</span></div>
+<div class="foot"><div id="clockBox" class="clock"></div><div id="roleBadge" style="margin-bottom:8px"></div><div id="syncBadge" style="margin-bottom:8px;font-size:12.5px"></div><span class="ver">v39.2</span></div>
 </aside>
 <button class="menu-toggle" onclick="toggleMenu()" aria-label="เปิดเมนู" aria-controls="side"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
 <button class="help-btn" onclick="openHelp()" title="วิธีใช้หน้านี้ (กด ?)" aria-label="วิธีใช้หน้านี้">?</button>
@@ -2609,7 +2621,7 @@ function vPropForm(id){
   if(!pr.budgetNote)pr.budgetNote=BUD_NOTE_DEFAULT;
   const V=(k)=>esc(pr[k]||'');
   const dis=editable?'':'disabled';
-  const ta=(k,label,rows)=>`<div class="fld full"><label>${label}</label><textarea id="pf_${k}" rows="${rows||2}" ${dis}>${V(k)}</textarea></div>`;
+  const ta=(k,label,rows)=>`<div class="fld full"><label class="ta-lbl"><span>${label}</span><button type="button" class="ta-big" onclick="taOpen('pf_${k}')" title="เปิดการ์ดพิมพ์ขนาดใหญ่">⤢ ${editable?'ขยายเพื่อพิมพ์':'ขยายเพื่ออ่าน'}</button></label><textarea id="pf_${k}" class="ta-auto" rows="${Math.max(rows||2,k==='projName'?2:5)}" ${dis} oninput="taGrow(this)">${V(k)}</textarea></div>`;   // v39.2: ช่องใหญ่ขึ้น + ขยายตามข้อความ + การ์ดพิมพ์
   const inp=(k,label,ph)=>`<div class="fld"><label>${label}</label><input id="pf_${k}" value="${V(k)}" placeholder="${esc(ph||'')}" ${dis}></div>`;
   const approved=(pr.status==='อนุมัติแล้ว'||pr.status==='สมบูรณ์');
   const linkedProj=DB.projects.find(p=>p.fromProposal===pr.id);
@@ -2948,6 +2960,26 @@ function budReportTable(pr){
   h+=`<tr><td style="font-weight:700;background:#eef6f0">ประมาณการรายรับเหนือรายจ่าย</td><td class="r" style="font-weight:700;background:#eef6f0">${money(rev-exp)}</td><td></td></tr>`;
   return h+`</table>`;
 }
+/* v39.2: ช่องข้อความ — ขยายตามเนื้อหา + การ์ดพิมพ์ขนาดใหญ่ */
+function taGrow(t){if(!t)return;t.style.height='auto';t.style.height=Math.min(Math.max(t.scrollHeight+4,150),620)+'px';}
+function taGrowAll(root){(root||document).querySelectorAll('textarea.ta-auto').forEach(taGrow);}
+let TA_TARGET=null;
+function taOpen(id){const src=document.getElementById(id);if(!src)return;TA_TARGET=id;
+  const lbl=((src.closest('.fld')||{}).querySelector&&src.closest('.fld').querySelector('.ta-lbl span'))||null;const ro=src.disabled;
+  const d=document.createElement('div');d.className='ta-card';d.id='taCard';
+  d.innerHTML=`<div class="ta-card-in" role="dialog" aria-modal="true"><div class="ta-card-h"><b>${lbl?esc(lbl.textContent):'พิมพ์ข้อความ'}</b><button class="btn ghost sm" onclick="taClose(false)">✕ ปิด</button></div>
+${ro?'':'<div class="ta-card-tip"><b>ขึ้นย่อหน้าใหม่</b> กด Enter 1 ครั้ง · <b>เขียนเป็นข้อ</b> พิมพ์ 1. 2. 3. นำหน้า · ไม่ต้องเคาะวรรค ระบบย่อหน้าให้ตอนพิมพ์</div>'}
+<textarea id="taBig" ${ro?'readonly':''} oninput="taCount()"></textarea>
+<div class="ta-card-f"><span class="cnt" id="taCnt"></span><div style="display:flex;gap:10px">${ro?'<button class="btn primary" onclick="taClose(false)">ปิด</button>':'<button class="btn ghost" onclick="taClose(false)">ยกเลิก</button><button class="btn primary" onclick="taClose(true)">ใช้ข้อความนี้</button>'}</div></div></div>`;
+  document.body.appendChild(d);const b=document.getElementById('taBig');b.value=src.value;taCount();
+  d.addEventListener('mousedown',e=>{if(e.target===d)taClose(false);});
+  d.addEventListener('keydown',e=>{if(e.key==='Escape')taClose(false);if(e.key==='Enter'&&(e.ctrlKey||e.metaKey)&&!ro)taClose(true);});
+  setTimeout(()=>{b.focus();b.setSelectionRange(b.value.length,b.value.length);},30);}
+function taCount(){const b=document.getElementById('taBig'),c=document.getElementById('taCnt');if(!b||!c)return;const v=b.value;const paras=v.split('\n').filter(x=>x.trim()).length;c.textContent=paras?`${paras} ย่อหน้า/บรรทัด · ${v.replace(/\s/g,'').length.toLocaleString()} ตัวอักษร`:'ยังไม่มีข้อความ';}
+function taClose(apply){const d=document.getElementById('taCard');if(!d)return;const b=document.getElementById('taBig');const src=document.getElementById(TA_TARGET);
+  if(apply&&src&&!src.disabled&&b){src.value=b.value;src.dispatchEvent(new Event('input',{bubbles:true}));src.dispatchEvent(new Event('change',{bubbles:true}));taGrow(src);}
+  d.remove();if(src)src.focus();TA_TARGET=null;}
+(function(){try{new MutationObserver(()=>{const m=document.getElementById('main');if(m&&m.querySelector('textarea.ta-auto:not([data-g])')){m.querySelectorAll('textarea.ta-auto:not([data-g])').forEach(t=>{t.dataset.g='1';taGrow(t);});}}).observe(document.body,{childList:true,subtree:true});}catch(e){}})();
 function printProp(id){const pr=(DB.proposals||[]).find(x=>x.id===id)||{};doPrint(propReport(id),pr.projName||'แบบข้อเสนอขอโครงการ');}
 function ptitle(no,kind){const p=(DB.projects||[]).find(x=>x.projNo===no)||{};const n=p.fullName||p.shortName||no;return kind?n+' - '+kind:n;}
 function propParas(v,indentFirst){
