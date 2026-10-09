@@ -316,6 +316,7 @@ body.role-viewer .canedit{display:none!important}
 }
 
 /* v39 Gantt ในเอกสารพิมพ์ */
+td .res5-sw,.prop-form td .res5-sw{display:inline-flex!important;align-items:center;gap:6px;width:auto!important;margin:0 0 0 14px!important;padding:0!important;font-weight:600;font-size:14px!important;color:#8a1f4f;cursor:pointer;white-space:nowrap;vertical-align:middle}td .res5-sw input{width:16px!important;height:16px;margin:0!important;padding:0!important;flex:none}
 .gp-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;background:#fff6fa;border:1.5px solid #f0cfdd;border-radius:10px;padding:10px 14px;margin:4px 0 10px;font-size:15px;color:#2a1a22}
 .gp-bar b{color:#8a1f4f}.gp-bar label{display:flex;align-items:center;gap:6px;font-weight:500;margin:0}
 .gp-bar select,.gp-bar input{padding:6px 8px;border:1.5px solid #e6c9d6;border-radius:8px;font:inherit;width:auto}
@@ -555,7 +556,7 @@ input.money{text-align:right;font-family:'Sarabun';font-weight:500}
 <div class="nav-group">จัดการระบบ</div>
 <button data-v="settings"><svg class="ni" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>ตั้งค่า / สำรองข้อมูล</button>
 </nav>
-<div class="foot"><div id="clockBox" class="clock"></div><div id="roleBadge" style="margin-bottom:8px"></div><div id="syncBadge" style="margin-bottom:8px;font-size:12.5px"></div><span class="ver">v39.5</span></div>
+<div class="foot"><div id="clockBox" class="clock"></div><div id="roleBadge" style="margin-bottom:8px"></div><div id="syncBadge" style="margin-bottom:8px;font-size:12.5px"></div><span class="ver">v39.6</span></div>
 </aside>
 <button class="menu-toggle" onclick="toggleMenu()" aria-label="เปิดเมนู" aria-controls="side"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
 <button class="help-btn" onclick="openHelp()" title="วิธีใช้หน้านี้ (กด ?)" aria-label="วิธีใช้หน้านี้">?</button>
@@ -2084,7 +2085,7 @@ function budCatSums(b){
   (Array.isArray(b.rev)?b.rev:[]).forEach(r=>{out.rev+=bnum(r&&r.amount);});
   BUD_CATS.forEach(x=>{let t=0;((b.cats&&b.cats[x[0]])||[]).forEach(r=>{t+=bnum(r&&r.amount);});out.cats[x[0]]=t;});
   // หมวดอัตโนมัติ (สาธารณูปโภค 5% · อุดหนุน 10% · สำรอง 5%) คำนวณจากรายรับด้วยสูตรเดียวกับแบบเสนอ
-  Object.keys(BUD_AUTO).forEach(k=>{if(k in out.cats)out.cats[k]=Math.round(out.rev*BUD_AUTO[k]);});
+  Object.keys(BUD_AUTO).forEach(k=>{if(k in out.cats)out.cats[k]=Math.round(out.rev*autoRate(b,k));});
   return out;
 }
 function cuerpSetHtml(p){
@@ -2135,7 +2136,7 @@ function saveRenew(no,ri){
   if(embedded&&REV){
     const t=revTotals();newRev=t.rn;newExp=t.en;
     newBudget={rev:REV.rev.map(r=>({label:r.label,amount:bnum(r.neu)})),cats:{}};
-    BUD_CATS.forEach(x=>{newBudget.cats[x[0]]=REV.cats[x[0]].map(r=>({label:r.label,amount:bnum(r.neu)}));});
+    BUD_CATS.forEach(x=>{newBudget.cats[x[0]]=REV.cats[x[0]].map(r=>({label:r.label,amount:bnum(r.neu)}));});if(REV.noRes5)newBudget.noRes5=true;
   } else {
     const revRaw=(document.getElementById('rn_rev')||{}).value||'', expRaw=(document.getElementById('rn_exp')||{}).value||'';
     newRev=revRaw.trim()?numv('rn_rev'):null;newExp=expRaw.trim()?numv('rn_exp'):null;
@@ -2632,7 +2633,8 @@ function vPropForm(id){
   const isNew=(id==='new');
   const pr=isNew?{id:newPropId(),status:'ร่าง',headUser:CURRENT_USER&&CURRENT_USER.email,headName:(CURRENT_USER&&(CURRENT_USER.headName||CURRENT_USER.name))||''}:(DB.proposals||[]).find(x=>x.id===id);
   if(!pr)return vPropList();
-  const editable=((ROLE==='admin'||ownProp(pr))&&pr.status==='ร่าง');
+  const adminEdit=(ROLE==='admin'&&pr.status!=='ร่าง');   // v39.6: หัวหน้างานแก้ได้ทุกสถานะ (ไม่แจ้งเตือนใคร)
+  const editable=(ROLE==='admin'||(ownProp(pr)&&pr.status==='ร่าง'));
   budInit(pr);BUD_EDIT=editable;
   ganttInit(pr);GANTT_EDIT=editable;
   if(!pr.budgetNote)pr.budgetNote=BUD_NOTE_DEFAULT;
@@ -2647,13 +2649,14 @@ function vPropForm(id){
       ${pr.projNo?`<div style="margin-top:6px">ศูนย์ต้นทุน<b>${esc(pr.costCenter||(linkedProj&&linkedProj.costCenter))||'—'}</b>· เงินทุน<b>${esc(pr.fund||(linkedProj&&linkedProj.fund))||'—'}</b>· เขตตามหน้าที่<b>${esc(pr.dutyZone||(linkedProj&&linkedProj.dutyZone))||'—'}</b>·<b>รหัสโครงการ ${esc(pr.projNo)}</b></div>`:'<div style="margin-top:6px;color:var(--amber)">⏳ ยังไม่ออกรหัสโครงการ (โครงการถูกสร้างแล้ว รอออกรหัสจริง)</div>'}
       ${linkedProj?`<div style="margin-top:8px" class="no-print">สร้างเป็นโครงการในทะเบียนแล้ว:<b>${esc(linkedProj.projNo)}</b>· สถานะ<b>${esc(linkedProj.status)}</b><button class="btn ghost sm" style="margin-left:8px" onclick="PROPSEL=null;go('reg','${esc(linkedProj.projNo)}')">ดูในทะเบียนโครงการ →</button></div>`:''}
 </div>`:'';
-  let actions='';
-  if(editable)actions=`<button class="btn ghost" onclick="saveProposal('${pr.id}',false)">บันทึกร่าง</button><button class="btn primary" onclick="saveProposal('${pr.id}',true)">ยื่นขออนุมัติ</button>`;
+  let actions=adminEdit?`<button class="btn primary" onclick="saveProposal('${pr.id}',false)">บันทึกการแก้ไข (หัวหน้างาน)</button>`:'';
+  if(adminEdit){}
+  else if(editable)actions=`<button class="btn ghost" onclick="saveProposal('${pr.id}',false)">บันทึกร่าง</button><button class="btn primary" onclick="saveProposal('${pr.id}',true)">ยื่นขออนุมัติ</button>`;
   else if(ROLE==='admin'&&pr.status==='ยื่นขออนุมัติ')actions=`<span style="color:var(--amber);font-size:13px">รอการอนุมัติ — กดปุ่ม "✓ อนุมัติ (บันทึกมติ)" ด้านบน${ownProp(pr)?' · โครงการที่ท่านยื่นเอง':''}</span>`;
   else if(ownProp(pr)&&pr.status==='ยื่นขออนุมัติ')actions=`<span style="color:var(--amber);font-size:13px">⏳ ยื่นขออนุมัติแล้ว รอหัวหน้างานพิจารณา</span>`;
-  else if((ROLE==='policy'||ROLE==='admin')&&pr.status==='อนุมัติแล้ว'&&!pr.projNo)actions=`<button class="btn primary" onclick="assignPropNo('${pr.id}')">ออกรหัสโครงการ</button>`;
+  if((ROLE==='policy'||ROLE==='admin')&&pr.status==='อนุมัติแล้ว'&&!pr.projNo)actions+=`<button class="btn primary" onclick="assignPropNo('${pr.id}')">ออกรหัสโครงการ</button>`;
   const canDel=((ROLE==='admin'||ownProp(pr))&&pr.status==='ร่าง');
-  return `<div class="head"><div><h1>แบบข้อเสนอขอโครงการ</h1><div class="desc">${propPill(pr.status)} ${editable?'· กรอกข้อมูลแล้วกดยื่นขออนุมัติ':'· ดูอย่างเดียว'}</div></div>
+  return `<div class="head"><div><h1>แบบข้อเสนอขอโครงการ</h1><div class="desc">${propPill(pr.status)} ${adminEdit?'· หัวหน้างานแก้ไขได้ (ไม่แจ้งเตือนผู้ใด สถานะคงเดิม)':editable?'· กรอกข้อมูลแล้วกดยื่นขออนุมัติ':'· ดูอย่างเดียว'}</div></div>
 <div class="no-print" style="display:flex;gap:8px;align-items:center">
 ${(ROLE==='admin'&&pr.status==='ยื่นขออนุมัติ')?`<button class="btn primary sm" onclick="approveProp('${pr.id}')">✓ อนุมัติ (บันทึกมติ)</button>`:''}
 <button class="btn ghost sm" onclick="PROPSEL=null;go('proposal')">← กลับรายการ</button></div></div>
@@ -2736,7 +2739,9 @@ function budDefault(){return {rev:[{label:'เงินสนับสนุน�
 function budInit(pr){BUD=pr.budget?JSON.parse(JSON.stringify(pr.budget)):budDefault();BUD.rev=BUD.rev&&BUD.rev.length?BUD.rev:[{label:'',amount:0}];BUD.cats=BUD.cats||{};BUD_CATS.forEach(x=>{if(!BUD.cats[x[0]]||!BUD.cats[x[0]].length)BUD.cats[x[0]]=[{label:'',amount:0}];});}
 function bnum(v){return parseFloat((''+(v==null?'':v)).replace(/[^0-9.\-]/g,''))||0;}
 const BUD_AUTO={util:0.05,sub10:0.10,res5:0.05};
-function budApplyAuto(){const rev=BUD.rev.reduce((s,r)=>s+bnum(r.amount),0);Object.keys(BUD_AUTO).forEach(k=>{if(BUD.cats[k]&&BUD.cats[k][0])BUD.cats[k][0].amount=Math.round(rev*BUD_AUTO[k]);});return rev;}
+function autoRate(b,k){return (k==='res5'&&b&&b.noRes5)?0:BUD_AUTO[k];}   // v39.6: เงินสำรองทั่วไป 5% เลือกไม่ตั้งได้
+function budToggleRes5(on){if(!BUD_EDIT)return;BUD.noRes5=!on;renderBud();budUpd();}
+function budApplyAuto(){const rev=BUD.rev.reduce((s,r)=>s+bnum(r.amount),0);Object.keys(BUD_AUTO).forEach(k=>{if(BUD.cats[k]&&BUD.cats[k][0])BUD.cats[k][0].amount=Math.round(rev*autoRate(BUD,k));});if(BUD.noRes5&&BUD.cats.res5)BUD.cats.res5.forEach(r=>r.amount=0);return rev;}
 function budTotals(){const rev=budApplyAuto();let exp=0;const subs={};BUD_CATS.forEach(x=>{const st=BUD.cats[x[0]].reduce((s,r)=>s+bnum(r.amount),0);subs[x[0]]=st;exp+=st;});return {rev,exp,subs};}
 function budRowHtml(section,cat,idx,r,pfx,auto){const dis=(BUD_EDIT&&!auto)?'':'disabled';const amtId=auto?` id="budAuto_${cat}"`:'';return `<tr><td>${pfx?`<span class="bud-no">${pfx}</span>`:''}<input value="${esc(r.label)}" ${BUD_EDIT?'':'disabled'} oninput="budSet('${section}','${cat}',${idx},'label',this.value)" placeholder="รายการ..." style="display:inline-block;width:${pfx?'calc(100% - 42px)':'100%'}"></td><td class="r"><input${amtId} value="${r.amount?fmt2(r.amount):''}" ${dis} inputmode="numeric" oninput="budSet('${section}','${cat}',${idx},'amount',this.value);budUpd()" onblur="moneyFmtInput(this)" onkeydown="if(event.key==='Enter'){event.preventDefault();this.blur();}" style="text-align:right${auto?';background:#eef6f0;color:#1f7a4d;font-weight:600':''}" ${auto?'title="คำนวณอัตโนมัติจากยอดรายรับ"':''}></td><td class="c no-print">${(BUD_EDIT&&!auto)?`<button type="button" class="btn ghost sm" onclick="budDel('${section}','${cat}',${idx})">✕</button>`:''}</td></tr>`;}
 function budTable(){const t=budTotals();let h=`<table class="bud-tbl"><thead><tr><th>รายละเอียด</th><th class="r">งบประมาณที่ตั้งไว้ (บาท)</th><th class="no-print"></th></tr></thead><tbody>`;
@@ -2745,7 +2750,10 @@ function budTable(){const t=budTotals();let h=`<table class="bud-tbl"><thead><tr
   if(BUD_EDIT)h+=`<tr class="no-print bud-add"><td colspan="3"><button type="button" class="btn ghost sm" onclick="budAdd('rev','rev')">+ เพิ่มรายรับ</button></td></tr>`;
   h+=`<tr class="bud-total"><td>รวมประมาณการรายรับ</td><td class="r" id="budRevTotal">${fmt2(t.rev)}</td><td class="no-print"></td></tr>`;
   h+=`<tr class="bud-head"><td colspan="3">ประมาณการรายจ่าย</td></tr>`;
-  BUD_CATS.forEach((x,ci)=>{h+=`<tr class="bud-cat"><td>${x[1]}</td><td class="r" id="budSub_${x[0]}">${fmt2(t.subs[x[0]])}</td><td class="no-print"></td></tr>`;
+  BUD_CATS.forEach((x,ci)=>{
+    const isRes=x[0]==='res5',resOn=!BUD.noRes5;   // v39.6
+    h+=`<tr class="bud-cat"><td>${x[1]}${isRes?`<label class="res5-sw"><input type="checkbox" ${resOn?'checked':''} ${BUD_EDIT?'':'disabled'} onchange="budToggleRes5(this.checked)"> ตั้งเงินสำรองทั่วไป 5% ในโครงการนี้</label>`:''}</td><td class="r" id="budSub_${x[0]}">${fmt2(t.subs[x[0]])}</td><td class="no-print"></td></tr>`;
+    if(isRes&&!resOn)return;
     BUD.cats[x[0]].forEach((r,i)=>h+=budRowHtml('exp',x[0],i,r,(ci+1)+'.'+(i+1),(BUD_AUTO[x[0]]&&i===0)));
     if(BUD_EDIT)h+=`<tr class="no-print bud-add"><td colspan="3" style="padding-left:24px"><button type="button" class="btn ghost sm" onclick="budAdd('exp','${x[0]}')">+ เพิ่มรายการ</button></td></tr>`;});
   h+=`<tr class="bud-total"><td>รวมประมาณการรายจ่าย</td><td class="r" id="budExpTotal">${fmt2(t.exp)}</td><td class="no-print"></td></tr>`;
@@ -2912,7 +2920,7 @@ function saveProposal(id,submit){
   if(!pr.headName)pr.headName=(CURRENT_USER&&(CURRENT_USER.headName||CURRENT_USER.name))||'';
   if(pr.startDate&&pr.endDate&&pr.endDate<pr.startDate){toast('วันสิ้นสุดโครงการต้องไม่ก่อนวันเริ่ม','bad');return;}
   if(pr.projNo){const pn=String(pr.projNo).trim();
-    if(DB.projects.some(p=>p.projNo===pn)){toast('เลขโครงการ '+pn+' มีอยู่ในทะเบียนโครงการแล้ว','bad');return;}
+    if(DB.projects.some(p=>p.projNo===pn&&p.fromProposal!==id)){toast('เลขโครงการ '+pn+' มีอยู่ในทะเบียนโครงการแล้ว','bad');return;}
     if((DB.proposals||[]).some(x=>x.id!==id&&String(x.projNo||'').trim()===pn)&&!confirm('เลขโครงการ '+pn+' ซ้ำกับข้อเสนออื่น ยืนยันบันทึกหรือไม่?'))return;}
   if(submit){
     if(!pr.projName){toast('กรุณากรอกชื่อโครงการก่อนยื่น','bad');return;}
@@ -2922,8 +2930,9 @@ function saveProposal(id,submit){
       notifyM('admin',_st,'หัวหน้าโครงการ '+(pr.headName||'')+' ยื่นขออนุมัติโครงการ "'+(pr.projName||'')+'"'+(pr.period?' ระยะเวลา '+pr.period:'')+(pr.budgetRevenue?' ประมาณการรายรับ '+fmt2(pr.budgetRevenue)+' บาท':'')+'\nกรุณาตรวจสอบเอกสารและนำเสนอคณะกรรมการบริหาร',pr.projNo||''); if(DB.meta.notifs[0]){DB.meta.notifs[0].view='proposal';DB.meta.notifs[0].arg=pr.id;} }
   }
   if(isNew){DB.proposals=DB.proposals||[];DB.proposals.push(pr);}
-  logAct((submit?'ยื่นขออนุมัติโครงการ ':'บันทึกร่างโครงการ ')+(pr.projName||pr.id));
-  save();PROPSEL=pr.id;render();toast(submit?'ยื่นขออนุมัติแล้ว':'บันทึกร่างแล้ว','ok');
+  const _adm=(!submit&&!isNew&&ROLE==='admin'&&pr.status!=='ร่าง');
+  logAct((submit?'ยื่นขออนุมัติโครงการ ':_adm?'หัวหน้างานแก้ไขข้อเสนอโครงการ ('+pr.status+') ':'บันทึกร่างโครงการ ')+(pr.projName||pr.id));
+  save();PROPSEL=pr.id;render();toast(submit?'ยื่นขออนุมัติแล้ว':_adm?'บันทึกการแก้ไขแล้ว (ไม่แจ้งเตือนผู้ใด)':'บันทึกร่างแล้ว','ok');
 }
 function delProposal(id){if(!confirm('ลบร่างข้อเสนอนี้?'))return;DB.proposals=(DB.proposals||[]).filter(x=>x.id!==id);logAct('ลบร่างข้อเสนอโครงการ');save();PROPSEL=null;go('proposal');toast('ลบแล้ว','ok');}
 function approveProp(id){
@@ -3005,7 +3014,8 @@ function budReportTable(pr){
   h+=`<tr><td style="font-weight:700">รวมประมาณการรายรับ</td><td class="r" style="font-weight:700">${money(rev)}</td><td></td></tr>`;
   h+=`<tr><td colspan="3" style="background:#faedf3;font-weight:600">ประมาณการรายจ่าย</td></tr>`;
   BUD_CATS.forEach((x,ci)=>{const items=(b.cats&&b.cats[x[0]])||[];const st=items.reduce((s,r)=>s+bnum(r.amount),0);exp+=st;
-    h+=`<tr><td style="font-weight:600">${x[1]}</td><td class="r" style="font-weight:600">${st?money(st):''}</td><td></td></tr>`;
+    h+=`<tr><td style="font-weight:600">${x[1]}</td><td class="r" style="font-weight:600">${(st||(x[0]==='res5'&&b.noRes5))?money(st):''}</td><td></td></tr>`;
+    if(x[0]==='res5'&&b.noRes5)return;   // v39.6: ไม่ตั้งเงินสำรอง → แสดงหมวดเป็น 0.00 ไม่มีบรรทัดย่อย
     items.forEach((r,i)=>{if(r.label||r.amount)h+=`<tr><td style="padding-left:26px">${(ci+1)}.${(i+1)} ${esc(r.label)||'-'}</td><td></td><td class="r">${r.amount?money(r.amount):''}</td></tr>`;});});
   h+=`<tr><td style="font-weight:700">รวมประมาณการรายจ่าย</td><td class="r" style="font-weight:700">${money(exp)}</td><td></td></tr>`;
   h+=`<tr><td style="font-weight:700;background:#eef6f0">ประมาณการรายรับเหนือรายจ่าย</td><td class="r" style="font-weight:700;background:#eef6f0">${money(rev-exp)}</td><td></td></tr>`;
@@ -3124,9 +3134,9 @@ ${approved?`<div style="text-align:center;margin-top:30px;font-size:14px">
 /* ===== ขอปรับปรุงโครงการ (เดิม ↔ ขอปรับใหม่) ===== */
 let REV=null;
 function revInit(pr){const b=pr.budget||budDefault();
-  REV={rev:(b.rev||[]).map(r=>({label:r.label,old:bnum(r.amount),neu:bnum(r.amount)})),cats:{}};
+  REV={rev:(b.rev||[]).map(r=>({label:r.label,old:bnum(r.amount),neu:bnum(r.amount)})),cats:{},noRes5:!!b.noRes5};
   BUD_CATS.forEach(x=>{REV.cats[x[0]]=((b.cats&&b.cats[x[0]])||[]).map(r=>({label:r.label,old:bnum(r.amount),neu:bnum(r.amount)}));});}
-function revApplyAuto(){const rn=REV.rev.reduce((s,r)=>s+bnum(r.neu),0);Object.keys(BUD_AUTO).forEach(k=>{if(REV.cats[k]&&REV.cats[k][0])REV.cats[k][0].neu=Math.round(rn*BUD_AUTO[k]);});}
+function revApplyAuto(){const rn=REV.rev.reduce((s,r)=>s+bnum(r.neu),0);Object.keys(BUD_AUTO).forEach(k=>{if(REV.cats[k]&&REV.cats[k][0])REV.cats[k][0].neu=Math.round(rn*autoRate(REV,k));});}
 function revTotals(){revApplyAuto();let ro=0,rn=0,eo=0,en=0;const so={},sn={};
   REV.rev.forEach(r=>{ro+=r.old;rn+=bnum(r.neu);});
   BUD_CATS.forEach(x=>{let a=0,c=0;REV.cats[x[0]].forEach(r=>{a+=r.old;c+=bnum(r.neu);});so[x[0]]=a;sn[x[0]]=c;eo+=a;en+=c;});
@@ -3191,7 +3201,7 @@ function saveBudgetRevision(id){
   if(!changeTime&&!changeBudget){toast('เลือกอย่างน้อย 1 อย่าง (เวลา/งบ)','bad');return;}
   const oldBudget=JSON.parse(JSON.stringify(pr.budget||budDefault()));
   const newBudget={rev:REV.rev.map(r=>({label:r.label,amount:bnum(r.neu)})),cats:{}};
-  BUD_CATS.forEach(x=>{newBudget.cats[x[0]]=REV.cats[x[0]].map(r=>({label:r.label,amount:bnum(r.neu)}));});
+  BUD_CATS.forEach(x=>{newBudget.cats[x[0]]=REV.cats[x[0]].map(r=>({label:r.label,amount:bnum(r.neu)}));});if(REV.noRes5)newBudget.noRes5=true;
   const t=revTotals();
   const rv={date:document.getElementById('rv_date').value.trim(),meetingNo:document.getElementById('rv_meet').value.trim(),note:document.getElementById('rv_note').value.trim(),
     changeTime,changeBudget,oldStart:pr.startDate||'',oldEnd:pr.endDate||'',
