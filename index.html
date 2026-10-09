@@ -316,6 +316,11 @@ body.role-viewer .canedit{display:none!important}
 }
 
 /* v39 Gantt ในเอกสารพิมพ์ */
+.gp-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;background:#fff6fa;border:1.5px solid #f0cfdd;border-radius:10px;padding:10px 14px;margin:4px 0 10px;font-size:15px;color:#2a1a22}
+.gp-bar b{color:#8a1f4f}.gp-bar label{display:flex;align-items:center;gap:6px;font-weight:500;margin:0}
+.gp-bar select,.gp-bar input{padding:6px 8px;border:1.5px solid #e6c9d6;border-radius:8px;font:inherit;width:auto}
+.gp-bar.ro{background:#fbf3f6}
+.gantt th.gm{min-width:46px;font-size:13px;line-height:1.25;padding:5px 3px}
 .pjdlg .fld{margin-bottom:14px}.pjdlg .grid2{gap:0 18px}
 .gantt-cap{font-size:13px;color:#000;margin:2px 0 4px}
 .gantt-r{width:100%;border-collapse:collapse;table-layout:fixed;font-size:12.5px;line-height:1.35;margin-bottom:6px}
@@ -550,7 +555,7 @@ input.money{text-align:right;font-family:'Sarabun';font-weight:500}
 <div class="nav-group">จัดการระบบ</div>
 <button data-v="settings"><svg class="ni" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>ตั้งค่า / สำรองข้อมูล</button>
 </nav>
-<div class="foot"><div id="clockBox" class="clock"></div><div id="roleBadge" style="margin-bottom:8px"></div><div id="syncBadge" style="margin-bottom:8px;font-size:12.5px"></div><span class="ver">v39.2</span></div>
+<div class="foot"><div id="clockBox" class="clock"></div><div id="roleBadge" style="margin-bottom:8px"></div><div id="syncBadge" style="margin-bottom:8px;font-size:12.5px"></div><span class="ver">v39.5</span></div>
 </aside>
 <button class="menu-toggle" onclick="toggleMenu()" aria-label="เปิดเมนู" aria-controls="side"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
 <button class="help-btn" onclick="openHelp()" title="วิธีใช้หน้านี้ (กด ?)" aria-label="วิธีใช้หน้านี้">?</button>
@@ -2378,7 +2383,19 @@ function roleEmails(role){try{return (DB.meta.users||[]).filter(u=>u.role===role
 /* v27: แจ้งกระดิ่ง + อีเมล ในคำสั่งเดียว (to เป็นบทบาท หรือ ชื่อ/อีเมลบุคคล) */
 function notifyM(to,title,body,projNo){const isRole=['admin','finance','policy','exec','staff'].includes(to);notify(to,title,body,projNo,isRole?mkMail('',title,body,to):mkMail(userEmailByName(to),title,body));}
 function mkMail(email,subj,body,role){var em=email||(role?roleEmails(role):'');return em?{email:em,cc:(DB.meta&&DB.meta.ccEmails)||'',subj:subj,body:body}:null;}
-function notify(to,title,body,projNo,mail){DB.meta.notifs=DB.meta.notifs||[];DB.meta.notifs.unshift({id:'n'+Date.now().toString(36)+Math.random().toString(36).slice(2,5),to:(to||''),title:title,body:body||'',projNo:projNo||'',ts:Date.now(),read:false,mail:mail||null});if((DB.meta.notifs.length)>300)DB.meta.notifs=DB.meta.notifs.slice(0,300);}
+/* v39.5: แนบข้อมูลโครงการไปกับอีเมล — ระบบกลาง (Code v8) ตั้งหัวเรื่อง "เลขโครงการ ชื่อโครงการ — เรื่อง" + การ์ด HTML */
+function mailMeta(title,projNo){
+  let no=String(projNo||'').trim(),name='';
+  const p=no&&(DB.projects||[]).find(x=>x.projNo===no);
+  if(p)name=p.fullName||p.shortName||'';
+  if(!name&&no){const pr=(DB.proposals||[]).find(x=>x.projNo===no||x.id===no);if(pr){name=pr.projName||'';if(pr.id===no)no=pr.projNo||'';}}
+  const mt=/"([^"]+)"/.exec(String(title||''));if(!name&&mt)name=mt[1];
+  if(!no){const mn=/โครงการเลขที่\s+(\S+)/.exec(String(title||''));if(mn)no=mn[1];}
+  if(!name&&no){const p2=(DB.projects||[]).find(x=>x.projNo===no);if(p2)name=p2.fullName||p2.shortName||'';}
+  let topic=String(title||'').replace(/โครงการเลขที่\s+\S+/,'').replace(/(ข้อเสนอโครงการ|โครงการ)?\s*"[^"]*"/,'').replace(/^[\s\-–—:·]+|[\s\-–—:·]+$/g,'').trim();
+  let link='';try{if(/^https:/.test(location.protocol))link=location.origin+location.pathname;}catch(e){}
+  return {projNo:no,projName:name,topic:topic,link:link};}
+function notify(to,title,body,projNo,mail){if(mail){try{Object.assign(mail,mailMeta(title,projNo));}catch(e){}}DB.meta.notifs=DB.meta.notifs||[];DB.meta.notifs.unshift({id:'n'+Date.now().toString(36)+Math.random().toString(36).slice(2,5),to:(to||''),title:title,body:body||'',projNo:projNo||'',ts:Date.now(),read:false,mail:mail||null});if((DB.meta.notifs.length)>300)DB.meta.notifs=DB.meta.notifs.slice(0,300);}
 function myKeys(){const u=CURRENT_USER||{};return [u.email,ROLE,u.coordName,u.vetName,u.headName,u.name].filter(Boolean).map(x=>(''+x).toLowerCase());}
 function myNotifs(){const k=myKeys();return (DB.meta.notifs||[]).filter(n=>{const to=(''+n.to).toLowerCase();if(to==='all'||to==='*')return true;if(k.includes(to))return true;const pp=splitPerson(n.to);return (pp.name&&k.includes(pp.name.toLowerCase()))||(pp.email&&k.includes(pp.email.toLowerCase()));});}
 function unreadN(){return myNotifs().filter(n=>!n.read).length;}
@@ -2680,7 +2697,7 @@ ${ta('principle','1. หลักการและเหตุผล',3)}
       ${ta('committee','7. คณะกรรมการดำเนินงานโครงการ (ถ้ามี)',3)}
       ${ta('venue','8. สถานที่จัดโครงการ/อบรม',2)}
       ${ta('target','9. กลุ่มเป้าหมาย/ผู้เข้าร่วม',2)}
-<div class="fld full"><label>10. ขั้นตอนการดำเนินงาน (แผนกิจกรรม × เดือน)<span class="hint">แตะช่องเดือนที่ดำเนินกิจกรรมเพื่อทำเครื่องหมาย ✓</span></label>
+<div class="fld full"><label>10. ขั้นตอนการดำเนินงาน (แผนกิจกรรม × เดือน)<span class="hint">① ตั้งช่วงเวลา (เดือนเริ่ม · ปี พ.ศ. · จำนวนเดือน) แล้วกด "ใช้ช่วงนี้" ② พิมพ์กิจกรรม ③ แตะช่องเดือนที่ทำกิจกรรม</span></label>
 <div style="overflow-x:auto"><div id="ganttBox">${ganttTable()}</div></div>
 </div>
       ${ta('evaluation','11. การประเมินโครงการ',2)}
@@ -2742,34 +2759,68 @@ function renderBud(){const b=document.getElementById('budBox');if(b)b.innerHTML=
 function budUpd(){const t=budTotals(),set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=fmt2(v);};set('budRevTotal',t.rev);set('budExpTotal',t.exp);set('budNet',t.rev-t.exp);BUD_CATS.forEach(x=>set('budSub_'+x[0],t.subs[x[0]]));Object.keys(BUD_AUTO).forEach(k=>{const e=document.getElementById('budAuto_'+k);if(e)e.value=fmt2(BUD.cats[k][0].amount);});}
 /* ---- Gantt ข้อ 10 (กิจกรรม × เดือน) ---- */
 let GANTT=null, GANTT_EDIT=false;
-function ganttInit(pr){GANTT=(pr.gantt&&pr.gantt.rows)?JSON.parse(JSON.stringify(pr.gantt)):{rows:[{act:'',m:Array(12).fill(false)}]};GANTT.rows.forEach(r=>{if(!Array.isArray(r.m))r.m=Array(12).fill(false);while(r.m.length<12)r.m.push(false);});if(!Array.isArray(GANTT.months)||GANTT.months.length!==12)GANTT.months=Array.from({length:12},(_,j)=>String(j+1));}
+/* v39.3: ตั้งช่วงเวลา Gantt ได้ (เดือนเริ่ม + ปี พ.ศ. + จำนวนเดือน) ตารางออกตามที่ตั้ง */
+const GMON=['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];
+function ganttN(){return (GANTT&&Array.isArray(GANTT.months))?GANTT.months.length:12;}
+function ganttFit(){const N=ganttN();GANTT.rows.forEach(r=>{if(!Array.isArray(r.m))r.m=[];r.m=r.m.slice(0,N);while(r.m.length<N)r.m.push(false);});}
+function ganttInit(pr){GANTT=(pr.gantt&&pr.gantt.rows)?JSON.parse(JSON.stringify(pr.gantt)):{rows:[{act:'',m:[]}]};
+  if(!Array.isArray(GANTT.months)||!GANTT.months.length){
+    const sd=pr.startDate?new Date(pr.startDate):null;   // ค่าเริ่มต้น: ตามวันเริ่มโครงการ ถ้ายังไม่มี ใช้ ต.ค. ปีงบประมาณปัจจุบัน
+    const now=new Date();const by=now.getMonth()>=9?now.getFullYear():now.getFullYear()-1;
+    const sm=sd&&!isNaN(sd)?sd.getMonth():9, sy=(sd&&!isNaN(sd)?sd.getFullYear():by)+543;
+    GANTT.period={m:sm,y:sy,n:12};GANTT.months=ganttLabels(sm,sy,12);}
+  if(!GANTT.period){GANTT.period=ganttGuess(GANTT.months);}
+  ganttFit();}
+function ganttLabels(m,y,n){const out=[];for(let j=0;j<n;j++){const mm=(m+j)%12,yy=y+Math.floor((m+j)/12);out.push(GMON[mm]+' '+String(yy).slice(-2));}return out;}
+function ganttGuess(mo){const t=String((mo||[])[0]||'');const i=GMON.findIndex(x=>t.startsWith(x));const yy=/(\d{2,4})\s*$/.exec(t);
+  return {m:i>=0?i:9,y:yy?(yy[1].length===2?2500+ +yy[1]:+yy[1]):(new Date().getFullYear()+543),n:(mo||[]).length||12};}
+function ganttPeriodApply(){if(!GANTT_EDIT)return;const g=id=>document.getElementById(id);
+  const m=+g('gp_m').value,y=parseInt(g('gp_y').value,10),n=Math.min(36,Math.max(1,parseInt(g('gp_n').value,10)||1));
+  if(!(y>2400&&y<2700)){toast('ปี พ.ศ. ไม่ถูกต้อง เช่น 2569','bad');return;}
+  const old=GANTT.period||ganttGuess(GANTT.months);const shift=(y-old.y)*12+(m-old.m);   // คงเครื่องหมายเดิมไว้ตามเดือนจริง
+  GANTT.rows.forEach(r=>{const o=r.m||[];const nm=[];for(let j=0;j<n;j++){const k=j+shift;nm.push(k>=0&&k<o.length?!!o[k]:false);}r.m=nm;});
+  GANTT.period={m,y,n};GANTT.months=ganttLabels(m,y,n);renderGantt();toast('ตั้งช่วงเวลา '+GANTT.months[0]+' – '+GANTT.months[n-1]+' ('+n+' เดือน)','ok');}
+function ganttFromProject(){if(!GANTT_EDIT)return;const sv=(document.getElementById('pf_startDate')||{}).value,ev=(document.getElementById('pf_endDate')||{}).value;
+  if(!sv||!ev){toast('กรอกวันเริ่มและวันสิ้นสุดโครงการก่อน','bad');return;}
+  const sd=new Date(sv),ed=new Date(ev);if(isNaN(sd)||isNaN(ed)||ed<sd){toast('วันที่โครงการไม่ถูกต้อง','bad');return;}
+  const n=Math.min(36,(ed.getFullYear()-sd.getFullYear())*12+ed.getMonth()-sd.getMonth()+1);
+  document.getElementById('gp_m').value=sd.getMonth();document.getElementById('gp_y').value=sd.getFullYear()+543;document.getElementById('gp_n').value=n;ganttPeriodApply();}
 function ganttToggle(i,j){if(!GANTT_EDIT)return;GANTT.rows[i].m[j]=!GANTT.rows[i].m[j];renderGantt();}
 function ganttSet(i,v){if(GANTT.rows[i])GANTT.rows[i].act=v;}
 function ganttSetMonth(j,v){if(GANTT.months)GANTT.months[j]=v;}
-function ganttAdd(){GANTT.rows.push({act:'',m:Array(12).fill(false)});renderGantt();}
-function ganttDel(i){GANTT.rows.splice(i,1);if(!GANTT.rows.length)GANTT.rows.push({act:'',m:Array(12).fill(false)});renderGantt();}
+function ganttAdd(){GANTT.rows.push({act:'',m:Array(ganttN()).fill(false)});renderGantt();}
+function ganttDel(i){GANTT.rows.splice(i,1);if(!GANTT.rows.length)GANTT.rows.push({act:'',m:Array(ganttN()).fill(false)});renderGantt();}
 function renderGantt(){const b=document.getElementById('ganttBox');if(b)b.innerHTML=ganttTable();}
 function ganttTable(){
-  let h=`<table class="bud-tbl gantt"><thead><tr><th style="min-width:120px">กิจกรรม</th>`;
-  for(let j=0;j<12;j++)h+=`<th class="c" style="min-width:34px;padding:4px 3px">${GANTT_EDIT?`<input value="${esc(GANTT.months[j])}" aria-label="ชื่อเดือนช่องที่ ${j+1}" oninput="ganttSetMonth(${j},this.value)" style="width:30px;text-align:center;padding:2px;border:1px solid var(--line);border-radius:5px;font-size:12px">`:esc(GANTT.months[j])}</th>`;
+  const N=ganttN(),P=GANTT.period||ganttGuess(GANTT.months);
+  let bar='';
+  if(GANTT_EDIT)bar=`<div class="gp-bar"><b>ช่วงเวลาในตาราง</b>
+<label>เริ่มเดือน <select id="gp_m">${GMON.map((x,i)=>`<option value="${i}" ${i===P.m?'selected':''}>${x}</option>`).join('')}</select></label>
+<label>ปี พ.ศ. <input id="gp_y" type="number" min="2500" max="2700" value="${P.y}" style="width:90px"></label>
+<label>จำนวน <input id="gp_n" type="number" min="1" max="36" value="${N}" style="width:70px"> เดือน</label>
+<button type="button" class="btn primary sm" onclick="ganttPeriodApply()">ใช้ช่วงนี้</button>
+<button type="button" class="btn ghost sm" onclick="ganttFromProject()" title="คำนวณจากวันเริ่ม–วันสิ้นสุดโครงการด้านบน">ตามวันที่โครงการ</button></div>`;
+  else bar=`<div class="gp-bar ro">ช่วงเวลา: <b>${esc(GANTT.months[0]||'')} – ${esc(GANTT.months[N-1]||'')}</b> (${N} เดือน)</div>`;
+  let h=bar+`<table class="bud-tbl gantt"><thead><tr><th style="min-width:200px">กิจกรรม</th>`;
+  for(let j=0;j<N;j++)h+=`<th class="c gm">${esc(GANTT.months[j]).replace(' ','<br>')}</th>`;
   h+=`<th class="no-print"></th></tr></thead><tbody>`;
   GANTT.rows.forEach((r,i)=>{h+=`<tr><td><input value="${esc(r.act)}" ${GANTT_EDIT?'':'disabled'} oninput="ganttSet(${i},this.value)" placeholder="กิจกรรม..."></td>`;
-    for(let j=0;j<12;j++)h+=`<td class="c gantt-cell${r.m[j]?' on':''}" onclick="ganttToggle(${i},${j})">${r.m[j]?'✓':''}</td>`;
+    for(let j=0;j<N;j++)h+=`<td class="c gantt-cell${r.m[j]?' on':''}" onclick="ganttToggle(${i},${j})" title="${esc(GANTT.months[j])}">${r.m[j]?'✓':''}</td>`;
     h+=`<td class="c no-print">${GANTT_EDIT?`<button type="button" class="btn ghost sm" onclick="ganttDel(${i})">✕</button>`:''}</td></tr>`;});
-  if(GANTT_EDIT)h+=`<tr class="no-print bud-add"><td colspan="14"><button type="button" class="btn ghost sm" onclick="ganttAdd()">+ เพิ่มกิจกรรม</button></td></tr>`;
+  if(GANTT_EDIT)h+=`<tr class="no-print bud-add"><td colspan="${N+2}"><button type="button" class="btn ghost sm" onclick="ganttAdd()">+ เพิ่มกิจกรรม</button></td></tr>`;
   return h+`</tbody></table>`;}
 function ganttReportTable(pr){const g=pr.gantt;if(!g||!g.rows||!g.rows.some(r=>r.act||(r.m||[]).some(Boolean)))return '';
-  const mo=(Array.isArray(g.months)&&g.months.length===12)?g.months:Array.from({length:12},(_,j)=>String(j+1));
-  const used=Array.from({length:12},(_,j)=>g.rows.some(r=>(r.m||[])[j]));let last=11;while(last>0&&!used[last]&&!String(mo[last]||'').trim())last--;   // ตัดเดือนว่างท้ายที่ไม่มีชื่อ
-  const N=last+1;const mw=(62/N).toFixed(2);
+  const mo=(Array.isArray(g.months)&&g.months.length)?g.months:Array.from({length:12},(_,j)=>String(j+1));
+  const N=mo.length;   // v39.3: ตามช่วงที่ตั้งไว้
+  const actW=N>14?28:N<=6?50:38;const mw=((100-actW)/N).toFixed(2);
   const mh=t=>{const m=/^(.*?)\s*(\d{2,4})$/.exec(String(t||'').trim());return m&&m[1]?`${esc(m[1])}<br>${esc(m[2])}`:esc(t);};
-  let h=`<table class="gantt-r"><colgroup><col style="width:38%">${('<col style="width:'+mw+'%">').repeat(N)}</colgroup><thead><tr><th class="ga">กิจกรรม</th>`;
+  let h=`<table class="gantt-r"><colgroup><col style="width:${actW}%">${('<col style="width:'+mw+'%">').repeat(N)}</colgroup><thead><tr><th class="ga">กิจกรรม</th>`;
   for(let j=0;j<N;j++)h+=`<th>${mh(mo[j])}</th>`;h+=`</tr></thead><tbody>`;
   let k=0;g.rows.forEach(r=>{if(!(r.act||(r.m||[]).some(Boolean)))return;k++;const m=r.m||[];
     h+=`<tr class="${k%2?'':'z'}"><td class="ga">${esc(r.act)||'-'}</td>`;
     for(let j=0;j<N;j++){if(m[j]){const s0=!m[j-1],e0=!m[j+1];h+=`<td class="on"><i class="${s0?'s':''} ${e0?'e':''}"></i></td>`;}else h+=`<td></td>`;}
     h+=`</tr>`;});
-  return `<div class="pp-keep"><div class="gantt-cap">ระยะเวลาดำเนินงาน (เดือนที่ 1–${N}) · แถบสี = ช่วงเดือนที่ดำเนินกิจกรรม</div>${h}</tbody></table></div>`;}
+  return `<div class="pp-keep"><div class="gantt-cap">ระยะเวลาดำเนินงาน ${esc(mo[0])} – ${esc(mo[N-1])} (${N} เดือน) · แถบสี = ช่วงเดือนที่ดำเนินกิจกรรม</div>${h}</tbody></table></div>`;}
 /* ---- ไทม์ไลน์ระยะเวลา: ป้อนแบบ วัน/เดือน/ปี(พ.ศ.) ต่อช่วง ---- */
 let TL=null;
 const THMON_S=['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];
