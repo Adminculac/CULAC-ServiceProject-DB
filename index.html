@@ -317,6 +317,8 @@ body.role-viewer .canedit{display:none!important}
 
 /* v39 Gantt ในเอกสารพิมพ์ */
 td .res5-sw,.prop-form td .res5-sw{display:inline-flex!important;align-items:center;gap:6px;width:auto!important;margin:0 0 0 14px!important;padding:0!important;font-weight:600;font-size:14px!important;color:#8a1f4f;cursor:pointer;white-space:nowrap;vertical-align:middle}td .res5-sw input{width:16px!important;height:16px;margin:0!important;padding:0!important;flex:none}
+.qf-old{margin-top:8px;font-size:14px;color:#6e4405}.qf-old a{color:#8a1f4f;font-weight:600}
+.qf-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:15px}.qf-pick{cursor:pointer;display:inline-flex}
 .gp-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;background:#fff6fa;border:1.5px solid #f0cfdd;border-radius:10px;padding:10px 14px;margin:4px 0 10px;font-size:15px;color:#2a1a22}
 .gp-bar b{color:#8a1f4f}.gp-bar label{display:flex;align-items:center;gap:6px;font-weight:500;margin:0}
 .gp-bar select,.gp-bar input{padding:6px 8px;border:1.5px solid #e6c9d6;border-radius:8px;font:inherit;width:auto}
@@ -556,7 +558,7 @@ input.money{text-align:right;font-family:'Sarabun';font-weight:500}
 <div class="nav-group">จัดการระบบ</div>
 <button data-v="settings"><svg class="ni" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>ตั้งค่า / สำรองข้อมูล</button>
 </nav>
-<div class="foot"><div id="clockBox" class="clock"></div><div id="roleBadge" style="margin-bottom:8px"></div><div id="syncBadge" style="margin-bottom:8px;font-size:12.5px"></div><span class="ver">v39.7</span></div>
+<div class="foot"><div id="clockBox" class="clock"></div><div id="roleBadge" style="margin-bottom:8px"></div><div id="syncBadge" style="margin-bottom:8px;font-size:12.5px"></div><span class="ver">v40.1</span></div>
 </aside>
 <button class="menu-toggle" onclick="toggleMenu()" aria-label="เปิดเมนู" aria-controls="side"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
 <button class="help-btn" onclick="openHelp()" title="วิธีใช้หน้านี้ (กด ?)" aria-label="วิธีใช้หน้านี้">?</button>
@@ -1577,7 +1579,7 @@ ${nextBanner(p)}
 <button class="btn ghost sm canedit" onclick="editProject('${esc(p.projNo)}')">แก้ไข</button>
         ${(ROLE==='admin'||isHeadOf(p))?`<button class="btn ghost sm" onclick="assignCoord('${esc(p.projNo)}')">กำหนดผู้เกี่ยวข้อง</button>`:''}
         ${(p.pdfUrl||p.pdfData)?`<button class="btn ghost sm" onclick="viewPdf('${esc(p.projNo)}')">ไฟล์แนบ</button>`:''}
-        ${safeUrl(p.quoteUrl)?`<a class="btn ghost sm" href="${esc(safeUrl(p.quoteUrl))}" target="_blank" rel="noopener">ใบเสนอราคา</a>`:''}
+        ${(()=>{const _pr=p.fromProposal&&(DB.proposals||[]).find(x=>x.id===p.fromProposal);if(_pr&&_pr.quoteFileId)return `<button class="btn ghost sm" onclick="qfOpenId('${esc(_pr.quoteFileId)}')">ใบเสนอราคา</button>`;return safeUrl(p.quoteUrl)?`<a class="btn ghost sm" href="${esc(safeUrl(p.quoteUrl))}" target="_blank" rel="noopener">ใบเสนอราคา</a>`:'';})()}
 <button class="btn ghost sm" onclick="openTimeline('${esc(p.projNo)}')">เส้นทางของงาน</button>
 <button class="btn ghost sm" onclick="doPrint(incExpReport('${esc(p.projNo)}'),ptitle('${esc(p.projNo)}','งบรายได้-รายจ่าย'))">งบรายได้-รายจ่าย</button>
 <button class="btn ghost sm" onclick="window.print()">พิมพ์</button>
@@ -2712,7 +2714,10 @@ ${ta('principle','1. หลักการและเหตุผล',3)}
       ${ta('exemption','การขออนุมัติยกเว้นการจัดสรรเงินอุดหนุนพัฒนาวิชาการ/ค่าสาธารณูปโภค/เงินสำรอง (ถ้ามี)',2)}
 </div>
 <div class="fsec"><div class="fsec-t">สิ่งที่ส่งมาด้วย</div>
-<div class="fld full"><label>ลิงก์ใบเสนอราคา (Quotation)<span class="hint">วางลิงก์ไฟล์ใบเสนอราคา (Google Drive / URL)</span></label><input id="pf_quoteUrl" value="${V('quoteUrl')}" placeholder="https://drive.google.com/..." ${dis}></div>
+<div class="fld full"><label>ใบเสนอราคา (ถ้ามี)<span class="hint">แนบไฟล์ PDF / JPG / PNG ไม่เกิน 10 MB</span></label>
+<input type="hidden" id="pf_quoteFileId" value="${V('quoteFileId')}"><input type="hidden" id="pf_quoteFileName" value="${V('quoteFileName')}">
+<div id="qfBox" data-edit="${editable?1:0}">${qfHtml(pr.quoteFileId,pr.quoteFileName,editable)}</div>
+<input type="hidden" id="pf_quoteUrl" value="${V('quoteUrl')}">${(pr.quoteUrl&&!pr.quoteFileId&&safeUrl(pr.quoteUrl))?`<div class="qf-old">ข้อเสนอนี้แนบเป็นลิงก์ไว้เดิม · <a href="${esc(safeUrl(pr.quoteUrl))}" target="_blank" rel="noopener">เปิดลิงก์เดิม</a>${editable?' · แนบไฟล์ด้านบนแทนได้':''}</div>`:''}</div>
 </div>
     ${footer}
 <div class="prop-sign">
@@ -2905,7 +2910,7 @@ function periodTimeline(p){
   return h;
 }
 function readProp(pr){
-  ['projNo','projName','faculty','jointWith','startDate','endDate','principle','objective','strategy','benefit','budgetSource','headName','headTitle','committee','venue','target','steps','evaluation','budgetNote','compensation','exemption','quoteUrl','signDate','signNote'].forEach(k=>{const el=document.getElementById('pf_'+k);if(el)pr[k]=el.value;});
+  ['projNo','projName','faculty','jointWith','startDate','endDate','principle','objective','strategy','benefit','budgetSource','headName','headTitle','committee','venue','target','steps','evaluation','budgetNote','compensation','exemption','quoteUrl','quoteFileId','quoteFileName','signDate','signNote'].forEach(k=>{const el=document.getElementById('pf_'+k);if(el)pr[k]=el.value;});
   const pt=document.querySelector('input[name=pf_projType]:checked');if(pt)pr.projType=pt.value;
   const ind=document.getElementById('pf_indentFirst');if(ind)pr.indentFirst=!!ind.checked;
   if(BUD){pr.budget=JSON.parse(JSON.stringify(BUD));const t=budTotals();pr.budgetRevenue=t.rev;pr.budgetExpense=t.exp;}
@@ -3041,7 +3046,50 @@ function taClose(apply){const d=document.getElementById('taCard');if(!d)return;c
   if(apply&&src&&!src.disabled&&b){src.value=b.value;src.dispatchEvent(new Event('input',{bubbles:true}));src.dispatchEvent(new Event('change',{bubbles:true}));taGrow(src);}
   d.remove();if(src)src.focus();TA_TARGET=null;}
 (function(){try{new MutationObserver(()=>{const m=document.getElementById('main');if(m&&m.querySelector('textarea.ta-auto:not([data-g])')){m.querySelectorAll('textarea.ta-auto:not([data-g])').forEach(t=>{t.dataset.g='1';taGrow(t);});}}).observe(document.body,{childList:true,subtree:true});}catch(e){}})();
-function printProp(id){const pr=(DB.proposals||[]).find(x=>x.id===id)||{};doPrint(propReport(id),pr.projName||'แบบข้อเสนอขอโครงการ');}
+async function printProp(id){const pr=(DB.proposals||[]).find(x=>x.id===id)||{};
+  let html=propReport(id);
+  if(pr.quoteFileId||pr.quoteUrl){   // v40: รวมใบเสนอราคาไว้ท้ายแบบเสนอ
+    toast('กำลังรวมใบเสนอราคาเข้ากับแบบเสนอ…','ok');
+    let pages=[];try{pages=await quotePages(pr);}catch(e){pages=[];toast('รวมใบเสนอราคาไม่ได้: '+(e.message||e)+' — พิมพ์แบบเสนออย่างเดียว','bad');}
+    if(pages.length){const P=printPref(),sz=PAGE_MM[P.size||'A4']||PAGE_MM.A4,H=(P.orient==='landscape'?sz[0]:sz[1]),mh=Math.max(60,H-3-P.mv*2-12);
+      const att=pages.map(src=>`<div class="pp-sec pp-att" style="height:${mh}mm;display:flex;justify-content:center;align-items:flex-start;overflow:hidden"><img src="${src}" alt="ใบเสนอราคา" style="display:block;max-width:100%;max-height:100%;object-fit:contain;border:1px solid #bbb"></div>`).join('');
+      html=html.replace('<!--QATT-->',' (แนบท้ายเอกสาร '+pages.length+' หน้า)').replace(/<\/div>\s*$/,att+'</div>');}
+    else html=html.replace('<!--QATT-->',pr.quoteUrl?' (แนบลิงก์)':'');
+  }
+  doPrint(html,pr.projName||'แบบข้อเสนอขอโครงการ');}
+/* ===== v40: ไฟล์แนบใบเสนอราคา ===== */
+async function gasAction(action,extra){const c=cloudCfg();if(!c)throw new Error('ยังไม่เชื่อมระบบกลาง');
+  const r=await fetch(c.url,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(Object.assign({action},authFields(),extra||{}))});
+  const j=await r.json();if(!j.ok)throw new Error(j.error||action+' failed');return j;}
+function qfHtml(fid,fname,edit){
+  if(fid)return `<div class="qf-row">📎 <b>${esc(fname||'ใบเสนอราคา')}</b><button type="button" class="btn ghost sm" onclick="qfView()">เปิดดู</button>${edit?`<button type="button" class="btn ghost sm" style="color:var(--red)" onclick="qfRemove()">เอาออก</button>`:''}</div>`;
+  return edit?`<label class="btn ghost sm qf-pick">📎 แนบไฟล์ใบเสนอราคา<input type="file" accept="application/pdf,image/jpeg,image/png" onchange="qfPick(this)" hidden></label>`:'<span>— ไม่มีไฟล์แนบ —</span>';}
+function qfRender(){const b=document.getElementById('qfBox');if(!b)return;b.innerHTML=qfHtml(document.getElementById('pf_quoteFileId').value,document.getElementById('pf_quoteFileName').value,b.dataset.edit==='1');}
+function qfPick(inp){const f=inp.files&&inp.files[0];if(!f)return;
+  if(!/^(application\/pdf|image\/jpeg|image\/png)$/.test(f.type)){toast('ไฟล์ต้องเป็น PDF, JPG หรือ PNG','bad');inp.value='';return;}
+  if(f.size>10*1024*1024){toast('ไฟล์ใหญ่เกิน 10 MB','bad');inp.value='';return;}
+  const b=document.getElementById('qfBox');b.innerHTML='<span>กำลังอัปโหลด…</span>';
+  const rd=new FileReader();rd.onload=async()=>{try{const j=await gasAction('upload',{name:f.name,mime:f.type,data:String(rd.result).split(',')[1]});
+      document.getElementById('pf_quoteFileId').value=j.id;document.getElementById('pf_quoteFileName').value=j.name;const ou=document.getElementById('pf_quoteUrl');if(ou)ou.value='';const od=document.querySelector('.qf-old');if(od)od.remove();qfRender();toast('แนบใบเสนอราคาแล้ว · กดบันทึกเพื่อเก็บ','ok');}
+    catch(e){qfRender();toast('อัปโหลดไม่สำเร็จ: '+(e.message||e),'bad');}};
+  rd.readAsDataURL(f);}
+function qfRemove(){document.getElementById('pf_quoteFileId').value='';document.getElementById('pf_quoteFileName').value='';qfRender();toast('เอาไฟล์ออกแล้ว · กดบันทึกเพื่อเก็บ','ok');}
+async function qfFetch(fid,url){const j=await gasAction('file',fid?{id:fid}:{url});const bin=atob(j.data),u8=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)u8[i]=bin.charCodeAt(i);return {mime:j.mime,bytes:u8};}
+async function qfOpenId(fid){try{const f=await qfFetch(fid);window.open(URL.createObjectURL(new Blob([f.bytes],{type:f.mime})),'_blank');}catch(e){toast('เปิดไฟล์ไม่ได้: '+(e.message||e),'bad');}}
+async function qfView(){try{const f=await qfFetch(document.getElementById('pf_quoteFileId').value);window.open(URL.createObjectURL(new Blob([f.bytes],{type:f.mime})),'_blank');}catch(e){toast('เปิดไฟล์ไม่ได้: '+(e.message||e),'bad');}}
+let PDFJS_P=null;
+function loadPdfJs(){if(window.pdfjsLib)return Promise.resolve(window.pdfjsLib);if(PDFJS_P)return PDFJS_P;
+  PDFJS_P=new Promise((ok,bad)=>{const sc=document.createElement('script');sc.src='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+    sc.onload=()=>{try{window.pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';ok(window.pdfjsLib);}catch(e){bad(e);}};
+    sc.onerror=()=>{PDFJS_P=null;bad(new Error('โหลดตัวอ่าน PDF ไม่ได้'));};document.head.appendChild(sc);});return PDFJS_P;}
+async function quotePages(pr){
+  const f=await qfFetch(pr.quoteFileId,pr.quoteFileId?'':pr.quoteUrl);
+  if(/^image\//.test(f.mime)){let b='';for(let i=0;i<f.bytes.length;i+=0x8000)b+=String.fromCharCode.apply(null,f.bytes.subarray(i,i+0x8000));return ['data:'+f.mime+';base64,'+btoa(b)];}
+  const lib=await loadPdfJs();const doc=await lib.getDocument({data:f.bytes}).promise;const out=[];
+  for(let n=1;n<=Math.min(doc.numPages,30);n++){const pg=await doc.getPage(n);const v0=pg.getViewport({scale:1});const vp=pg.getViewport({scale:Math.min(2.2,1500/v0.width)});
+    const cv=document.createElement('canvas');cv.width=Math.round(vp.width);cv.height=Math.round(vp.height);const cx=cv.getContext('2d');cx.fillStyle='#fff';cx.fillRect(0,0,cv.width,cv.height);
+    await pg.render({canvasContext:cx,viewport:vp}).promise;out.push(cv.toDataURL('image/jpeg',0.85));}
+  return out;}
 function ptitle(no,kind){const p=(DB.projects||[]).find(x=>x.projNo===no)||{};const n=p.fullName||p.shortName||no;return kind?n+' - '+kind:n;}
 function propParas(v,indentFirst){
   const raw=String(v==null?'':v).replace(/\r/g,'').replace(/ |　/g,' ');
@@ -3119,7 +3167,7 @@ ${budReportTable(pr)}
 ${pr.budgetNote?`<div style="display:flex;gap:8px;font-size:14px;margin-top:6px"><span style="font-weight:bold;white-space:nowrap">* หมายเหตุ</span><div style="flex:1">${propParas(pr.budgetNote,false)}</div></div>`:''}</div>
 ${pr.compensation?`<div class="pp-sec pp-split"><div class="pp-h"><b>อัตราค่าตอบแทนที่เสนอขออนุมัติคณะกรรมการการเงิน</b></div>${propParas(pr.compensation,IF)}</div>`:''}
 ${pr.exemption?`<div class="pp-sec pp-split"><div class="pp-h"><b>การขออนุมัติยกเว้นการจัดสรรเงินอุดหนุนพัฒนาวิชาการ/ค่าสาธารณูปโภค/เงินสำรอง</b></div>${propParas(pr.exemption,IF)}</div>`:''}
-${pr.quoteUrl?`<div class="pp-sec" style="margin-top:8px;font-size:14px"><b>สิ่งที่ส่งมาด้วย: </b>ใบเสนอราคา (แนบลิงก์)</div>`:''}
+${(pr.quoteFileId||pr.quoteUrl)?`<div class="pp-sec" style="margin-top:8px;font-size:14px"><b>สิ่งที่ส่งมาด้วย: </b>ใบเสนอราคา<!--QATT--></div>`:''}
 ${pr.signNote?`<div class="pp-sec" style="margin-top:8px;font-size:14px"><b>หมายเหตุ: </b>${propParas(pr.signNote,false)}</div>`:''}
 <div class="pp-sec pp-sign"><div style="display:flex;justify-content:center;margin-top:52px;text-align:center">
 <div>(${esc(pr.headName)?'&nbsp;'+esc(pr.headName)+'&nbsp;':'...............................................'})<br>หัวหน้าโครงการ<br>${pr.signDate?fmtDate(pr.signDate):'........./............/.........'}</div>
@@ -3697,9 +3745,9 @@ function paginatePrint(pa,P){P=P||printPref();
     /* v39: ไม่มีหัวกระดาษต่อเนื่อง */
     pg.forEach(u=>{ if(u.st){body.appendChild(u.st.mk(u.rows));} else body.appendChild(u.el); });
     page.appendChild(body);
-    if(P.pnum!=='none'&&total>1){const f=document.createElement('div');f.className='pp-foot';   // v39: ท้ายกระดาษมีแค่เลขหน้า
+    if(P.pnum!=='none'){const f=document.createElement('div');f.className='pp-foot';   // v39: ท้ายกระดาษมีแค่เลขหน้า
       f.style.cssText=`position:absolute;left:${mh}mm;right:${mh}mm;bottom:${Math.max(5,mv/2-1)}mm;text-align:${P.pnum==='right'?'right':'center'};font-family:'Sarabun';font-size:13px;color:#000`;
-      f.textContent=P.pnum==='right'?String(pi+1):'- '+(pi+1)+' -';page.appendChild(f);}
+      f.textContent='หน้า '+(pi+1)+'/'+total;page.appendChild(f);}
     pa.appendChild(page);
   });
   let ps=document.getElementById('printStylePaged');
