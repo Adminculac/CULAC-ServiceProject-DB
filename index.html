@@ -529,6 +529,32 @@ input.money{text-align:right;font-family:'Sarabun';font-weight:500}
   .rh2-prog .bar i,.net-box,.ck.g,.ck.r,.ck.a,.pill,.print-header img,.reg-head2{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   @page{size:A4;margin:18mm 16mm}
 }
+
+/* v41: มติ 3 แบบ · ส่งกลับแก้ไข · ไม่อนุมัติ · ตัดตอนรายงานการประชุม */
+.btn.danger{background:var(--red);color:#fff;border-color:var(--red)}
+.dec-opts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:4px 0 12px}.dec-opts.two{grid-template-columns:1fr 1fr}
+.dec-o{display:flex;flex-direction:column;gap:2px;border:1.5px solid var(--line-d);border-radius:10px;padding:9px 12px 9px 34px;position:relative;cursor:pointer;font-weight:400;background:#fff}
+.dec-o input{position:absolute;left:11px;top:12px;width:auto;margin:0}.dec-o b{font-size:14px}.dec-o span{font-size:12px;color:var(--ink)}
+.dec-o.ok b{color:var(--green)}.dec-o.ret b,.dec-o.pre b{color:var(--amber)}.dec-o.no b{color:var(--red)}
+.dec-o.on.ok{border-color:var(--green);background:var(--green-l)}.dec-o.on.ret,.dec-o.on.pre{border-color:#e0c58a;background:var(--amber-l)}.dec-o.on.no{border-color:#f0b4b4;background:var(--red-l)}
+.dec-chg{background:var(--pink-xl);border:1px solid var(--line-d);border-radius:8px;padding:7px 11px;font-size:13px;margin-bottom:10px}
+.dec-ban{border-radius:12px;padding:12px 15px;margin:0 0 12px;border:1.5px solid}.dec-ban.ret{background:var(--amber-l);border-color:#e0c58a}.dec-ban.no{background:var(--red-l);border-color:#f0b4b4}.dec-ban.info{background:var(--pink-xl);border-color:var(--line-d)}
+.dec-ban-t{font-weight:700;font-size:15px}.dec-ban.ret .dec-ban-t{color:var(--amber)}.dec-ban.no .dec-ban-t{color:#8a1616}.dec-ban.info .dec-ban-t{color:var(--pink-d)}
+.dec-ban-s{font-size:12.5px;margin-top:2px}.dec-ban-n{font-size:13.5px;margin-top:6px;line-height:1.6}.dec-ban-h{font-size:13px;margin-top:8px;font-weight:600}
+.dec-hist{border:1px solid var(--line-d);border-radius:12px;padding:8px 14px;margin:0 0 12px;background:#fff}.dec-hist summary{cursor:pointer;font-weight:700;font-size:13.5px;color:var(--pink-d)}
+.dec-hi{display:flex;gap:10px;padding:8px 0;border-top:1px solid var(--line);font-size:13px;line-height:1.55}.dec-hi:first-of-type{border-top:none}.dec-hn{margin-top:2px}
+.dec-k{flex:none;align-self:flex-start;border-radius:999px;padding:1px 10px;font-weight:700;font-size:12px;border:1px solid}.dec-k.ok{color:var(--green);border-color:var(--green);background:var(--green-l)}.dec-k.ret{color:var(--amber);border-color:#e0c58a;background:var(--amber-l)}.dec-k.no{color:#8a1616;border-color:#f0b4b4;background:var(--red-l)}
+.min-list{display:flex;flex-wrap:wrap;gap:6px;align-items:center}.min-links{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.crop-ov{position:fixed;inset:0;background:rgba(43,34,48,.55);z-index:3000;display:flex;align-items:center;justify-content:center;padding:14px}
+.crop-in{background:#fff;border-radius:14px;width:100%;max-width:1100px;max-height:94vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.crop-h{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line-d);color:var(--pink-d)}
+.crop-tip{font-size:12.5px;padding:8px 16px;background:var(--pink-xl);border-bottom:1px solid var(--line);line-height:1.55}
+.crop-bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:8px 16px}.crop-pg{display:flex;gap:6px;align-items:center;font-size:13px}.crop-msg{font-size:12.5px;color:var(--pink-d);font-weight:600}
+.crop-stage{flex:1;overflow:auto;background:#f3eef1;padding:12px;min-height:200px}.crop-empty{text-align:center;padding:60px 10px;font-size:14px}
+.crop-wrap{position:relative;display:inline-block;touch-action:none;user-select:none;cursor:crosshair;max-width:100%}.crop-wrap img{display:block;max-width:100%;height:auto;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+.crop-sel{position:absolute;border:2.5px solid var(--pink-d);background:rgba(217,90,140,.12);box-shadow:0 0 0 9999px rgba(43,34,48,.35);pointer-events:none}
+.crop-f{display:flex;justify-content:flex-end;gap:10px;padding:10px 16px;border-top:1px solid var(--line-d)}
+@media(max-width:640px){.dec-opts,.dec-opts.two{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -558,7 +584,7 @@ input.money{text-align:right;font-family:'Sarabun';font-weight:500}
 <div class="nav-group">จัดการระบบ</div>
 <button data-v="settings"><svg class="ni" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>ตั้งค่า / สำรองข้อมูล</button>
 </nav>
-<div class="foot"><div id="clockBox" class="clock"></div><div id="roleBadge" style="margin-bottom:8px"></div><div id="syncBadge" style="margin-bottom:8px;font-size:12.5px"></div><span class="ver">v40.1</span></div>
+<div class="foot"><div id="clockBox" class="clock"></div><div id="roleBadge" style="margin-bottom:8px"></div><div id="syncBadge" style="margin-bottom:8px;font-size:12.5px"></div><span class="ver">v41.1</span></div>
 </aside>
 <button class="menu-toggle" onclick="toggleMenu()" aria-label="เปิดเมนู" aria-controls="side"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
 <button class="help-btn" onclick="openHelp()" title="วิธีใช้หน้านี้ (กด ?)" aria-label="วิธีใช้หน้านี้">?</button>
@@ -1659,8 +1685,11 @@ ${changeReqPanel(p)}
       if(p.status==='รอปิด (เสนอ คก.)'){R.unshift(`<span class="pact-st warn">⏳ รอปิด — เสนอคณะกรรมการ</span>`);R.push(`<button class="btn ghost sm" onclick="askClose('${no}')">แก้ผลการดำเนินงาน</button>`);if(ROLE==='admin')R.push(`<button class="btn primary sm" onclick="closeProject('${no}')">ปิดโครงการ (หลัง คก.อนุมัติ)</button>`);}
       if(p.status==='ปิดแล้ว'){R.unshift(`<span class="pact-st ok">ปิดแล้ว${p.closeInfo&&p.closeInfo.meetingNo?' (มติ '+esc(p.closeInfo.meetingNo)+')':''}</span>`);R.push(`<button class="btn ghost sm" onclick="doPrint(closeReport('${no}'),ptitle('${no}','รายงานปิดโครงการ'))">รายงานปิดโครงการ</button>`);if(ROLE==='admin')R.push(`<button class="btn ghost sm" onclick="reopenProject('${no}')">เปิดโครงการอีกครั้ง</button>`);}}
     if(ROLE==='finance'&&p.status!=='ปิดแล้ว')R.push(`<button class="btn primary sm" onclick="openDisb('${no}')">บันทึกอนุมัติขยายเวลาเบิกจ่าย</button>`);
-    if(!L.length&&!R.length)return '';
-    return `<div class="pact no-print"><div class="pact-l">${L.join('')}</div><div class="pact-r">${R.join('')}</div></div>`;})()}
+    const ci=p.closeInfo||{};const rets=Array.isArray(ci.returns)?ci.returns:[];const lr=rets[rets.length-1];let ban='';   // v41
+    if(lr&&p.status==='ยังไม่ปิดโครงการ')ban=`<div class="dec-ban ret no-print" style="margin-top:12px"><div class="dec-ban-t">↩ คณะกรรมการส่งกลับคำขอปิดโครงการให้แก้ไข</div><div class="dec-ban-s">มติคณะกรรมการบริหาร ครั้งที่ ${esc(lr.meetingNo||'-')} วันที่ ${esc(fmtDate(lr.date))}</div><div class="dec-ban-n"><b>ข้อสังเกต:</b> ${esc(lr.note||'').replace(/\n/g,'<br>')}</div>${minLinks(lr.files)}${H?'<div class="dec-ban-h">แก้ไขแล้วกด <b>"ขอปิดโครงการ"</b> อีกครั้ง</div>':''}</div>`;
+    if(p.status==='ปิดแล้ว'&&(ci.files||[]).length)ban=`<div class="no-print" style="margin-top:10px">${minLinks(ci.files)}</div>`;
+    if(!L.length&&!R.length)return ban;
+    return ban+`<div class="pact no-print"><div class="pact-l">${L.join('')}</div><div class="pact-r">${R.join('')}</div></div>`;})()}
 <style>@media(max-width:1500px){.reg-cols{grid-template-columns:1fr!important}}</style>`;
 }
 /* v38.5: เลื่อนไปโครงการก่อนหน้า/ถัดไป ตามลำดับในหน้ารวม (ตัวกรองและคำค้นเดียวกัน) */
@@ -1712,23 +1741,45 @@ function closeProject(no){
   if(ROLE!=='admin'){toast('การบันทึกมติปิดโครงการ เฉพาะหัวหน้างาน','bad');return;}
   const f=closeFin(p);const ci=p.closeInfo||{};
   openModal(`<div class="mh">ปิดโครงการ (หลังคณะกรรมการอนุมัติ) — ${esc(p.projNo)}</div>
-<p style="font-size:13px;color:var(--muted);margin-bottom:12px">บันทึกมติคณะกรรมการบริหารที่อนุมัติให้ปิดโครงการ</p>
-<div class="grid2">
-<div class="fld"><label>มติที่ประชุมบริหาร ครั้งที่</label><input id="cl_meet" placeholder="เช่น 5/2568" value="${esc(ci.meetingNo)}"></div>
-<div class="fld"><label>วันที่ (ปฏิทิน)</label><input id="cl_date" type="date" value="${esc(ci.date)}"></div>
+<p style="font-size:13px;margin-bottom:12px">บันทึกมติคณะกรรมการบริหารเรื่องการปิดโครงการ</p>
+<div class="dec-opts two">
+<label class="dec-o ok on"><input type="radio" name="clk" value="close" checked onchange="clToggle()"><b>✓ อนุมัติให้ปิดโครงการ</b><span>บันทึกรับ-จ่ายเพิ่มไม่ได้อีก</span></label>
+<label class="dec-o ret"><input type="radio" name="clk" value="ret" onchange="clToggle()"><b>↩ ส่งกลับให้แก้ไข</b><span>เช่น แก้รายงานผล ยอดเงินไม่ตรง</span></label>
 </div>
+<div class="grid2">
+<div class="fld"><label>มติที่ประชุมบริหาร ครั้งที่<span class="req">*</span></label><input id="cl_meet" placeholder="เช่น 5/2569" value="${esc(ci.meetingNo)}"></div>
+<div class="fld"><label>วันที่ประชุม<span class="req">*</span></label><input id="cl_date" type="date" value="${esc(ci.date)}"></div>
+</div>
+<div class="fld"><label id="clNoteL">หมายเหตุ (ถ้ามี)</label><textarea id="cl_note" rows="2"></textarea></div>
+${minBox()}
     ${ci.resultNote?`<div class="card" style="font-size:13px"><b>ผลการดำเนินงาน (หัวหน้าโครงการเขียนไว้):</b><br>${esc(ci.resultNote).replace(/\n/g,'<br>')}</div>`:'<div class="sp-hintline" style="color:#b26a1a">ยังไม่มีผลการดำเนินงาน — กด "แก้ผลการดำเนินงาน" เพื่อเพิ่มก่อน (ถ้าต้องการ)</div>'}
 <div class="card" style="margin-top:6px;font-size:13px">รับจริง:<b>${fmt2(f.c.received)}</b>· คงเหลือสุทธิ:<b>${fmt2(f.c.net)}</b>บาท</div>
-<div class="mf"><button class="btn ghost" onclick="closeModal()">ยกเลิก</button><button class="btn primary" onclick="doCloseProject('${esc(no)}')">✓ ยืนยันปิดโครงการ</button></div>`);
+<div class="mf"><button class="btn ghost" onclick="closeModal()">ยกเลิก</button><button class="btn primary" id="clBtn" onclick="doCloseProject('${esc(no)}')">✓ ยืนยันปิดโครงการ</button></div>`);
+  MINF=[];minRender();
 }
+function clToggle(){const k=(document.querySelector('input[name=clk]:checked')||{}).value;
+  document.querySelectorAll('.dec-o').forEach(x=>x.classList.toggle('on',!!x.querySelector('input:checked')));
+  const l=document.getElementById('clNoteL');if(l)l.innerHTML=k==='ret'?'ข้อสังเกตของคณะกรรมการ (แจ้งหัวหน้าโครงการ)<span class="req">*</span>':'หมายเหตุ (ถ้ามี)';
+  const b=document.getElementById('clBtn');if(b)b.textContent=k==='ret'?'บันทึกมติ: ส่งกลับให้แก้ไข':'✓ ยืนยันปิดโครงการ';}
 function doCloseProject(no){
   const p=DB.projects.find(x=>x.projNo===no);if(!p)return;
   if(ROLE!=='admin'){toast('เฉพาะหัวหน้างาน','bad');return;}
   const meet=(document.getElementById('cl_meet').value||'').trim(), date=(document.getElementById('cl_date').value||'').trim();
   if(!meet||!date){toast('กรุณากรอกครั้งที่ประชุม + วันที่','bad');return;}
   const me=CURRENT_USER||{};
+  const _k=(document.querySelector('input[name=clk]:checked')||{}).value||'close',_note=((document.getElementById('cl_note')||{}).value||'').trim(),_files=MINF.map(f=>({id:f.id,name:f.name||''}));
+  if(_k==='ret'){   // v41: คณะกรรมการส่งกลับให้แก้ไขก่อนปิด
+    if(!_note){toast('กรุณาระบุข้อสังเกตของคณะกรรมการ','bad');return;}
+    const ci0=p.closeInfo||{};const rets=(Array.isArray(ci0.returns)?ci0.returns:[]).concat([{meetingNo:meet,date,note:_note,files:_files,by:me.name||me.email||'',at:Date.now()}]);
+    p.closeInfo=Object.assign({},ci0,{returns:rets});p.status='ยังไม่ปิดโครงการ';
+    logAct('ส่งกลับคำขอปิดโครงการ '+no+' ให้แก้ไข (มติ '+meet+')');
+    const _rt='โครงการเลขที่ '+no+' ขอปิดโครงการ — ส่งกลับให้แก้ไข';
+    const _rb='โครงการเลขที่ '+no+' "'+(p.fullName||'')+'"\nคณะกรรมการบริหาร ครั้งที่ '+meet+' วันที่ '+fmtDate(date)+' ส่งกลับให้แก้ไขก่อนปิดโครงการ\nข้อสังเกต: '+_note+(_files.length?'\nมีรายงานการประชุมแนบไว้ในระบบ (ทะเบียนโครงการ)':'')+'\nแก้ไขแล้วกด "ขอปิดโครงการ" อีกครั้ง';
+    if(p.head)notify(p.head,_rt,_rb,no,mkMail(userEmailByName(p.head),_rt,_rb));
+    if(p.coordinator)notify(p.coordinator,_rt,_rb,no,mkMail(userEmailByName(p.coordinator),_rt,_rb));
+    save();closeModal();render(no);updNotifBell();toast('ส่งกลับให้แก้ไขแล้ว · แจ้งหัวหน้าโครงการแล้ว','ok');return;}
   p.status='ปิดแล้ว';
-  p.closeInfo=Object.assign({},p.closeInfo,{meetingNo:meet,date:date,byName:me.name||me.email||'',at:Date.now()});
+  p.closeInfo=Object.assign({},p.closeInfo,{meetingNo:meet,date:date,note:_note,files:_files,byName:me.name||me.email||'',at:Date.now()});
   logAct('ปิดโครงการ '+no+' (มติ '+meet+' · '+fmtDate(date)+')');
   var _cmsg='โครงการเลขที่ '+no+' "'+(p.fullName||'')+'" อนุมัติปิดโครงการแล้ว ตามมติคณะกรรมการบริหาร ครั้งที่ '+meet+' ('+fmtDate(date)+')';
   var _ct='โครงการเลขที่ '+no+' ปิดโครงการแล้ว';
@@ -1965,7 +2016,7 @@ function changeReqPanel(p){
     <td style="white-space:nowrap">${r.at?fmtDate(new Date(r.at).toISOString().slice(0,10)):'-'}</td>
     <td><b>${esc(r.type)}</b><div style="font-size:12.5px;margin-top:2px">${esc(r.detail||'')}</div>${r.reason?`<div style="font-size:12px;color:var(--muted);margin-top:2px">เหตุผล: ${esc(r.reason)}</div>`:''}</td>
     <td>${esc(r.by||'')}</td>
-    <td>${st(r.status)}${r.decision?`<div style="font-size:12px;margin-top:3px">มติครั้งที่ ${esc(r.decision.meetingNo||'-')} · ${r.decision.date?fmtDate(r.decision.date):'-'}</div>`:''}</td>
+    <td>${st(r.status)}${r.decision?`<div style="font-size:12px;margin-top:3px">มติครั้งที่ ${esc(r.decision.meetingNo||'-')} · ${r.decision.date?fmtDate(r.decision.date):'-'}</div>${(r.status==='ไม่อนุมัติ'&&r.decision.note)?`<div style="font-size:12px;margin-top:2px;color:#8a1616">เหตุผล: ${esc(r.decision.note)}</div>`:''}${minLinks(r.decision.files)}`:''}</td>
     <td class="no-print" style="text-align:right">${(ROLE==='admin'&&r.status==='รออนุมัติ')?`<button class="btn primary sm" onclick="openRenew('${esc(p.projNo)}',${i})">บันทึกมติ</button>`:''}</td>
   </tr>`).join('');
   return `<div class="panel"><div class="panel-h"><h2>คำขอเปลี่ยนแปลงโครงการ (จากหัวหน้าโครงการ)</h2></div>
@@ -2015,6 +2066,7 @@ function openRenew(no,ri){
 <div class="mf"><button class="btn ghost" onclick="closeModal()">ยกเลิก</button><button class="btn primary" onclick="saveRenew('${esc(no)}')">บันทึก</button></div>`,{wide:hasBud});
 }
 function openReqDecision(p,prop,hasBud,ri){
+  MINF=[];setTimeout(minRender,0);   // v41: ตัดตอนรายงานการประชุม
   const r=(p.changeReqs||[])[ri];if(!r||r.status!=='รออนุมัติ'){toast('คำขอนี้บันทึกมติแล้ว','bad');return;}
   if(p.pendingCuerp){toast('รายการที่อนุมัติก่อนหน้ายังรอแผนยืนยันใน CUERP — ยืนยันรายการนั้นก่อน จึงบันทึกมติคำขอถัดไปได้','bad');return;}
   const isBud=(r.type==='ปรับงบประมาณ');
@@ -2037,8 +2089,9 @@ function openReqDecision(p,prop,hasBud,ri){
 <div class="fld"><label>ผลการพิจารณา</label><select id="rd_result" onchange="rdToggle()"><option value="อนุมัติ">อนุมัติ</option><option value="ไม่อนุมัติ">ไม่อนุมัติ</option></select></div>
 <div class="fld"><label>มติที่ประชุมบริหาร ครั้งที่</label><input id="rn_meet" placeholder="ครั้งที่ 5/2568"></div>
 <div class="fld"><label>วันที่ประชุม/อนุมัติ</label><input id="rn_date" type="date"></div>
-<div class="fld"><label>หมายเหตุ</label><input id="rn_note" placeholder="เช่น อนุมัติตามที่เสนอ / มีเงื่อนไข"></div>
+<div class="fld"><label id="rdNoteL">หมายเหตุ</label><input id="rn_note" placeholder="เช่น อนุมัติตามที่เสนอ / มีเงื่อนไข"></div>
 </div>
+${minBox()}
 </div>
 <div class="fsec" id="rd_valBox" style="margin-top:10px;padding:12px 14px"><div class="fsec-t" style="font-size:13px">3. ค่าที่อนุมัติ (ปรับได้หากมติต่างจากที่ขอ)</div>
 ${isBud?(hasBud?`<p style="font-size:13px;color:var(--ink);margin-bottom:4px">ตารางเติมตัวเลขที่หัวหน้าโครงการขอไว้แล้ว · แก้ช่อง "ขอปรับใหม่" เฉพาะเมื่อมติให้ต่างออกไป</p>${revSummary()}<div style="overflow-x:auto" id="rnBudBox">${revTable()}</div>`
@@ -2057,26 +2110,30 @@ ${isBud?(hasBud?`<p style="font-size:13px;color:var(--ink);margin-bottom:4px">�
 </div>
 <div class="mf"><button class="btn ghost" onclick="closeModal()">ยกเลิก</button><button class="btn primary" onclick="saveReqDecision('${esc(p.projNo)}',${ri})">บันทึกมติ</button></div>`,{wide:isBud});
 }
-function rdToggle(){const v=(document.getElementById('rd_result')||{}).value;const b=document.getElementById('rd_valBox');if(b)b.style.display=v==='ไม่อนุมัติ'?'none':'';}
+function rdToggle(){const v=(document.getElementById('rd_result')||{}).value;const b=document.getElementById('rd_valBox');if(b)b.style.display=v==='ไม่อนุมัติ'?'none':'';
+  const l=document.getElementById('rdNoteL');if(l)l.innerHTML=v==='ไม่อนุมัติ'?'เหตุผลที่ไม่อนุมัติ<span class="req">*</span>':'หมายเหตุ';
+  const n=document.getElementById('rn_note');if(n)n.placeholder=v==='ไม่อนุมัติ'?'ระบุเหตุผลตามมติ (แจ้งหัวหน้าโครงการ)':'เช่น อนุมัติตามที่เสนอ / มีเงื่อนไข';}
 function saveReqDecision(no,ri){
   const p=DB.projects.find(x=>x.projNo===no);if(!p)return;const r=(p.changeReqs||[])[ri];if(!r)return;
   if(ROLE!=='admin'){toast('เฉพาะหัวหน้างาน','bad');return;}
   if(r.status!=='รออนุมัติ'){toast('คำขอนี้บันทึกมติแล้ว','bad');closeModal();render(no);return;}
   const res=document.getElementById('rd_result').value, meet=document.getElementById('rn_meet').value.trim(), date=document.getElementById('rn_date').value.trim(), note=document.getElementById('rn_note').value.trim();
   if(!meet||!date){toast('กรอกครั้งที่ประชุมและวันที่ประชุม','bad');return;}
+  if(res==='ไม่อนุมัติ'&&!note){toast('กรุณาระบุเหตุผลที่ไม่อนุมัติ','bad');return;}   // v41
+  const _files=MINF.map(f=>({id:f.id,name:f.name||''}));
   const head=p.head||p.headName||'';
   if(res==='ไม่อนุมัติ'){
-    r.status='ไม่อนุมัติ';r.decision={result:res,meetingNo:meet,date,note,by:(CURRENT_USER||{}).name||'',at:Date.now()};
-    const body='โครงการเลขที่ '+no+' คำขอ'+r.type+' ('+r.detail+')\nคณะกรรมการบริหาร ครั้งที่ '+meet+' วันที่ '+fmtDate(date)+' มีมติ "ไม่อนุมัติ"'+(note?'\nหมายเหตุ: '+note:'');
+    r.status='ไม่อนุมัติ';r.decision={result:res,meetingNo:meet,date,note,files:_files,by:(CURRENT_USER||{}).name||'',at:Date.now()};
+    const body='โครงการเลขที่ '+no+' คำขอ'+r.type+' ('+r.detail+')\nคณะกรรมการบริหาร ครั้งที่ '+meet+' วันที่ '+fmtDate(date)+' มีมติ "ไม่อนุมัติ"'+'\nเหตุผล: '+note+(_files.length?'\nมีรายงานการประชุมแนบไว้ในระบบ (ทะเบียนโครงการ → คำขอเปลี่ยนแปลง)':'');
     if(head)notifyM(head,'โครงการเลขที่ '+no+' คำขอ'+r.type+' — ไม่อนุมัติ',body,no);
     logAct('บันทึกมติไม่อนุมัติ คำขอ'+r.type+' โครงการ '+no+' · มติครั้งที่ '+meet);
     save();closeModal();render(no);updNotifBell();toast('บันทึกมติแล้ว · แจ้งหัวหน้าโครงการแล้ว','ok');return;
   }
   // อนุมัติ → ใช้กลไก saveRenew เดิม แต่ผูกกับคำขอนี้คำขอเดียว
-  r.decision={result:res,meetingNo:meet,date,note,by:(CURRENT_USER||{}).name||'',at:Date.now()};
+  r.decision={result:res,meetingNo:meet,date,note,files:_files,by:(CURRENT_USER||{}).name||'',at:Date.now()};
   const ok=saveRenew(no,ri);
   if(ok===false){delete r.decision;return;}
-  if(head){const body='โครงการเลขที่ '+no+' คำขอ'+r.type+' ('+r.detail+')\nคณะกรรมการบริหาร ครั้งที่ '+meet+' วันที่ '+fmtDate(date)+' มีมติ "อนุมัติ"'+(note?'\nหมายเหตุ: '+note:'')+'\nฝ่ายแผนจะดำเนินการในระบบ CUERP ต่อไป';
+  if(head){const body='โครงการเลขที่ '+no+' คำขอ'+r.type+' ('+r.detail+')\nคณะกรรมการบริหาร ครั้งที่ '+meet+' วันที่ '+fmtDate(date)+' มีมติ "อนุมัติ"'+(note?'\nหมายเหตุ: '+note:'')+(_files.length?'\nมีรายงานการประชุมแนบไว้ในระบบ':'')+'\nฝ่ายแผนจะดำเนินการในระบบ CUERP ต่อไป';
     notifyM(head,'โครงการเลขที่ '+no+' คำขอ'+r.type+' — อนุมัติแล้ว',body,no);updNotifBell();}
 }
 function rnFiscal(){const y=document.getElementById('rn_fy').value;const be=parseInt(y);if(!(be>2400)){toast('พิมพ์ปีงบประมาณ พ.ศ. เช่น 2570','bad');return;}document.getElementById('rn_ne').value=(be-543)+'-09-30';}
@@ -2424,7 +2481,7 @@ const HELP={
   faq:[['ทำไมโครงการของฉันไม่ขึ้นใน "งานที่ต้องทำตอนนี้"','เพราะขั้นถัดไปของโครงการนั้นเป็นคิวของบทบาทอื่น เช่น รอการเงินขอเลข Vendor ดูได้ที่ทะเบียนโครงการ → กล่องสถานะการดำเนินการ'],['กระดิ่งแจ้งเตือนต่างจากกล่องงานอย่างไร','กระดิ่ง = เหตุการณ์ที่เกิดขึ้นแล้ว (มีคนทำขั้นก่อนหน้าเสร็จ, มีคำขอใหม่) · กล่องงาน = สิ่งที่ยังค้างอยู่ ณ ตอนนี้ ไม่ว่าจะเคยแจ้งหรือไม่']]},
  proposal:{t:'เขียนโครงการ (ขออนุมัติ)',p:'หัวหน้าโครงการเขียนแบบเสนอโครงการบริการวิชาการในระบบครั้งเดียว ข้อมูลและตารางงบจะถูกใช้ต่อตลอดทั้งโครงการ',
   steps:['กด <b>+ เขียนข้อเสนอใหม่</b> กรอกชื่อโครงการ หลักการ วัตถุประสงค์ ช่วงเวลา และตารางงบประมาณรายหมวด (ระบบรวมยอดและคำนวณค่าสาธารณูปโภค 5% / เงินอุดหนุน 10% ให้)','กด <b>บันทึกร่าง</b> ได้เรื่อย ๆ · เมื่อครบถ้วนกด <b>ยื่นขออนุมัติ</b> ระบบจะแจ้งหัวหน้างาน','พิมพ์แบบเสนอเป็น A4 เพื่อเข้าที่ประชุมได้จากปุ่ม "พิมพ์"','เมื่อคณะกรรมการมีมติ หัวหน้างานกด <b>อนุมัติ</b> กรอกครั้งที่ประชุม ระบบจะสร้างโครงการในทะเบียนและแจ้งการเงิน/แผนให้เอง'],
-  faq:[['แก้ไขข้อเสนอหลังยื่นได้ไหม','หัวหน้างานยังไม่อนุมัติ: ติดต่อหัวหน้างานให้ตีกลับเป็นร่าง · อนุมัติแล้ว: ใช้ "ขอปรับปรุงโครงการ" จากทะเบียนแทน เพื่อให้มีมติประกอบ'],['เลขโครงการมาจากไหน','ยังไม่ต้องกรอกตอนเขียนข้อเสนอ นโยบายและแผนจะใส่ให้หลังอนุมัติ']]},
+  faq:[['แก้ไขข้อเสนอหลังยื่นได้ไหม','ยื่นแล้วแก้เองไม่ได้ · ถ้าหัวหน้างานหรือคณะกรรมการ "ส่งกลับให้แก้ไข" จะแก้ได้อีกครั้ง แล้วกด "ยื่นใหม่" · อนุมัติแล้ว: ใช้คำขอขยายเวลา/ปรับงบจากทะเบียนโครงการ'],['ไม่อนุมัติแล้วเสนอใหม่ได้ไหม','ได้ · เปิดแบบเสนอที่ไม่อนุมัติ กด "คัดลอกเป็นร่างใหม่" แก้ไขแล้วยื่นในรอบถัดไป · ฉบับเดิมเก็บเป็นหลักฐาน'],['รายงานการประชุมที่แนบ ใครเห็นบ้าง','หัวหน้าโครงการ/ผู้ประสานงานของเรื่องนั้น และหัวหน้างาน แผน การเงิน ผู้บริหาร · เปิดดูได้ที่แบบเสนอหรือคำขอของโครงการตน'],['เลขโครงการมาจากไหน','ยังไม่ต้องกรอกตอนเขียนข้อเสนอ นโยบายและแผนจะใส่ให้หลังอนุมัติ']]},
  open:{t:'เปิดโครงการใหม่ / แก้ไขโครงการ',p:'ใช้เมื่อโครงการได้รับอนุมัติแล้วแต่ไม่ได้มาจากข้อเสนอในระบบ (เช่น โครงการเดิมก่อนเริ่มใช้ระบบ) หรือเมื่อต้องแก้ข้อมูลทั่วไปของโครงการ',
   steps:['กรอกเลขโครงการ ชื่อย่อ ชื่อเต็ม ผู้ให้ทุน ประมาณการรายได้ และช่วงเวลาที่อนุมัติ','ระบบไม่ให้บันทึกเลขโครงการซ้ำ และต้องมีประมาณการรายได้มากกว่า 0','ข้อมูล Vendor / บัญชี / CUERP / ใบแจ้งหนี้ ไม่ได้กรอกที่นี่ — ไปทำที่ <b>ทะเบียนโครงการ → สถานะการดำเนินการ</b> ตามคิวของแต่ละฝ่าย'],
   faq:[['ใครแก้ไขโครงการได้','การเงิน นโยบายและแผน หัวหน้าโครงการ และหัวหน้างาน · ผู้ประสานงานและสัตวแพทย์ดูได้อย่างเดียว']]},
@@ -2580,7 +2637,8 @@ function myTasks(){
   const todayISO=new Date().toISOString().slice(0,10);
   // (1) ข้อเสนอโครงการ
   (DB.proposals||[]).forEach(pr=>{
-    if(ROLE==='admin'&&pr.status==='ยื่นขออนุมัติ')out.push({no:pr.projNo||'ข้อเสนอ',name:pr.projName||'',what:'บันทึกมติคณะกรรมการ เพื่ออนุมัติข้อเสนอโครงการ',sub:'ยื่นโดย '+(pr.headName||pr.headUser||''),age:daysSince(tlDate(pr.submitDate)),view:'proposal',arg:pr.id});
+    if(ROLE==='admin'&&pr.status==='ยื่นขออนุมัติ')out.push({no:pr.projNo||'ข้อเสนอ',name:pr.projName||'',what:'พิจารณาแบบเสนอ แล้วบันทึกมติ (อนุมัติ / ส่งกลับแก้ไข / ไม่อนุมัติ)'+((+pr.round||0)>1?' · ยื่นครั้งที่ '+(+pr.round):''),sub:'ยื่นโดย '+(pr.headName||pr.headUser||''),age:daysSince(tlDate(pr.submitDate)),view:'proposal',arg:pr.id});
+    if(pr.headUser===me&&pr.status==='ส่งกลับแก้ไข')out.push({no:pr.projNo||'ส่งกลับ',name:pr.projName||'',what:'แก้ไขแบบเสนอตามข้อสังเกต แล้วกด "ยื่นใหม่"',sub:pr.returnNote?('ข้อสังเกต: '+String(pr.returnNote).slice(0,80)):'',age:daysSince(tlDate((pr.decisions&&pr.decisions.length)?new Date(pr.decisions[pr.decisions.length-1].at).toISOString():pr.submitDate)),view:'proposal',arg:pr.id});
     if(pr.headUser===me&&pr.status==='ร่าง')out.push({no:pr.projNo||'ร่าง',name:pr.projName||'(ยังไม่ตั้งชื่อ)',what:'ร่างข้อเสนอที่ยังไม่ได้ยื่นขออนุมัติ',sub:'กรอกให้ครบแล้วกด "ยื่นขออนุมัติ"',age:daysSince(tlDate(pr.createdAt)),view:'proposal',arg:pr.id});
   });
   // (2) โครงการในทะเบียน
@@ -2610,7 +2668,7 @@ let PROPSEL=null;
 function newPropId(){return 'P'+Date.now().toString(36);}
 function scopeProposals(list){if(ROLE==='staff'&&CURRENT_USER)return list.filter(p=>p.headUser===CURRENT_USER.email);return list;}
 function ownProp(pr){return !CURRENT_USER||!pr.headUser||pr.headUser===CURRENT_USER.email;}
-function propPill(s){const done=(s==='อนุมัติแล้ว'||s==='สมบูรณ์');const wait=(s==='ยื่นขออนุมัติ');return `<span class="pill ${done?'open':wait?'':'closed'}" ${wait?'style="background:var(--amber-l);color:var(--amber)"':''}>${esc(s||'ร่าง')}</span>`;}
+function propPill(s){if(s==='ส่งกลับแก้ไข')return `<span class="pill" style="background:var(--amber-l);color:var(--amber);border:1px solid #e0c58a">↩ ส่งกลับแก้ไข</span>`;if(s==='ไม่อนุมัติ')return `<span class="pill" style="background:var(--red-l);color:#8a1616;border:1px solid #f0b4b4">✕ ไม่อนุมัติ</span>`;const done=(s==='อนุมัติแล้ว'||s==='สมบูรณ์');const wait=(s==='ยื่นขออนุมัติ');return `<span class="pill ${done?'open':wait?'':'closed'}" ${wait?'style="background:var(--amber-l);color:var(--amber)"':''}>${esc(s||'ร่าง')}</span>`;}
 function vProposal(arg){
   if(arg==='new')PROPSEL='new'; else if(arg)PROPSEL=arg;
   if(PROPSEL&&(''+PROPSEL).indexOf('rev-')===0)return vRevForm((''+PROPSEL).slice(4));
@@ -2622,9 +2680,9 @@ function vPropList(){
   const list=scopeProposals(DB.proposals||[]).slice().reverse();
   const rows=list.map(p=>`<tr>
 <td>${esc(p.projName)||'<span style="color:var(--muted)">(ยังไม่ตั้งชื่อ)</span>'}</td>
-<td>${esc(p.headName)}</td><td>${propPill(p.status)}</td>
+<td>${esc(p.headName)}</td><td>${propPill(p.status)}${(+p.round||0)>1?`<div style="font-size:12px;margin-top:3px">ยื่นครั้งที่ ${+p.round}</div>`:''}</td>
 <td>${esc(p.projNo)||'<span style="color:var(--muted)">—</span>'}</td>
-<td class="c nowrap"><button class="btn ghost sm" onclick="go('proposal','${p.id}')">เปิด</button>${(ROLE==='admin'&&p.status==='ยื่นขออนุมัติ')?`<button class="btn primary sm" style="margin-left:6px" onclick="approveProp('${p.id}')">✓ อนุมัติ</button>`:''}</td></tr>`).join('');
+<td class="c nowrap"><button class="btn ghost sm" onclick="go('proposal','${p.id}')">เปิด</button>${(ROLE==='admin'&&p.status==='ยื่นขออนุมัติ')?`<button class="btn primary sm" style="margin-left:6px" onclick="approveProp('${p.id}')">พิจารณา</button>`:''}</td></tr>`).join('');
   return `<div class="head"><div><h1>เขียนโครงการ (ขออนุมัติ)</h1><div class="desc">แบบข้อเสนอขอโครงการ · นำเข้าคณะกรรมการบริหารเพื่ออนุมัติ</div></div>
     ${canWrite?`<button class="btn primary" onclick="go('proposal','new')">เขียนแบบเสนอใหม่</button>`:''}</div>
 <div class="panel"><div class="tbl-wrap"><table><thead><tr><th>ชื่อโครงการ</th><th>หัวหน้าโครงการ</th><th>สถานะ</th><th>รหัสโครงการ</th><th class="c">จัดการ</th></tr></thead>
@@ -2636,7 +2694,7 @@ function vPropForm(id){
   const pr=isNew?{id:newPropId(),status:'ร่าง',headUser:CURRENT_USER&&CURRENT_USER.email,headName:(CURRENT_USER&&(CURRENT_USER.headName||CURRENT_USER.name))||''}:(DB.proposals||[]).find(x=>x.id===id);
   if(!pr)return vPropList();
   const adminEdit=(ROLE==='admin'&&pr.status!=='ร่าง');   // v39.6: หัวหน้างานแก้ได้ทุกสถานะ (ไม่แจ้งเตือนใคร)
-  const editable=(ROLE==='admin'||(ownProp(pr)&&pr.status==='ร่าง'));
+  const editable=(ROLE==='admin'||(ownProp(pr)&&(pr.status==='ร่าง'||pr.status==='ส่งกลับแก้ไข')));   // v41: ส่งกลับแก้ไข → หัวหน้าโครงการแก้ได้อีกครั้ง
   budInit(pr);BUD_EDIT=editable;
   ganttInit(pr);GANTT_EDIT=editable;
   if(!pr.budgetNote)pr.budgetNote=BUD_NOTE_DEFAULT;
@@ -2653,16 +2711,18 @@ function vPropForm(id){
 </div>`:'';
   let actions=adminEdit?`<button class="btn primary" onclick="saveProposal('${pr.id}',false)">บันทึกการแก้ไข (หัวหน้างาน)</button>`:'';
   if(adminEdit){}
+  else if(editable&&pr.status==='ส่งกลับแก้ไข')actions=`<button class="btn ghost" onclick="saveProposal('${pr.id}',false)">บันทึก (ยังไม่ยื่น)</button><button class="btn primary" onclick="saveProposal('${pr.id}',true)">ยื่นใหม่ (ครั้งที่ ${(+pr.round||1)+1})</button>`;
   else if(editable)actions=`<button class="btn ghost" onclick="saveProposal('${pr.id}',false)">บันทึกร่าง</button><button class="btn primary" onclick="saveProposal('${pr.id}',true)">ยื่นขออนุมัติ</button>`;
   else if(ROLE==='admin'&&pr.status==='ยื่นขออนุมัติ')actions=`<span style="color:var(--amber);font-size:13px">รอการอนุมัติ — กดปุ่ม "✓ อนุมัติ (บันทึกมติ)" ด้านบน${ownProp(pr)?' · โครงการที่ท่านยื่นเอง':''}</span>`;
-  else if(ownProp(pr)&&pr.status==='ยื่นขออนุมัติ')actions=`<span style="color:var(--amber);font-size:13px">⏳ ยื่นขออนุมัติแล้ว รอหัวหน้างานพิจารณา</span>`;
+  else if(ownProp(pr)&&pr.status==='ยื่นขออนุมัติ')actions=`<span style="color:var(--amber);font-size:13px">⏳ ยื่นขออนุมัติแล้ว${(+pr.round||0)>1?' (ครั้งที่ '+(+pr.round)+')':''} รอหัวหน้างานพิจารณา</span>`;
+  if(pr.status==='ไม่อนุมัติ'&&(ROLE==='admin'||ownProp(pr)))actions+=`<button class="btn primary" onclick="copyPropDraft('${pr.id}')">คัดลอกเป็นร่างใหม่</button>`;
   if((ROLE==='policy'||ROLE==='admin')&&pr.status==='อนุมัติแล้ว'&&!pr.projNo)actions+=`<button class="btn primary" onclick="assignPropNo('${pr.id}')">ออกรหัสโครงการ</button>`;
   const canDel=((ROLE==='admin'||ownProp(pr))&&pr.status==='ร่าง');
-  return `<div class="head"><div><h1>แบบข้อเสนอขอโครงการ</h1><div class="desc">${propPill(pr.status)} ${adminEdit?'· หัวหน้างานแก้ไขได้ (ไม่แจ้งเตือนผู้ใด สถานะคงเดิม)':editable?'· กรอกข้อมูลแล้วกดยื่นขออนุมัติ':'· ดูอย่างเดียว'}</div></div>
+  return `<div class="head"><div><h1>แบบข้อเสนอขอโครงการ</h1><div class="desc">${propPill(pr.status)}${(+pr.round||0)>1?' · ยื่นครั้งที่ '+(+pr.round):''} ${adminEdit?'· หัวหน้างานแก้ไขได้ (ไม่แจ้งเตือนผู้ใด สถานะคงเดิม)':(editable&&pr.status==='ส่งกลับแก้ไข')?'· แก้ไขตามข้อสังเกต แล้วกดยื่นใหม่':editable?'· กรอกข้อมูลแล้วกดยื่นขออนุมัติ':'· ดูอย่างเดียว'}</div></div>
 <div class="no-print" style="display:flex;gap:8px;align-items:center">
-${(ROLE==='admin'&&pr.status==='ยื่นขออนุมัติ')?`<button class="btn primary sm" onclick="approveProp('${pr.id}')">✓ อนุมัติ (บันทึกมติ)</button>`:''}
+${(ROLE==='admin'&&pr.status==='ยื่นขออนุมัติ')?`<button class="btn primary sm" onclick="approveProp('${pr.id}')">พิจารณา / บันทึกมติ</button>`:''}
 <button class="btn ghost sm" onclick="PROPSEL=null;go('proposal')">← กลับรายการ</button></div></div>
-<div class="form-card prop-form">
+${propDecBanner(pr)}<div class="form-card prop-form">
 <div class="no-print" style="display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap">
 <span style="font-size:12.5px;color:var(--muted)">คลิกที่หัวข้อเพื่อย่อ/ขยาย</span>
 <button type="button" class="btn ghost sm" onclick="propCollapseAll(true)">▸ ย่อทั้งหมด</button>
@@ -2930,37 +2990,89 @@ function saveProposal(id,submit){
   if(submit){
     if(!pr.projName){toast('กรุณากรอกชื่อโครงการก่อนยื่น','bad');return;}
     if(!pr.startDate||!pr.endDate){toast('กรุณาระบุวันเริ่มและวันสิ้นสุดโครงการก่อนยื่น','bad');return;}
+    if(pr.status!=='ร่าง'&&pr.status!=='ส่งกลับแก้ไข'&&ROLE!=='admin'){toast('แบบเสนอนี้ยื่นไปแล้ว','bad');return;}
+    const _wasRet=(pr.status==='ส่งกลับแก้ไข');const _ch=_wasRet?propChanged(pr):null;
+    pr.round=(+pr.round||0)+1;   // v41: นับครั้งที่ยื่น
     pr.status='ยื่นขออนุมัติ';pr.submitDate=new Date().toISOString();
-    { const _st='ข้อเสนอโครงการ "'+(pr.projName||'')+'" ยื่นขออนุมัติ';   // v27: แจ้งหัวหน้างาน (กระดิ่ง + อีเมล)
-      notifyM('admin',_st,'หัวหน้าโครงการ '+(pr.headName||'')+' ยื่นขออนุมัติโครงการ "'+(pr.projName||'')+'"'+(pr.period?' ระยะเวลา '+pr.period:'')+(pr.budgetRevenue?' ประมาณการรายรับ '+fmt2(pr.budgetRevenue)+' บาท':'')+'\nกรุณาตรวจสอบเอกสารและนำเสนอคณะกรรมการบริหาร',pr.projNo||''); if(DB.meta.notifs[0]){DB.meta.notifs[0].view='proposal';DB.meta.notifs[0].arg=pr.id;} }
+    { const _st='ข้อเสนอโครงการ "'+(pr.projName||'')+'" '+(_wasRet?'ยื่นใหม่ (ครั้งที่ '+pr.round+')':'ยื่นขออนุมัติ');   // v27: แจ้งหัวหน้างาน (กระดิ่ง + อีเมล)
+      notifyM('admin',_st,'หัวหน้าโครงการ '+(pr.headName||'')+(_wasRet?' แก้ไขตามข้อสังเกตแล้ว ยื่นใหม่ครั้งที่ '+pr.round+' โครงการ "':' ยื่นขออนุมัติโครงการ "')+(pr.projName||'')+'"'+(pr.period?' ระยะเวลา '+pr.period:'')+(pr.budgetRevenue?' ประมาณการรายรับ '+fmt2(pr.budgetRevenue)+' บาท':'')+(_wasRet?'\nข้อที่แก้ไข: '+((_ch&&_ch.length)?_ch.join(', '):'ไม่พบข้อที่เปลี่ยน'):'')+'\nกรุณาตรวจสอบเอกสารและนำเสนอคณะกรรมการบริหาร',pr.projNo||''); if(DB.meta.notifs[0]){DB.meta.notifs[0].view='proposal';DB.meta.notifs[0].arg=pr.id;} }
   }
   if(isNew){DB.proposals=DB.proposals||[];DB.proposals.push(pr);}
   const _adm=(!submit&&!isNew&&ROLE==='admin'&&pr.status!=='ร่าง');
   logAct((submit?'ยื่นขออนุมัติโครงการ ':_adm?'หัวหน้างานแก้ไขข้อเสนอโครงการ ('+pr.status+') ':'บันทึกร่างโครงการ ')+(pr.projName||pr.id));
-  save();PROPSEL=pr.id;render();toast(submit?'ยื่นขออนุมัติแล้ว':_adm?'บันทึกการแก้ไขแล้ว (ไม่แจ้งเตือนผู้ใด)':'บันทึกร่างแล้ว','ok');
+  save();PROPSEL=pr.id;render();toast(submit?((+pr.round||1)>1?'ยื่นใหม่แล้ว (ครั้งที่ '+pr.round+')':'ยื่นขออนุมัติแล้ว'):_adm?'บันทึกการแก้ไขแล้ว (ไม่แจ้งเตือนผู้ใด)':'บันทึกร่างแล้ว','ok');
 }
 function delProposal(id){if(!confirm('ลบร่างข้อเสนอนี้?'))return;DB.proposals=(DB.proposals||[]).filter(x=>x.id!==id);logAct('ลบร่างข้อเสนอโครงการ');save();PROPSEL=null;go('proposal');toast('ลบแล้ว','ok');}
-function approveProp(id){
+function approveProp(id){   // v41: พิจารณาแบบเสนอ — อนุมัติ · ส่งกลับให้แก้ไข · ไม่อนุมัติ · ส่งกลับก่อนเข้า คก.
   const pr=(DB.proposals||[]).find(x=>x.id===id);if(!pr)return;
-  openModal(`<div class="mh">✓ อนุมัติโครงการ (บันทึกมติคณะกรรมการบริหาร)</div>
-<p style="font-size:13px;color:var(--muted);margin-bottom:12px">อนุมัติโดยหัวหน้างาน · ระบบจะสร้างเอกสารโครงการอัตโนมัติ (สถานะ "รอเลขโครงการ") แล้วให้นโยบายและแผนออกรหัสภายหลัง</p>
-<div class="grid2">
-<div class="fld"><label>มติที่ประชุมบริหาร ครั้งที่<span class="req">*</span></label><input id="ap_meet" placeholder="ครั้งที่ 5/2568"></div>
-<div class="fld"><label>วันที่อนุมัติ</label><input id="ap_date" type="date"></div>
+  if(ROLE!=='admin'){toast('การบันทึกมติ เฉพาะหัวหน้างาน','bad');return;}
+  MINF=[];
+  const self=!!(pr.headUser&&CURRENT_USER&&pr.headUser===CURRENT_USER.email);
+  const ch=propChanged(pr);
+  openModal(`<div class="mh">พิจารณาแบบเสนอโครงการ${(+pr.round||0)>1?' · ยื่นครั้งที่ '+(+pr.round):''}</div>
+<p style="font-size:13.5px;margin-bottom:10px"><b>${esc(pr.projName||'(ยังไม่ตั้งชื่อ)')}</b> · ${esc(pr.headName||'')}</p>
+${ch?`<div class="dec-chg">แก้ไขจากครั้งก่อน: <b>${ch.length?ch.map(esc).join(' · '):'ไม่พบข้อที่เปลี่ยน'}</b></div>`:''}
+<div class="dec-opts">
+<label class="dec-o ok"><input type="radio" name="dk" value="approve" checked onchange="decToggle()"><b>✓ อนุมัติ</b><span>สร้างโครงการในทะเบียน แล้วให้แผนออกรหัส</span></label>
+<label class="dec-o ret"><input type="radio" name="dk" value="ret" onchange="decToggle()"><b>↩ ส่งกลับให้แก้ไข</b><span>ตามข้อสังเกตคณะกรรมการ แก้แล้วยื่นใหม่</span></label>
+<label class="dec-o no"><input type="radio" name="dk" value="rej" onchange="decToggle()"><b>✕ ไม่อนุมัติ</b><span>ล็อกเก็บเป็นหลักฐาน ไม่ลบ</span></label>
+<label class="dec-o pre"><input type="radio" name="dk" value="pre" onchange="decToggle()"><b>↩ ส่งกลับก่อนเข้า คก.</b><span>เอกสารไม่ครบ ยังไม่เข้าประชุม</span></label>
 </div>
-${(pr.headUser&&CURRENT_USER&&pr.headUser===CURRENT_USER.email)?`<div style="background:#fdf6e9;border:1.5px solid #e0c58a;border-radius:10px;padding:10px 13px;font-size:13px;color:#6e4405;margin-top:10px">
+<div class="grid2" id="decMeet">
+<div class="fld"><label>มติที่ประชุมบริหาร ครั้งที่<span class="req">*</span></label><input id="ap_meet" placeholder="ครั้งที่ 5/2569"></div>
+<div class="fld"><label>วันที่ประชุม<span class="req">*</span></label><input id="ap_date" type="date"></div>
+</div>
+<div class="fld"><label id="decNoteL">หมายเหตุ (ถ้ามี)</label><textarea id="ap_note" rows="3"></textarea></div>
+<div id="decMin">${minBox()}</div>
+${self?`<div id="decSelf" style="background:#fdf6e9;border:1.5px solid #e0c58a;border-radius:10px;padding:10px 13px;font-size:13px;color:#6e4405;margin-top:10px">
   <b>โครงการนี้ท่านเป็นผู้เสนอเอง</b> — ตามหลักการแบ่งแยกหน้าที่ การอนุมัติต้องอ้างอิงมติคณะกรรมการบริหารเท่านั้น ระบบจะบันทึกไว้ในประวัติการใช้งาน
   <label style="display:flex;gap:8px;align-items:flex-start;margin-top:8px;font-weight:600"><input type="checkbox" id="ap_self" style="margin-top:4px">ยืนยันว่าโครงการนี้ได้รับอนุมัติจากมติคณะกรรมการบริหารตามครั้งที่ระบุ</label></div>`:''}
-<div class="mf"><button class="btn ghost" onclick="closeModal()">ยกเลิก</button><button class="btn primary" onclick="doApproveProp('${id}')">อนุมัติ</button></div>`);
+<div class="mf"><button class="btn ghost" onclick="closeModal()">ยกเลิก</button><button class="btn primary" id="decBtn" onclick="doDecideProp('${id}')">บันทึกมติ: อนุมัติ</button></div>`);
+  minRender();decToggle();
+}
+function decToggle(){const k=(document.querySelector('input[name=dk]:checked')||{}).value||'approve';
+  const L={approve:'หมายเหตุ (ถ้ามี)',ret:'ข้อสังเกตของคณะกรรมการ (แจ้งหัวหน้าโครงการ)',rej:'เหตุผลที่ไม่อนุมัติ',pre:'เหตุผลที่ส่งกลับ เช่น ข้อมูลหรือเอกสารที่ขาด'};
+  const B={approve:'บันทึกมติ: อนุมัติ',ret:'บันทึกมติ: ส่งกลับให้แก้ไข',rej:'บันทึกมติ: ไม่อนุมัติ',pre:'ส่งกลับให้แก้ไข'};
+  const nl=document.getElementById('decNoteL');if(nl)nl.innerHTML=esc(L[k])+(k==='approve'?'':'<span class="req">*</span>');
+  const show=(id,v)=>{const e=document.getElementById(id);if(e)e.style.display=v?'':'none';};
+  show('decMeet',k!=='pre');show('decMin',k!=='pre');show('decSelf',k==='approve');
+  const b=document.getElementById('decBtn');if(b){b.textContent=B[k];b.className='btn '+(k==='rej'?'danger':'primary');}
+  document.querySelectorAll('.dec-o').forEach(x=>x.classList.toggle('on',!!x.querySelector('input:checked')));}
+function propDecPush(pr,kind,meet,date,note,files){pr.decisions=Array.isArray(pr.decisions)?pr.decisions:[];
+  pr.decisions.push({kind,round:+pr.round||1,meetingNo:meet||'',date:date||'',note:note||'',files:(files||[]).map(f=>({id:f.id,name:f.name||''})),by:(CURRENT_USER||{}).name||'',at:Date.now()});}
+function doDecideProp(id){
+  const pr=(DB.proposals||[]).find(x=>x.id===id);if(!pr)return;
+  if(ROLE!=='admin'){toast('เฉพาะหัวหน้างาน','bad');return;}
+  if(pr.status!=='ยื่นขออนุมัติ'){toast('แบบเสนอนี้ไม่ได้อยู่ในสถานะรอพิจารณา','bad');closeModal();render();return;}
+  const k=(document.querySelector('input[name=dk]:checked')||{}).value||'approve';
+  const meet=(document.getElementById('ap_meet').value||'').trim(),date=(document.getElementById('ap_date').value||'').trim(),note=(document.getElementById('ap_note').value||'').trim();
+  if(k!=='pre'&&(!meet||!date)){toast('กรุณากรอกครั้งที่ประชุมและวันที่ประชุม','bad');return;}
+  if(k!=='approve'&&!note){toast(k==='rej'?'กรุณาระบุเหตุผลที่ไม่อนุมัติ':'กรุณาระบุข้อสังเกต/เหตุผลที่ส่งกลับ','bad');return;}
+  if(k==='approve')return doApproveProp(id);
+  const files=(k==='pre')?[]:MINF.slice();const kind=DEC_K[k];
+  propDecPush(pr,kind,k==='pre'?'':meet,k==='pre'?'':date,note,files);
+  pr.returnNote=note;
+  if(k==='rej')pr.status='ไม่อนุมัติ';else{pr.status='ส่งกลับแก้ไข';pr.fp=propFp(pr);}
+  const idn=pr.projNo?('โครงการเลขที่ '+pr.projNo):('ข้อเสนอโครงการ "'+(pr.projName||'')+'"');
+  const title=idn+(k==='rej'?' — ไม่อนุมัติ':' — ส่งกลับให้แก้ไข');
+  const body=(k==='pre'?'หัวหน้างานตรวจแบบเสนอแล้ว ขอให้แก้ไขก่อนนำเข้าคณะกรรมการบริหาร':'คณะกรรมการบริหาร ครั้งที่ '+meet+' วันที่ '+fmtDate(date)+' มีมติ "'+kind+'"')
+    +'\n'+(k==='rej'?'เหตุผล: ':k==='pre'?'เหตุผล: ':'ข้อสังเกต: ')+note
+    +(files.length?'\nมีรายงานการประชุมแนบไว้ในระบบ (เปิดดูที่แบบเสนอโครงการ)':'')
+    +(k==='rej'?'\nหากต้องการเสนอใหม่ในรอบถัดไป กด "คัดลอกเป็นร่างใหม่" ที่แบบเสนอ':'\nกรุณาแก้ไขแบบเสนอ แล้วกด "ยื่นใหม่"');
+  notifyM(pr.headUser||pr.headName,title,body,pr.projNo||'');if(DB.meta.notifs[0]){DB.meta.notifs[0].view='proposal';DB.meta.notifs[0].arg=pr.id;}
+  logAct('บันทึกมติแบบเสนอ "'+kind+'" '+(pr.projName||pr.id)+(meet?' (มติ '+meet+')':''));
+  save();closeModal();PROPSEL=pr.id;render();updNotifBell();toast((k==='rej'?'บันทึกมติไม่อนุมัติแล้ว':'ส่งกลับให้แก้ไขแล้ว')+' · แจ้งหัวหน้าโครงการแล้ว','ok');
 }
 function doApproveProp(id){
   const pr=(DB.proposals||[]).find(x=>x.id===id);if(!pr)return;
   const meet=document.getElementById('ap_meet').value.trim();
   if(!meet){toast('กรุณากรอกมติที่ประชุม','bad');return;}
+  if(!(document.getElementById('ap_date').value||'').trim()){toast('กรุณากรอกวันที่ประชุม','bad');return;}
   const _selfApprove=!!(pr.headUser&&CURRENT_USER&&pr.headUser===CURRENT_USER.email);
   if(_selfApprove&&!((document.getElementById('ap_self')||{}).checked)){toast('โครงการที่ท่านเสนอเอง ต้องติ๊กยืนยันมติคณะกรรมการก่อนอนุมัติ','bad');return;}
   if(_selfApprove){pr.selfApproved=true;logAct('[อนุมัติโครงการที่ตนเสนอเอง] '+(pr.projNo||'')+' '+(pr.projName||'')+' · อ้างมติ คก. ครั้งที่ '+meet);}
   pr.approveMeetingNo=meet;pr.approveDate=document.getElementById('ap_date').value.trim();pr.status='อนุมัติแล้ว';
+  const _apNote=((document.getElementById('ap_note')||{}).value||'').trim();propDecPush(pr,'อนุมัติ',meet,pr.approveDate,_apNote,MINF);delete pr.returnNote;delete pr.fp;   // v41
   const realNo=(pr.projNo||'').trim();
   const dup=realNo&&DB.projects.some(p=>p.projNo===realNo);
   const useNo=(realNo&&!dup)?realNo:('รอเลข-'+pr.id);
@@ -2976,7 +3088,7 @@ function doApproveProp(id){
   }
   const idn=realNo?('โครงการเลขที่ '+realNo):('โครงการ "'+(pr.projName||'')+'"');
   logAct('อนุมัติโครงการ '+(pr.projName||pr.id)+' (มติ '+meet+')');
-  notifyM(pr.headUser||pr.headName,idn+' ได้รับอนุมัติแล้ว',idn+' "'+(pr.projName||'')+'" ได้รับอนุมัติจากคณะกรรมการบริหารแล้ว กรุณาระบุเจ้าหน้าที่ประสานงาน และสัตวแพทย์ (ทะเบียนโครงการ → กำหนดผู้เกี่ยวข้อง)',realNo||pr.projName);
+  notifyM(pr.headUser||pr.headName,idn+' ได้รับอนุมัติแล้ว',idn+' "'+(pr.projName||'')+'" ได้รับอนุมัติจากคณะกรรมการบริหารแล้ว (ครั้งที่ '+meet+')'+(_apNote?'\nหมายเหตุ: '+_apNote:'')+(MINF.length?'\nมีรายงานการประชุมแนบไว้ในระบบ':'')+'\nกรุณาระบุเจ้าหน้าที่ประสานงาน และสัตวแพทย์ (ทะเบียนโครงการ → กำหนดผู้เกี่ยวข้อง)',realNo||pr.projName);
   notifyM('policy',idn+' อนุมัติใหม่ — ขอเลขชุดงบประมาณ + CUERP',idn+' "'+(pr.projName||'')+'" ได้รับอนุมัติแล้ว กรุณาขอเลขชุดงบประมาณ (ศูนย์ต้นทุน/กองทุน/เงินทุน) และขึ้นงบประมาณในระบบ CUERP (รอเลข Vendor จากการเงิน)',realNo||pr.projName);
   if(realNo&&!dup)notifyM('finance',idn+' อนุมัติแล้ว — ขอเลข Vendor + เปิดบัญชี',idn+' "'+(pr.projName||'')+'" ได้รับอนุมัติแล้ว กรุณาขอเลข Vendor และเปิดบัญชีธนาคาร',realNo);
   save();closeModal();PROPSEL=pr.id;render();updNotifBell();toast('อนุมัติแล้ว · แจ้งเตือนแผน/การเงิน/หัวหน้าโครงการแล้ว','ok');
@@ -3008,6 +3120,94 @@ function doAssignNo(id){
   notifyM('finance','โครงการเลขที่ '+no+' อนุมัติแล้ว — ขอเลข Vendor + เปิดบัญชี','โครงการเลขที่ '+no+' "'+(pr.projName||'')+'" ได้รับอนุมัติแล้ว กรุณาขอเลข Vendor และเปิดบัญชีธนาคาร',no);
   save();closeModal();render();updNotifBell();toast('ออกรหัสโครงการ '+no+' แล้ว · แจ้งการเงินแล้ว','ok');
 }
+/* ===== v41: ประวัติมติ · ส่งกลับแก้ไข · ไม่อนุมัติ · ตัดตอนรายงานการประชุม ===== */
+const DEC_K={approve:'อนุมัติ',ret:'ส่งกลับให้แก้ไข',rej:'ไม่อนุมัติ',pre:'ส่งกลับก่อนเข้า คก.'};
+const PROP_FL=[['projName','ชื่อโครงการ'],['projType','ประเภทโครงการ'],['jointWith','ร่วมกับ'],['startDate','วันเริ่มโครงการ'],['endDate','วันสิ้นสุดโครงการ'],['principle','1. หลักการและเหตุผล'],['objective','2. วัตถุประสงค์'],['strategy','3. ความสอดคล้องกับยุทธศาสตร์'],['benefit','4. ประโยชน์ที่คาดว่าจะได้รับ'],['budgetSource','5. แหล่งงบประมาณ'],['headName','6. ชื่อหัวหน้าโครงการ'],['headTitle','6. ตำแหน่ง'],['committee','7. คณะกรรมการดำเนินงาน'],['venue','8. สถานที่'],['target','9. กลุ่มเป้าหมาย'],['gantt','10. ขั้นตอนการดำเนินงาน'],['evaluation','11. การประเมินโครงการ'],['budget','12. ประมาณการรับ-จ่าย'],['budgetNote','12. หมายเหตุงบประมาณ'],['compensation','อัตราค่าตอบแทน'],['exemption','การขอยกเว้นเงินอุดหนุน/สาธารณูปโภค/สำรอง'],['quoteFileId','ใบเสนอราคา']];
+function hashStr(v){let h=2166136261>>>0;const t=String(v);for(let i=0;i<t.length;i++){h^=t.charCodeAt(i);h=Math.imul(h,16777619)>>>0;}return h.toString(36);}
+function propFp(pr){const o={};PROP_FL.forEach(([k])=>{const v=pr[k];o[k]=hashStr(v==null?'':(typeof v==='object'?JSON.stringify(v):String(v).trim()));});return o;}
+function propChanged(pr){if(!pr||!pr.fp)return null;const now=propFp(pr);return PROP_FL.filter(([k])=>pr.fp[k]!==undefined&&pr.fp[k]!==now[k]).map(x=>x[1]);}
+function decLine(d){const m=d.meetingNo?('มติคณะกรรมการบริหาร ครั้งที่ '+esc(d.meetingNo)+(d.date?' วันที่ '+esc(fmtDate(d.date)):'')):'หัวหน้างานตรวจก่อนเข้าประชุม';
+  return m+(d.round?' · ยื่นครั้งที่ '+d.round:'')+(d.by?' · บันทึกโดย '+esc(d.by):'');}
+function propDecBanner(pr){
+  const D=Array.isArray(pr.decisions)?pr.decisions:[];const last=D[D.length-1];let h='';
+  if(pr.status==='ส่งกลับแก้ไข'&&last){
+    h+=`<div class="dec-ban ret"><div class="dec-ban-t">↩ ${esc(last.kind||'ส่งกลับให้แก้ไข')}</div><div class="dec-ban-s">${decLine(last)}</div>
+<div class="dec-ban-n"><b>ข้อสังเกต:</b> ${esc(last.note||pr.returnNote||'').replace(/\n/g,'<br>')}</div>${minLinks(last.files)}
+${ownProp(pr)&&ROLE!=='admin'?'<div class="dec-ban-h">แก้ไขแบบเสนอตามข้อสังเกต แล้วกด <b>"ยื่นใหม่"</b> ท้ายแบบฟอร์ม</div>':''}</div>`;}
+  if(pr.status==='ไม่อนุมัติ'&&last){
+    h+=`<div class="dec-ban no"><div class="dec-ban-t">✕ ไม่อนุมัติ</div><div class="dec-ban-s">${decLine(last)}</div>
+<div class="dec-ban-n"><b>เหตุผล:</b> ${esc(last.note||pr.returnNote||'').replace(/\n/g,'<br>')}</div>${minLinks(last.files)}
+${(ROLE==='admin'||ownProp(pr))?`<div class="dec-ban-h" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">ต้องการเสนอใหม่ในรอบถัดไป<button class="btn primary sm" onclick="copyPropDraft('${esc(pr.id)}')">คัดลอกเป็นร่างใหม่</button></div>`:''}</div>`;}
+  if(pr.status==='ยื่นขออนุมัติ'&&ROLE==='admin'){const ch=propChanged(pr);
+    if(ch)h+=`<div class="dec-ban info"><div class="dec-ban-t">ยื่นใหม่ ครั้งที่ ${+pr.round||2}</div><div class="dec-ban-n"><b>ข้อที่แก้ไขจากครั้งก่อน:</b> ${ch.length?ch.map(esc).join(' · '):'ไม่พบข้อที่เปลี่ยน'}</div></div>`;}
+  if(pr.copiedFrom){const o=(DB.proposals||[]).find(x=>x.id===pr.copiedFrom);
+    h+=`<div class="dec-ban info"><div class="dec-ban-n">คัดลอกมาจากแบบเสนอที่ไม่อนุมัติ${o?` <button class="btn ghost sm" onclick="go('proposal','${esc(o.id)}')">เปิดฉบับเดิม</button>`:''}</div></div>`;}
+  if(D.length){h+=`<details class="dec-hist"${pr.status==='ยื่นขออนุมัติ'?' open':''}><summary>ประวัติการพิจารณา (${D.length})</summary>${D.slice().reverse().map(d=>`<div class="dec-hi"><span class="dec-k ${d.kind==='อนุมัติ'?'ok':d.kind==='ไม่อนุมัติ'?'no':'ret'}">${esc(d.kind)}</span><div><div>${decLine(d)}</div>${d.note?`<div class="dec-hn">${esc(d.note).replace(/\n/g,'<br>')}</div>`:''}${minLinks(d.files)}</div></div>`).join('')}</details>`;}
+  return h?`<div class="no-print">${h}</div>`:'';}
+function copyPropDraft(id){const pr=(DB.proposals||[]).find(x=>x.id===id);if(!pr)return;
+  if(!(ROLE==='admin'||ownProp(pr))){toast('เฉพาะหัวหน้าโครงการหรือหัวหน้างาน','bad');return;}
+  if(!confirm('คัดลอกเนื้อหาแบบเสนอนี้เป็นร่างใหม่ เพื่อแก้ไขและเสนอในรอบถัดไป?'))return;
+  const keep=['projName','projType','faculty','jointWith','startDate','endDate','principle','objective','strategy','benefit','budgetSource','headName','headTitle','committee','venue','target','steps','evaluation','budgetNote','compensation','exemption','quoteFileId','quoteFileName','quoteUrl','indentFirst','budget','budgetRevenue','budgetExpense','gantt','period','headUser'];
+  const n={id:newPropId(),status:'ร่าง',createdAt:new Date().toISOString(),copiedFrom:pr.id};
+  keep.forEach(k=>{if(pr[k]!==undefined)n[k]=JSON.parse(JSON.stringify(pr[k]));});
+  DB.proposals=DB.proposals||[];DB.proposals.push(n);logAct('คัดลอกแบบเสนอที่ไม่อนุมัติเป็นร่างใหม่ '+(pr.projName||pr.id));
+  save();PROPSEL=n.id;go('proposal',n.id);toast('สร้างร่างใหม่แล้ว · แก้ไขแล้วยื่นขออนุมัติได้','ok');}
+/* ตัดตอนรายงานการประชุม: เปิดไฟล์ในเครื่อง → ลากกรอบ → อัปโหลดเฉพาะรูปที่ตัด */
+let MINF=[];
+function minBox(){return `<div class="fld full"><label>รายงานการประชุม (ถ้ามี)</label><div id="minList" class="min-list"></div></div>`;}
+function minRender(){const b=document.getElementById('minList');if(!b)return;
+  b.innerHTML=MINF.map((f,i)=>`<div class="qf-row">🖼 <b>รายงานการประชุม ${MINF.length>1?i+1:''}</b><button type="button" class="btn ghost sm" onclick="minView('${esc(f.id)}')">เปิดดู</button><button type="button" class="btn ghost sm" style="color:var(--red)" onclick="MINF.splice(${i},1);minRender()">เอาออก</button></div>`).join('')
+   +(MINF.length<3?`<button type="button" class="btn ghost sm" onclick="cropOpen()">📎 แนบรายงานการประชุม</button>`:'');}
+function minLinks(files){files=Array.isArray(files)?files:[];if(!files.length)return '';
+  return `<div class="min-links">${files.map((f,i)=>`<button type="button" class="btn ghost sm" onclick="minView('${esc(f.id)}')">🖼 รายงานการประชุม${files.length>1?' '+(i+1):''}</button>`).join('')}</div>`;}
+async function minView(id){const old=document.getElementById('minViewOv');if(old)old.remove();
+  const d=document.createElement('div');d.className='crop-ov';d.id='minViewOv';
+  d.innerHTML=`<div class="crop-in" style="max-width:1000px"><div class="crop-h"><b>รายงานการประชุม</b><button class="btn ghost sm" onclick="document.getElementById('minViewOv').remove()">✕ ปิด</button></div><div class="crop-stage" id="minViewBody"><div class="crop-empty">กำลังเปิด…</div></div></div>`;
+  document.body.appendChild(d);d.addEventListener('mousedown',e=>{if(e.target===d)d.remove();});
+  try{const f=await qfFetch(id);const u=URL.createObjectURL(new Blob([f.bytes],{type:f.mime}));document.getElementById('minViewBody').innerHTML=`<img src="${u}" alt="รายงานการประชุม" style="max-width:100%;display:block;margin:auto;border:1px solid var(--line-d)">`;}
+  catch(e){const bd=document.getElementById('minViewBody');if(bd)bd.innerHTML='<div class="crop-empty">เปิดไม่ได้: '+esc(e.message||String(e))+'</div>';}}
+let CROP=null;
+function cropOpen(){cropClose();const d=document.createElement('div');d.className='crop-ov';d.id='cropOv';
+  d.innerHTML=`<div class="crop-in"><div class="crop-h"><b>📎 แนบรายงานการประชุม</b><button class="btn ghost sm" onclick="cropClose()">✕ ปิด</button></div>
+<div class="crop-tip">① เลือกไฟล์ ② เลือกหน้า ③ ลากกรอบส่วนที่ต้องการ (ไม่ลาก = ใช้ทั้งหน้า) ④ กด "ใช้ภาพนี้"</div>
+<div class="crop-bar"><label class="btn ghost sm">📄 เลือกไฟล์ (PDF/JPG/PNG)<input type="file" id="cropInp" accept="application/pdf,image/jpeg,image/png" hidden onchange="cropFile(this)"></label><span id="cropPg" class="crop-pg"></span><span id="cropMsg" class="crop-msg"></span></div>
+<div class="crop-stage" id="cropStage"><div class="crop-empty">ยังไม่ได้เลือกไฟล์</div></div>
+<div class="crop-f"><button class="btn ghost" onclick="cropClose()">ยกเลิก</button><button class="btn primary" id="cropUse" onclick="cropUse()" disabled>ใช้ภาพนี้</button></div></div>`;
+  document.body.appendChild(d);CROP={doc:null,page:1,n:0,cv:null,sel:null};}
+function cropClose(){const d=document.getElementById('cropOv');if(d)d.remove();if(CROP&&CROP.doc){try{CROP.doc.destroy();}catch(e){}}CROP=null;}
+function cropMsg(t){const m=document.getElementById('cropMsg');if(m)m.textContent=t||'';}
+async function cropFile(inp){const f=inp.files&&inp.files[0];if(!f||!CROP)return;
+  if(!/^(application\/pdf|image\/jpeg|image\/png)$/.test(f.type)){toast('ไฟล์ต้องเป็น PDF, JPG หรือ PNG','bad');inp.value='';return;}
+  cropMsg('กำลังเปิดไฟล์…');
+  try{if(f.type==='application/pdf'){const lib=await loadPdfJs();const buf=new Uint8Array(await f.arrayBuffer());CROP.doc=await lib.getDocument({data:buf}).promise;CROP.n=CROP.doc.numPages;CROP.page=1;await cropRenderPage();}
+    else{const url=URL.createObjectURL(f);const im=new Image();await new Promise((ok,bad)=>{im.onload=ok;im.onerror=()=>bad(new Error('เปิดรูปไม่ได้'));im.src=url;});
+      const cv=document.createElement('canvas');const sc=Math.min(1,2400/im.naturalWidth);cv.width=Math.round(im.naturalWidth*sc);cv.height=Math.round(im.naturalHeight*sc);
+      const cx=cv.getContext('2d');cx.fillStyle='#fff';cx.fillRect(0,0,cv.width,cv.height);cx.drawImage(im,0,0,cv.width,cv.height);URL.revokeObjectURL(url);CROP.doc=null;CROP.n=1;CROP.page=1;cropShow(cv);}
+    cropMsg('');}catch(e){cropMsg('');toast('เปิดไฟล์ไม่ได้: '+(e.message||e),'bad');}
+  inp.value='';}
+async function cropRenderPage(){const pg=await CROP.doc.getPage(CROP.page);const v0=pg.getViewport({scale:1});const vp=pg.getViewport({scale:Math.min(3,2000/v0.width)});
+  const cv=document.createElement('canvas');cv.width=Math.round(vp.width);cv.height=Math.round(vp.height);const cx=cv.getContext('2d');cx.fillStyle='#fff';cx.fillRect(0,0,cv.width,cv.height);
+  await pg.render({canvasContext:cx,viewport:vp}).promise;cropShow(cv);}
+function cropGo(dl){if(!CROP||!CROP.doc)return;const n=CROP.page+dl;if(n<1||n>CROP.n)return;CROP.page=n;cropMsg('กำลังเปิดหน้า '+n+'…');cropRenderPage().then(()=>cropMsg(''));}
+function cropShow(cv){CROP.cv=cv;CROP.sel=null;
+  const st=document.getElementById('cropStage');st.innerHTML='';const wrap=document.createElement('div');wrap.className='crop-wrap';
+  const im=document.createElement('img');im.src=cv.toDataURL('image/jpeg',0.9);im.draggable=false;im.alt='';wrap.appendChild(im);
+  const box=document.createElement('div');box.className='crop-sel';box.style.display='none';wrap.appendChild(box);st.appendChild(wrap);
+  document.getElementById('cropPg').innerHTML=CROP.n>1?`<button class="btn ghost sm" onclick="cropGo(-1)" ${CROP.page<=1?'disabled':''}>‹ หน้าก่อน</button><b>หน้า ${CROP.page}/${CROP.n}</b><button class="btn ghost sm" onclick="cropGo(1)" ${CROP.page>=CROP.n?'disabled':''}>หน้าถัดไป ›</button>`:'';
+  document.getElementById('cropUse').disabled=false;
+  let s0=null;const pos=e=>{const r=im.getBoundingClientRect();return {x:Math.max(0,Math.min(r.width,e.clientX-r.left)),y:Math.max(0,Math.min(r.height,e.clientY-r.top)),w:r.width,h:r.height};};
+  wrap.addEventListener('pointerdown',e=>{e.preventDefault();try{wrap.setPointerCapture(e.pointerId);}catch(x){}s0=pos(e);box.style.display='block';Object.assign(box.style,{left:s0.x+'px',top:s0.y+'px',width:'0px',height:'0px'});});
+  wrap.addEventListener('pointermove',e=>{if(!s0)return;const q=pos(e);const x=Math.min(s0.x,q.x),y=Math.min(s0.y,q.y),w=Math.abs(q.x-s0.x),h=Math.abs(q.y-s0.y);
+    Object.assign(box.style,{left:x+'px',top:y+'px',width:w+'px',height:h+'px'});CROP.sel={x:x/q.w,y:y/q.h,w:w/q.w,h:h/q.h};});
+  const up=()=>{if(!s0)return;s0=null;const ok=!!(CROP&&CROP.sel&&CROP.sel.w>0.03&&CROP.sel.h>0.015);if(!ok){box.style.display='none';if(CROP)CROP.sel=null;}};
+  wrap.addEventListener('pointerup',up);wrap.addEventListener('pointercancel',up);}
+async function cropUse(){if(!CROP||!CROP.cv)return;const q=CROP.sel||{x:0,y:0,w:1,h:1},cv=CROP.cv;   // ไม่ลากกรอบ = ใช้ทั้งหน้า
+  const sx=Math.round(q.x*cv.width),sy=Math.round(q.y*cv.height),sw=Math.max(1,Math.round(q.w*cv.width)),sh=Math.max(1,Math.round(q.h*cv.height));
+  const sc=Math.min(1,1600/sw);const o=document.createElement('canvas');o.width=Math.max(1,Math.round(sw*sc));o.height=Math.max(1,Math.round(sh*sc));
+  const ox=o.getContext('2d');ox.fillStyle='#fff';ox.fillRect(0,0,o.width,o.height);ox.drawImage(cv,sx,sy,sw,sh,0,0,o.width,o.height);
+  const data=o.toDataURL('image/jpeg',0.88).split(',')[1];const b=document.getElementById('cropUse');b.disabled=true;cropMsg('กำลังบันทึก…');
+  try{const j=await gasAction('upload',{name:'รายงานการประชุม.jpg',mime:'image/jpeg',data});MINF.push({id:j.id,name:j.name});minRender();cropClose();toast('แนบรายงานการประชุมแล้ว','ok');}
+  catch(e){cropMsg('');b.disabled=false;toast('บันทึกไม่สำเร็จ: '+(e.message||e),'bad');}}
 function budReportTable(pr){
   const b=pr.budget;const money=v=>fmt2(v||0);
   if(!b)return `<table class="rpt-tbl"><tr><td>รวมประมาณการรายรับ</td><td class="r">${fmt(pr.budgetRevenue)}</td></tr><tr><td>รวมประมาณการรายจ่าย</td><td class="r">${fmt(pr.budgetExpense)}</td></tr></table>`;
@@ -3056,6 +3256,14 @@ async function printProp(id){const pr=(DB.proposals||[]).find(x=>x.id===id)||{};
       html=html.replace('<!--QATT-->',' (แนบท้ายเอกสาร '+pages.length+' หน้า)').replace(/<\/div>\s*$/,att+'</div>');}
     else html=html.replace('<!--QATT-->',pr.quoteUrl?' (แนบลิงก์)':'');
   }
+  const decs=(Array.isArray(pr.decisions)?pr.decisions:[]).filter(d=>(d.files||[]).length);   // v41: ตัดตอนรายงานการประชุมท้ายเอกสาร
+  if(decs.length){let blocks='';
+    for(const d of decs){for(const f of d.files){try{const x=await qfFetch(f.id);let b='';for(let i=0;i<x.bytes.length;i+=0x8000)b+=String.fromCharCode.apply(null,x.bytes.subarray(i,i+0x8000));
+      const src='data:'+x.mime+';base64,'+btoa(b);const dim=await new Promise(ok=>{const im=new Image();im.onload=()=>ok([im.naturalWidth,im.naturalHeight]);im.onerror=()=>ok([4,3]);im.src=src;});
+      const wmm=160,hmm=Math.min(200,Math.round(wmm*dim[1]/dim[0]));
+      blocks+=`<div class="pp-sec"><div style="font-weight:700;margin:6px 0 4px">มติคณะกรรมการ: ${esc(d.kind)} · ครั้งที่ ${esc(d.meetingNo||'-')} วันที่ ${esc(fmtDate(d.date))}${d.round?' · ยื่นครั้งที่ '+d.round:''} · รายงานการประชุม</div><img src="${src}" alt="" style="display:block;width:${hmm<200?wmm:Math.round(200*dim[0]/dim[1])}mm;height:${hmm}mm;border:1px solid #999"></div>`;}
+      catch(e){toast('ดึงรายงานการประชุมไม่ได้: '+(e.message||e),'bad');}}}
+    if(blocks)html=html.replace(/<\/div>\s*$/,blocks+'</div>');}
   doPrint(html,pr.projName||'แบบข้อเสนอขอโครงการ');}
 /* ===== v40: ไฟล์แนบใบเสนอราคา ===== */
 async function gasAction(action,extra){const c=cloudCfg();if(!c)throw new Error('ยังไม่เชื่อมระบบกลาง');
@@ -3152,7 +3360,7 @@ function propReport(id){
   return `<div class="rpt pp-doc" data-pfoot="แบบข้อเสนอขอโครงการ${pr.projNo?' · เลขที่โครงการ '+esc(pr.projNo):''}" style="font-family:'Sarabun';color:#000;font-size:16px;line-height:1.65">
 <div class="pp-sec"><table style="width:100%;border-collapse:collapse;margin-bottom:6px"><tr>
 <td style="border:0;width:24%"></td>
-<td style="border:0;width:52%;text-align:center;vertical-align:top"><img src="${LOGO}" style="height:56px" alt=""><div style="font-family:'Sarabun';font-weight:700;font-size:20px;margin-top:2px">แบบข้อเสนอขอโครงการ</div></td>
+<td style="border:0;width:52%;text-align:center;vertical-align:top"><img src="${LOGO}" style="height:56px" alt=""><div style="font-family:'Sarabun';font-weight:700;font-size:20px;margin-top:2px">แบบข้อเสนอขอโครงการ</div>${(+pr.round||0)>1?`<div style="font-family:'Sarabun';font-size:14px">(ยื่นครั้งที่ ${+pr.round})</div>`:''}</td>
 <td style="border:0;width:24%;text-align:left;vertical-align:top;font-size:14px;line-height:1.7">${pr.projType!=='cont'?'☑':'☐'} โครงการใหม่<br>${pr.projType==='cont'?'☑':'☐'} โครงการต่อเนื่อง</td>
 </tr></table>
 <div style="border-bottom:2px solid #000;padding-bottom:9px;margin-bottom:11px">
